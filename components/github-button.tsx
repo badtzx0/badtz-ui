@@ -31,7 +31,7 @@ export function GithubButton() {
     <Link href="https://github.com/badtzx0/badtz-ui" target="_blank">
       <Button
         aria-label="GitHub Button"
-        className="h-8 px-2.5 rounded-lg bg-gradient-to-t dark:from-muted dark:to-muted from-secondary to-background text-foreground flex items-center relative after:inset-0 after:absolute dark:after:shadow-[rgba(255,_255,_255,_0.2)_0px_1px_0px_inset] after:shadow-[rgba(0,_0,_0,_0.05)_0px_1px_0px_inset] after:rounded-[inherit] group/github [&_svg]:size-4 [&_svg]:shrink-0"
+        className="h-8 px-3 rounded-full bg-gradient-to-t dark:from-muted dark:to-muted from-secondary to-background text-foreground flex items-center relative after:inset-0 after:absolute dark:after:shadow-[rgba(255,_255,_255,_0.2)_0px_1px_0px_inset] after:shadow-[rgba(0,_0,_0,_0.05)_0px_1px_0px_inset] after:rounded-[inherit] group/github [&_svg]:size-4 [&_svg]:shrink-0"
         onClick={() => plausible("Clicked on GitHub Button")}
       >
         <GitHubLogoIcon className="h-5 w-5" />

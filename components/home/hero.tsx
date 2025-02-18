@@ -3,6 +3,7 @@ import Link from "next/link";
 import * as React from "react";
 import { HeroImage } from "@/components/home/hero/hero-image";
 import { HeroBadge } from "@/components/home/hero/hero-badge";
+import { PlausibleButton } from "@/components/plausible-button";
 
 const homeSchema = {
   "@context": "https://schema.org",
@@ -66,15 +67,21 @@ export default function Hero() {
           <div className="mt-8 flex gap-3.5">
             <Link
               href="/docs"
-              className="h-10 px-5 font-medium text-sm rounded-lg bg-foreground text-background hover:bg-foreground/90 flex items-center relative transition-colors duration-300"
+              className="h-10 px-5 font-medium text-sm rounded-full bg-foreground text-background hover:bg-foreground/90 flex items-center relative transition-colors duration-300"
             >
               View Docs
             </Link>
             <Link
+              target="_blank"
               href="https://pro.badtz-ui.com"
-              className="h-10 px-5 font-medium text-sm rounded-lg flex items-center relative gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-gradient-to-t from-orange-600 to-orange-500 shadow-[0_0px_16px_rgba(245,_73,_0,_0.7)] text-white  before:absolute before:inset-0 before:shadow-[0_0px_20px_rgba(245,_73,_0,_0.5)] before:opacity-0 transition-opacity duration-300 hover:before:opacity-100 before:rounded-[inherit] before:pointer-events-none before:transition-opacity before:duration-300 before:will-change-opacity after:inset-0 after:absolute after:shadow-[rgba(255,_255,_255,_0.2)_0px_1px_0px_inset] after:rounded-[inherit]"
+              className="h-10 px-5 font-medium text-sm rounded-full flex items-center relative gap-2 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-gradient-to-t from-orange-600 to-orange-500 shadow-[0_0px_16px_rgba(245,_73,_0,_0.7)] text-white  before:absolute before:inset-0 before:shadow-[0_0px_20px_rgba(245,_73,_0,_0.5)] before:opacity-0 transition-opacity duration-300 hover:before:opacity-100 before:rounded-[inherit] before:pointer-events-none before:transition-opacity before:duration-300 before:will-change-opacity after:inset-0 after:absolute after:shadow-[rgba(255,_255,_255,_0.2)_0px_1px_0px_inset] after:rounded-[inherit]"
             >
-              BadtzUI Pro <ExternalLinkIcon />
+              <PlausibleButton
+                eventName="Clicked on Pro"
+                className="flex items-center justify-center gap-2"
+              >
+                BadtzUI Pro <ExternalLinkIcon />
+              </PlausibleButton>
             </Link>
           </div>
         </div>

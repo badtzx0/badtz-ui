@@ -217,7 +217,7 @@ export const WOLTweet = ({
       role="group"
       aria-label="Tweet Card"
       className={cn(
-        "relative flex w-full h-auto bg-secondary max-w-lg flex-col gap-2 overflow-hidden rounded-xl border p-4 backdrop-blur-md",
+        "relative flex w-full h-auto bg-background dark:bg-secondary shadow-sm max-w-lg flex-col gap-2 overflow-hidden rounded-xl border p-4 backdrop-blur-md",
         className
       )}
       {...props}
