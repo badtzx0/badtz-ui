@@ -10,6 +10,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  experimental: {
+    scrollRestoration: false,
+  },
 };
 
 module.exports = withPlausibleProxy()(withContentlayer(nextConfig));

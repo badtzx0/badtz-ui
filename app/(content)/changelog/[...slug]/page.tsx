@@ -1,20 +1,23 @@
-//TODO: Rework the Author (BAD) + Add "related articles"
-
 import { notFound } from "next/navigation";
-import { allAuthors, allPosts, type Post } from "@/.contentlayer/generated";
+import {
+  allAuthors,
+  allChangelogs,
+  type Changelog,
+} from "@/.contentlayer/generated";
 import { Mdx } from "@/components/docs/mdx-components/mdx-components";
 import Image from "next/image";
 import Link from "next/link";
 import { absoluteUrl, formatDate } from "@/lib/utils";
 import { ChevronLeft } from "lucide-react";
-import DocsCta from "@/components/docs/doc-cta";
 import { DashboardTableOfContents } from "@/components/docs/article-toc";
-import { getTableOfContents } from "@/lib/toc";
+import DocsCta from "@/components/docs/doc-cta";
 import { Icons } from "@/components/icons";
+import { toc } from "mdast-util-toc";
+import { getTableOfContents } from "@/lib/toc";
 
-type Params = {
-  slug: string[];
-};
+interface Params {
+  slug?: string[];
+}
 
 type Author = {
   _id: string;
@@ -24,72 +27,65 @@ type Author = {
   twitter: string;
 };
 
-async function getPostFromParams(params: Params): Promise<Post | undefined> {
+async function getChangelogFromParams(
+  params: Params
+): Promise<Changelog | undefined> {
   const slug = params?.slug?.join("/");
-  const post = allPosts.find((post) => post.slugAsParams === slug);
-
-  if (!post) {
-    return undefined;
-  }
-
-  return post;
+  return allChangelogs.find((changelog) => changelog.slugAsParams === slug);
 }
 
 export async function generateMetadata({ params }: { params: Params }) {
-  const post = await getPostFromParams(params);
-
-  if (!post) {
+  const changelog = await getChangelogFromParams(params);
+  if (!changelog) {
     return {};
   }
 
   const url = process.env.NEXT_PUBLIC_APP_URL;
   const ogUrl = new URL(`${url}/api/og`);
-  ogUrl.searchParams.set("heading", post.title);
-  ogUrl.searchParams.set("type", "Blog Post");
+  ogUrl.searchParams.set("heading", changelog.title);
+  ogUrl.searchParams.set("type", "Changelog");
   ogUrl.searchParams.set("mode", "dark");
 
   return {
-    title: post.title,
-    description: post.description,
-    authors: post.authors.map((author) => ({
-      name: author,
-    })),
+    title: `BadtzUI • ${changelog.title}`,
+    description: changelog.description,
+    authors: changelog.authors.map((author) => ({ name: author })),
     openGraph: {
-      title: `BadtzUI • ${post.title}`,
-      description: post.description,
+      title: `BadtzUI • ${changelog.title}`,
+      description: changelog.description,
       type: "article",
-      url: absoluteUrl(post.slugAsParams),
+      url: absoluteUrl(changelog.slugAsParams),
       images: [
         {
           url: ogUrl.toString(),
           width: 1200,
           height: 630,
-          alt: post.title,
+          alt: changelog.title,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: post.title,
-      description: post.description,
+      title: `BadtzUI • ${changelog.title}`,
+      description: changelog.description,
       images: [ogUrl.toString()],
     },
   };
 }
 
 export async function generateStaticParams() {
-  return allPosts.map((post) => ({
-    slug: post.slugAsParams.split("/"),
+  return allChangelogs.map((changelog) => ({
+    slug: changelog.slugAsParams.split("/"),
   }));
 }
 
-export default async function PostPage({ params }: { params: Params }) {
-  const post = await getPostFromParams(params);
-  if (!post) {
+export default async function ChangelogPage({ params }: { params: Params }) {
+  const changelog = await getChangelogFromParams(params);
+  if (!changelog) {
     notFound();
   }
-  const toc = await getTableOfContents(post.body.raw);
-  const authors = post.authors.map((author) => {
+  const toc = await getTableOfContents(changelog.body.raw);
+  const authors = changelog.authors.map((author) => {
     const cleanedAuthor = author.trim();
     return allAuthors.find(({ slug }) => slug === `/authors/${cleanedAuthor}`);
   }) as Author[];
@@ -99,14 +95,14 @@ export default async function PostPage({ params }: { params: Params }) {
     "@type": "BlogPosting",
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": absoluteUrl(post.slugAsParams),
+      "@id": absoluteUrl(changelog.slugAsParams),
     },
-    headline: post.title,
-    description: post.description,
-    image: absoluteUrl(`/images/blog/${post.image}` || "/og-image.png"),
-    datePublished: new Date(post.date).toISOString(),
-    dateModified: new Date(post.date).toISOString(),
-    author: post.authors.map((author) => ({
+    headline: changelog.title,
+    description: changelog.description,
+    image: absoluteUrl(`/images/blog/${changelog.image}` || "/og-image.png"),
+    datePublished: new Date(changelog.date).toISOString(),
+    dateModified: new Date(changelog.date).toISOString(),
+    author: changelog.authors.map((author) => ({
       "@type": "Person",
       name: author.trim(),
       url: absoluteUrl(`/blog/authors/${author.trim()}`),
@@ -120,55 +116,16 @@ export default async function PostPage({ params }: { params: Params }) {
       },
     },
     articleSection: "Blog",
-    //keywords: post.tags,
-    url: absoluteUrl(post.slugAsParams),
+    //keywords: changelog.tags,
+    url: absoluteUrl(changelog.slugAsParams),
   };
-
-  /*
-  const jsonLdBreadcrumbs = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: absoluteUrl("/"),
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Blog",
-        item: absoluteUrl("/blog"),
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: post.title,
-        item: absoluteUrl(post.slugAsParams),
-      },
-    ],
-  };
-
-
-  const jsonLdRelatedArticles = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Related Articles",
-    itemListElement: post.relatedArticles?.map((related, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      url: absoluteUrl(`/blog/${related.slugAsParams}`),
-    })),
-  };
-  */
 
   return (
     <div className="w-full h-full pb-16 sm:pb-28">
       <div className="px-6 lg:px-8 lg:max-w-5xl mx-auto pt-10 md:pt-20 relative lg:gap-10 xl:grid xl:grid-cols-[1fr_240px]">
         <div>
           <Link
-            href="/blog"
+            href="/changelog"
             className="flex [&_svg]:size-3 text-foreground items-center gap-2 rounded-lg pl-3 pr-4 h-9 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0 w-min"
           >
             <ChevronLeft />
@@ -176,25 +133,25 @@ export default async function PostPage({ params }: { params: Params }) {
           </Link>
           <article className="w-full mt-8 [&_p]:text-foreground">
             <div className="flex flex-col  items-start">
-              {post.date && (
+              {changelog.date && (
                 <time
-                  dateTime={post.date}
+                  dateTime={changelog.date}
                   className="block text-sm text-muted-foreground"
                 >
-                  Published on {formatDate(post.date)}
+                  Published on {formatDate(changelog.date)}
                 </time>
               )}
               <h1 className="text-4xl md:text-5xl font-semibold tracking-tighter text-foreground text-balance max-w-[605px] font-gilroy mt-2">
-                {post.title}
+                {changelog.title}
               </h1>
             </div>
             <p className="text-muted-foreground text-balance mt-6">
-              {post.description}
+              {changelog.description}
             </p>
-            {post.image && (
+            {changelog.image && (
               <Image
-                src={post.image}
-                alt={post.title}
+                src={changelog.image}
+                alt={changelog.title}
                 width={760}
                 height={400}
                 className="bg-secondary border border-border rounded-lg aspect-video object-cover w-full mb-6 mt-10"
@@ -202,7 +159,7 @@ export default async function PostPage({ params }: { params: Params }) {
               />
             )}
             <hr className="my-6 border-0" />
-            <Mdx code={post.body.code} />
+            <Mdx code={changelog.body.code} />
             <script
               type="application/ld+json"
               dangerouslySetInnerHTML={{
@@ -271,7 +228,7 @@ export default async function PostPage({ params }: { params: Params }) {
           ) : null}
           <div className="flex justify-center py-6 lg:py-10">
             <Link
-              href="/blog"
+              href="/changelog"
               className="flex [&_svg]:size-3 text-foreground items-center gap-2 rounded-lg pl-3 pr-4 h-9 text-sm border bg-secondary hover:border-foreground/10 transition-colors duration-300 whitespace-nowrap shrink-0 w-min mr-auto"
             >
               <ChevronLeft />

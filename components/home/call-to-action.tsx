@@ -6,16 +6,9 @@ import { PlausibleButton } from "@/components/plausible-button";
 
 export default function CallToAction() {
   return (
-    <section className="px-6 lg:px-8 mt-24 sm:mt-16 md:max-w-3xl lg:max-w-5xl mx-auto h-[400px] sm:h-[450px] w-full">
-      <div className="border border-border h-full w-full bg-white dark:bg-secondary rounded-t-xl border-b-0 relative overflow-hidden flex items-center justify-center flex-col">
+    <section className="px-6 lg:px-8 mt-24 sm:mt-16 md:max-w-3xl lg:max-w-5xl mx-auto h-[400px] sm:h-[420px] w-full ">
+      <div className="border border-border h-full w-full bg-white dark:bg-secondary border-b-0 rounded-t-2xl relative overflow-hidden flex items-center justify-center flex-col">
         <CTAImage />
-        <noscript>
-          <img
-            className=""
-            src="/images/home-call-to-action/cta-image-light.webp"
-            alt="Dot background effect"
-          />
-        </noscript>
         <div className="relative z-10 mb-4">
           <div className="[&_svg]:size-16 flex justify-center">
             <Logo />
@@ -24,8 +17,8 @@ export default function CallToAction() {
             Build faster.
             <br /> Build beautiful.
           </h2>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3.5 w-full sm:w-auto px-4">
-            <div className="mt-8 flex gap-3.5">
+          <div className="mt-10 flex flex-col sm:flex-row gap-3.5 w-full sm:w-auto px-4">
+            <div className="flex gap-3.5">
               <Link
                 href="/docs"
                 className="h-10 px-5 font-medium text-sm rounded-full bg-foreground text-background hover:bg-foreground/90 flex items-center relative transition-colors duration-300 whitespace-nowrap"

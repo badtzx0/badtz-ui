@@ -71,7 +71,7 @@ const FOOTER_SECTIONS: { title: string; links: LinkType[] }[] = [
     title: "Products",
     links: [
       { href: "/docs", label: "Components" },
-      { href: "#changelog", label: "Changelog" },
+      { href: "/changelog", label: "Changelog" },
       { href: "#templates", label: "Templates" },
       { href: "#sections", label: "Sections" },
       { href: "/blog", label: "Blog" },

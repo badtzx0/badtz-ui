@@ -1,4 +1,4 @@
-import { allDocs, allPosts } from "@/.contentlayer/generated";
+import { allDocs, allPosts, allChangelogs } from "@/.contentlayer/generated";
 import { absoluteUrl } from "@/lib/utils";
 import { MetadataRoute } from "next";
 
@@ -34,5 +34,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "weekly",
   }));
 
-  return [...staticPages, ...blogPages, ...docPages];
+  const changelogPages: MetadataRoute.Sitemap = allChangelogs.map(
+    (changelog) => ({
+      url: absoluteUrl(`/changelog/${changelog.slugAsParams}`),
+      lastModified: new Date(changelog.date).toISOString(),
+      priority: 0.7,
+      changeFrequency: "weekly",
+    })
+  );
+
+  return [...staticPages, ...blogPages, ...docPages, ...changelogPages];
 }

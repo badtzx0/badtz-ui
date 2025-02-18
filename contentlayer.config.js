@@ -114,6 +114,44 @@ export const Post = defineDocumentType(() => ({
   computedFields,
 }));
 
+export const Changelog = defineDocumentType(() => ({
+  name: "Changelog",
+  filePathPattern: `changelog/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      required: true,
+    },
+    description: {
+      type: "string",
+      required: true,
+    },
+    date: {
+      type: "date",
+      required: true,
+    },
+    published: {
+      type: "boolean",
+      default: true,
+    },
+    image: {
+      type: "string",
+      required: true,
+    },
+    authors: {
+      // Reference types are not embedded.
+      // Until this is fixed, we can use a simple list.
+      // type: "reference",
+      // of: Author,
+      type: "list",
+      of: { type: "string" },
+      required: true,
+    },
+  },
+  computedFields,
+}));
+
 export const Author = defineDocumentType(() => ({
   name: "Author",
   filePathPattern: `authors/**/*.mdx`,
@@ -140,7 +178,7 @@ export const Author = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Doc, Post, Author],
+  documentTypes: [Doc, Post, Author, Changelog],
   mdx: {
     remarkPlugins: [remarkGfm, codeImport],
     rehypePlugins: [
