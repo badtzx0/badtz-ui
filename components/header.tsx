@@ -87,7 +87,7 @@ export default function Header(): JSX.Element {
         <div></div>
       </div>
       <div className="max-w-5xl mx-auto px-5 lg:px-7">
-        <div className="flex h-14 items-center pl-4 pr-3 w-full justify-between dark:border-secondary-border/70 border-secondary-border backdrop-blur-md bg-background/70 border rounded-2xl z-50 relative">
+        <div className="flex h-14 items-center pl-4 pr-3 w-full justify-between dark:border-secondary-border/70 border-secondary-border backdrop-blur-md bg-background/70 border rounded-3xl z-50 relative">
           {/*Large screen Nav*/}
           <div className="mr-4 hidden md:flex">
             <Link href="/" className="flex items-center gap-2 text-foreground">
