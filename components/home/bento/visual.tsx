@@ -1,11 +1,16 @@
 "use client";
 
 import "@/styles/bento.css";
-import React, { memo } from "react";
-import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
-import { motion, useAnimation } from "framer-motion";
+import React from "react";
+import { useState, useEffect, useRef } from "react";
 import { useBreakpoint } from "@/hooks/use-brakpoints";
+import { useTheme } from "next-themes";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  useAnimation,
+} from "framer-motion";
 import Image from "next/image";
 import {
   FontBoldIcon,
@@ -52,6 +57,40 @@ interface LayerProps {
   hovered?: boolean;
 }
 
+const STACK_LOGO_WIDTH = 48;
+const GAP = 24;
+const SCROLL_DISTANCE = STACK_LOGO_WIDTH + GAP;
+const SCROLL_DURATION = 0.7;
+
+const stackLogos = [
+  {
+    src: "/images/home-bento/logos/shadcnui-logo-dark.webp",
+    lightSrc: "/images/home-bento/logos/shadcnui-logo-light.webp",
+    alt: "ShadcnUI Logo",
+  },
+  {
+    src: "/images/home-bento/logos/tailwind-logo.webp",
+    alt: "TailwindCSS Logo",
+  },
+  {
+    src: "/images/home-bento/logos/typescript-logo.webp",
+    alt: "Typescript Logo",
+  },
+  {
+    src: "/images/home-bento/logos/javascript-logo.webp",
+    alt: "Javascript Logo",
+  },
+  { src: "/images/home-bento/logos/nextjs-logo.webp", alt: "NextJS Logo" },
+  {
+    src: "/images/home-bento/logos/react-logo-dark.webp",
+    lightSrc: "/images/home-bento/logos/react-logo-light.webp",
+    alt: "React Logo",
+  },
+  { src: "/images/home-bento/logos/motion-logo.webp", alt: "Motion Logo" },
+];
+
+const duplicatedLogos = [...stackLogos, ...stackLogos];
+
 function hexToRgb(hex: string): string {
   hex = hex.replace(/^#/, "");
 
@@ -64,6 +103,8 @@ function hexToRgb(hex: string): string {
 }
 
 export function Cell1Visual() {
+  const cell1Ref = useRef<HTMLDivElement>(null);
+
   const { theme } = useTheme();
   const [imageSrc, setImageSrc] = useState(
     "/images/home-bento/cell-elipse-dark.webp"
@@ -78,7 +119,7 @@ export function Cell1Visual() {
   }, [theme]);
 
   return (
-    <div className="relative h-full w-full cell1-bg">
+    <div className="relative h-full w-full cell1-bg" ref={cell1Ref}>
       <Image
         src={imageSrc}
         alt="Elipse Dark"
@@ -88,7 +129,10 @@ export function Cell1Visual() {
         loading="lazy"
         className="absolute z-10 right-1/2 translate-x-1/2 bottom-1/2 translate-y-1/4 md:translate-y-1/4 lg:translate-y-[20%]"
       />
-      <ScrollingIcons className="" />
+      <ScrollingIcons
+        className="absolute inset-x-0 bottom-1/2 -translate-y-1/4 md:-translate-y-1/3 lg:-translate-y-1/4 z-20"
+        containerRef={cell1Ref}
+      />
     </div>
   );
 }
@@ -276,152 +320,116 @@ export function Cell4Visual() {
   );
 }
 
-//TODO: Rework This priority-1
-const ScrollingIcons: React.FC<{ className?: string }> = memo(
-  ({ className }) => {
-    const { theme } = useTheme();
-    const controls = useAnimation();
-    const breakpoint = useBreakpoint();
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [mounted, setMounted] = useState(false);
-    const [iconSize, setIconSize] = useState(64);
-    const iconCount = 9;
+const ScrollingIcons: React.FC<{
+  className?: string;
+  containerRef: React.RefObject<HTMLDivElement>;
+}> = ({ className, containerRef }) => {
+  const { theme } = useTheme();
+  const [containerWidth, setContainerWidth] = useState(0);
+  const x = useMotionValue(0);
+  const controls = useAnimation();
 
-    useEffect(() => {
-      setMounted(true);
-    }, []);
+  useEffect(() => {
+    if (!containerRef.current) return;
 
-    useEffect(() => {
-      switch (breakpoint) {
-        case "small":
-          setIconSize(64);
-          break;
-        case "medium":
-          setIconSize(54);
-          break;
-        case "large":
-          setIconSize(64);
-          break;
-      }
-    }, [breakpoint]);
+    const observer = new ResizeObserver((entries) => {
+      setContainerWidth(entries[0].contentRect.width);
+    });
 
-    const stackLogos = [
-      {
-        src: "/images/home-bento/logos/shadcnui-logo-dark.webp",
-        lightSrc: "/images/home-bento/logos/shadcnui-logo-light.webp",
-        alt: "ShadcnUI Logo",
-        width: 40,
-        height: 40,
-      },
-      {
-        src: "/images/home-bento/logos/tailwind-logo.webp",
-        alt: "TailwindCSS Logo",
-        width: 40,
-        height: 40,
-      },
-      {
-        src: "/images/home-bento/logos/typescript-logo.webp",
-        alt: "Typescript Logo",
-        width: 40,
-        height: 40,
-      },
-      {
-        src: "/images/home-bento/logos/javascript-logo.webp",
-        alt: "Javascript Logo",
-        width: 40,
-        height: 40,
-      },
-      {
-        src: "/images/home-bento/logos/nextjs-logo.webp",
-        alt: "NextJS Logo",
-        width: 40,
-        height: 40,
-      },
-      {
-        src: "/images/home-bento/logos/react-logo-dark.webp",
-        lightSrc: "/images/home-bento/logos/react-logo-light.webp",
-        alt: "React Logo",
-        width: 40,
-        height: 40,
-      },
-      {
-        src: "/images/home-bento/logos/motion-logo.webp",
-        alt: "Motion Logo",
-        width: 40,
-        height: 40,
-      },
-    ];
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
-    useEffect(() => {
-      if (!mounted) return;
+  useEffect(() => {
+    if (!containerWidth) return;
 
-      const animate = async () => {
-        while (true) {
-          for (let i = 0; i < iconCount; i++) {
-            setCurrentIndex(i);
-            await controls.start({
-              x: `-${(i + 1) * iconSize}px`,
-              transition: { duration: 0.5, ease: [0.6, 0.6, 0, 1] },
-            });
-            await new Promise((resolve) => setTimeout(resolve, 700));
-          }
-          await controls.start({
-            x: 0,
-            transition: { duration: 0.5, ease: [0.6, 0.6, 0, 1] },
-          });
+    let isMounted = true;
+    const totalWidth = duplicatedLogos.length * SCROLL_DISTANCE;
+
+    const startAnimation = async () => {
+      while (isMounted) {
+        await controls.start({
+          x: [x.get(), x.get() - SCROLL_DISTANCE],
+          transition: { duration: SCROLL_DURATION, ease: "easeInOut" },
+        });
+
+        if (x.get() <= -totalWidth / 2) {
+          await controls.set({ x: 0 });
         }
-      };
-      animate();
-    }, [controls]);
+      }
+    };
 
-    return (
-      <div
-        className={cn(
-          "absolute z-10 inset-x-0 bottom-1/2 -translate-y-1/2",
-          className
-        )}
+    startAnimation();
+
+    return () => {
+      isMounted = false;
+      controls.stop();
+    };
+  }, [containerWidth, controls, x]);
+
+  return (
+    <div
+      className={cn(
+        "relative w-full h-[80px] flex items-center overflow-hidden",
+        className
+      )}
+      ref={containerRef}
+    >
+      <motion.div
+        className="flex items-center"
+        style={{ x }}
+        animate={controls}
       >
-        <div>
-          <motion.div className="flex w-max mx-5 py-2" animate={controls}>
-            {[...Array(iconCount * 2)].map((_, index) => (
-              <div
-                className={cn(
-                  "px-2 transition-transform duration-500 ease-[cubic-bezier(0.6, 0.6, 0, 1)]",
-                  currentIndex === index - 2 && "scale-[150%] px-4",
-                  (currentIndex === index - 1 || currentIndex === index - 3) &&
-                    "scale-[120%]"
-                )}
-                key={index}
-                style={{ transformOrigin: "center" }}
-              >
-                <div
-                  style={{ width: iconSize - 16, height: iconSize - 16 }}
-                  className="bg-background dark:bg-secondary border border-background dark:border-secondary-border flex-shrink-0 rounded-full dark:shadow-[0_0px_20px_rgba(34,_35,_38,_0.07)_inset] shadow-[0_0px_20px_rgba(233,_233,_241,_1)_inset] flex items-center justify-center"
-                >
-                  <Image
-                    src={
-                      stackLogos[index % stackLogos.length].lightSrc &&
-                      mounted &&
-                      theme === "light"
-                        ? stackLogos[index % stackLogos.length].lightSrc!
-                        : stackLogos[index % stackLogos.length].src
-                    }
-                    alt={stackLogos[index % stackLogos.length].alt}
-                    width={stackLogos[index % stackLogos.length].width}
-                    height={stackLogos[index % stackLogos.length].height}
-                    quality={100}
-                    className="pointer-events-none p-2"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </div>
-    );
-  }
-);
+        {duplicatedLogos.map((logo, index) => {
+          const positionX = index * SCROLL_DISTANCE;
+          const centerPosition = containerWidth / 2;
+
+          const logoX = useTransform(
+            x,
+            (value) => positionX + value - centerPosition
+          );
+
+          const scale = useTransform(
+            logoX,
+            [
+              -SCROLL_DISTANCE * 1.5,
+              -SCROLL_DISTANCE * 0.5,
+              0,
+              SCROLL_DISTANCE * 0.5,
+              SCROLL_DISTANCE * 1.5,
+            ],
+            [1, 1.2, 1.7, 1.2, 1]
+          );
+
+          return (
+            <motion.div
+              key={index}
+              className="bg-background dark:bg-secondary border border-background dark:border-secondary-border flex-shrink-0 rounded-full dark:shadow-[0_0px_20px_rgba(34,_35,_38,_0.07)_inset] shadow-[0_0px_20px_rgba(233,_233,_241,_1)_inset] flex items-center justify-center relative p-2"
+              style={{
+                width: STACK_LOGO_WIDTH,
+                height: STACK_LOGO_WIDTH,
+                marginRight: GAP,
+                scale,
+              }}
+            >
+              <Image
+                src={
+                  theme === "light" && logo.lightSrc ? logo.lightSrc : logo.src
+                }
+                alt={logo.alt}
+                width={STACK_LOGO_WIDTH}
+                height={STACK_LOGO_WIDTH}
+                quality={100}
+                className="pointer-events-none"
+                loading="lazy"
+              />
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </div>
+  );
+};
 
 function Chart({
   vibrantColor = "#ffffff",
@@ -455,7 +463,6 @@ function Chart({
   );
 }
 
-//TODO: Rework This priority-1
 const EllipseGradient: React.FC<{ color: string }> = ({ color }) => {
   return (
     <div className="w-full h-full z-[5] absolute inset-0 flex items-center justify-center">
@@ -645,11 +652,17 @@ const SvgChart: React.FC<LayerProps> = ({ color, hovered }) => {
   return (
     <div
       className={cn(
-        "w-[606px] h-[306px] absolute inset-0 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.6, 0.6, 0, 1)] z-[8] dark:text-neutral-800 text-[#FAFAFC]",
-        hovered && "scale-[125%] translate-y-6"
+        "w-[606px] h-[306px] absolute left-1/2 -translate-x-1/2 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.6, 0.6, 0, 1)] z-[8] dark:text-neutral-800 text-[#FAFAFC] scale-[0.6] md:scale-[0.8] lg:scale-100",
+        "top-[30px] md:top-[-15px] lg:top-0",
+        hovered && "scale-[0.75] md:scale-[0.95] lg:scale-[1.25] translate-y-6 "
       )}
     >
-      <svg width="606" height="306" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        width="606"
+        height="306"
+        xmlns="http://www.w3.org/2000/svg"
+        className=""
+      >
         {rectsData.map((rect, index) => (
           <rect
             key={index}
@@ -658,8 +671,8 @@ const SvgChart: React.FC<LayerProps> = ({ color, hovered }) => {
             x={rect.x}
             y={hovered ? rect.hoverY : rect.y}
             fill={hovered ? rect.hoverFill : rect.fill}
-            rx="4"
-            ry="4"
+            rx="3"
+            ry="3"
             className="transition-all duration-500 ease-[cubic-bezier(0.6, 0.6, 0, 1)]"
           />
         ))}
