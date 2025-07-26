@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blur-reveal-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "blur-reveal"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/blur-reveal-demo.tsx",
+      "content": "import { BlurReveal } from \"@/registry/new-york-v4/ui/blur-reveal\"\n\nexport default function BlurRevealDemo() {\n  return (\n    <div className=\"flex max-w-lg flex-col space-y-2\">\n      <span className=\"font-gilroy text-3xl font-semibold\">\n        <BlurReveal delay={0}>This&nbsp;</BlurReveal>\n        <BlurReveal delay={0.1}>is&nbsp;</BlurReveal>\n        <BlurReveal delay={0.2}>a&nbsp;</BlurReveal>\n        <BlurReveal delay={0.3}>Title&nbsp;</BlurReveal>\n      </span>\n      <BlurReveal delay={0.4} className=\"text-muted-foreground font-light\">\n        And this is the amazing text that just can't wait\n        <br /> to reveal itself! Watch it come to life with a blur.\n      </BlurReveal>\n      <BlurReveal delay={0.5}>\n        <button className=\"bg-muted mt-1.5 inline-flex h-8 items-center justify-center rounded-md px-4 py-2 text-xs\">\n          Discover\n        </button>\n      </BlurReveal>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

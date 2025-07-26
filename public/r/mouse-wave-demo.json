@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mouse-wave-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "mouse-wave"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/mouse-wave-demo.tsx",
+      "content": "\"use client\"\n\nimport dynamic from \"next/dynamic\"\n\nconst MouseWaveScene = dynamic(\n  () => import(\"@/registry/new-york-v4/ui/mouse-wave-scene\"),\n  {\n    ssr: false,\n    loading: () => (\n      <div className=\"h-full w-full bg-zinc-100 dark:bg-neutral-950\">\n        {/* Skeleton loader */}\n      </div>\n    ),\n  }\n)\n\nexport default function MouseWaveDemo() {\n  return (\n    <div className=\"h-auto max-h-[400px] w-full overflow-hidden rounded-lg\">\n      <MouseWaveScene imageSrc=\"https://cdn.badtz-ui.com/images/shaders/forest-image.webp\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

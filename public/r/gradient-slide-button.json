@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-slide-button",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/gradient-slide-button.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface GradientSlideButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  children: React.ReactNode\n  className?: string\n  colorFrom?: string\n  colorTo?: string\n}\n\nexport function GradientSlideButton({\n  children,\n  className,\n  colorFrom = \"#F54900\",\n  colorTo = \"#FF8904\",\n  ...props\n}: GradientSlideButtonProps) {\n  return (\n    <button\n      style={\n        {\n          \"--color-from\": colorFrom,\n          \"--color-to\": colorTo,\n        } as React.CSSProperties\n      }\n      className={cn(\n        \"relative inline-flex h-10 items-center justify-center gap-2 overflow-hidden rounded-md bg-neutral-50 px-4 py-2 text-sm font-medium whitespace-nowrap text-black transition-all duration-300 hover:scale-[105%] dark:bg-neutral-800 dark:text-white\",\n        \"before:absolute before:top-0 before:left-[-100%] before:h-full before:w-full before:rounded-[inherit] before:bg-gradient-to-l before:from-[var(--color-from)] before:to-[var(--color-to)] before:transition-all before:duration-200\",\n        \"hover:text-white hover:before:left-0\",\n        className\n      )}\n      {...props}\n    >\n      <span className=\"relative z-10\">{children}</span>\n    </button>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

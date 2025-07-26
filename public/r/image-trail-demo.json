@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-trail-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "image-trail"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/image-trail-demo.tsx",
+      "content": "import { ImageTrail } from \"@/registry/new-york-v4/ui/image-trail\"\n\nconst imageUrls = [\n  \"https://cdn.badtz-ui.com/images/components/image-trail/image-trail-1.webp\",\n  \"https://cdn.badtz-ui.com/images/components/image-trail/image-trail-2.webp\",\n  \"https://cdn.badtz-ui.com/images/components/image-trail/image-trail-3.webp\",\n  \"https://cdn.badtz-ui.com/images/components/image-trail/image-trail-4.webp\",\n  \"https://cdn.badtz-ui.com/images/components/image-trail/image-trail-5.webp\",\n  \"https://cdn.badtz-ui.com/images/components/image-trail/image-trail-6.webp\",\n  \"https://cdn.badtz-ui.com/images/components/image-trail/image-trail-7.webp\",\n  \"https://cdn.badtz-ui.com/images/components/image-trail/image-trail-8.webp\",\n  \"https://cdn.badtz-ui.com/images/components/image-trail/image-trail-9.webp\",\n  \"https://cdn.badtz-ui.com/images/components/image-trail/image-trail-10.webp\",\n]\n\nexport default function ImageTrailDemo() {\n  return (\n    <div className=\"relative h-[390px] w-full overflow-hidden rounded-lg\">\n      <ImageTrail images={imageUrls} imageHeight={150} imageWidth={150} />\n      <h1 className=\"font-gilroy pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-gradient-to-br from-white to-zinc-400 bg-clip-text py-2 text-center text-4xl text-transparent mix-blend-difference\">\n        Hover Me\n      </h1>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

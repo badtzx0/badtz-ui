@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blur-reveal",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx tailwind-merge motion"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/blur-reveal.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { motion, useInView } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface BlurRevealProps {\n  className?: string\n  children: React.ReactNode\n  delay?: number\n  duration?: number\n}\n\nexport function BlurReveal({\n  className,\n  children,\n  delay = 0,\n  duration = 1,\n}: BlurRevealProps) {\n  const spanRef = React.useRef<HTMLSpanElement | null>(null)\n  const isInView: boolean = useInView(spanRef, { once: true })\n\n  return (\n    <motion.span\n      ref={spanRef}\n      initial={{ opacity: 0, filter: \"blur(10px)\", y: \"20%\" }}\n      animate={isInView ? { opacity: 1, filter: \"blur(0px)\", y: \"0%\" } : {}}\n      transition={{ duration: duration, delay: delay }}\n      className={cn(\"inline-block\", className)}\n    >\n      {children}\n    </motion.span>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

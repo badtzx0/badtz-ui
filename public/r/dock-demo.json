@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dock-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "dock"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/dock-demo.tsx",
+      "content": "import { Dock, DockIcon } from \"@/registry/new-york-v4/ui/dock\"\n\nexport default function DockDemo() {\n  const dockItems = [\n    {\n      src: \"https://cdn.badtz-ui.com/images/components/dock/tailwindcss-logo.webp\",\n      name: \"TailwindCSS\",\n      href: \"#tailwindcss\",\n    },\n    {\n      src: \"https://cdn.badtz-ui.com/images/components/dock/edge-logo.webp\",\n      name: \"Edge\",\n      href: \"#linear\",\n    },\n    {\n      src: \"https://cdn.badtz-ui.com/images/components/dock/motion-logo.webp\",\n      name: \"Motion\",\n      href: \"#motion\",\n    },\n    {\n      src: \"https://cdn.badtz-ui.com/images/components/dock/react-logo.webp\",\n      name: \"React\",\n      href: \"#react\",\n    },\n    {\n      src: \"https://cdn.badtz-ui.com/images/components/dock/linear-logo.webp\",\n      name: \"Linear\",\n      href: \"#linear\",\n    },\n    {\n      src: \"https://cdn.badtz-ui.com/images/components/dock/drizzle-orm-logo.webp\",\n      name: \"Drizzle ORM\",\n      href: \"#drizzle-orm\",\n    },\n    {\n      src: \"https://cdn.badtz-ui.com/images/components/dock/deepseek-logo.webp\",\n      name: \"Deepseek\",\n      href: \"#linear\",\n    },\n  ]\n\n  return (\n    <Dock>\n      {dockItems.map((item, index) => (\n        <DockIcon\n          key={index}\n          src={item.src}\n          name={item.name}\n          href={item.href}\n        />\n      ))}\n    </Dock>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

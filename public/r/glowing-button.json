@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glowing-button",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx tailwind-merge"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/glowing-button.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\nimport { Button } from \"@/components/ui/button\"\n\nfunction hexToRgba(hex: string, alpha: number = 1): string {\n  let hexValue = hex.replace(\"#\", \"\")\n\n  if (hexValue.length === 3) {\n    hexValue = hexValue\n      .split(\"\")\n      .map((char) => char + char)\n      .join(\"\")\n  }\n\n  const r = parseInt(hexValue.substring(0, 2), 16)\n  const g = parseInt(hexValue.substring(2, 4), 16)\n  const b = parseInt(hexValue.substring(4, 6), 16)\n\n  if (isNaN(r) || isNaN(g) || isNaN(b)) {\n    console.error(\"Invalid hex color:\", hex)\n    return \"rgba(0, 0, 0, 1)\"\n  }\n\n  return `rgba(${r}, ${g}, ${b}, ${alpha})`\n}\n\nexport function GlowingButton({\n  children,\n  className,\n  glowColor = \"#a3e635\",\n}: {\n  children: React.ReactNode\n  className?: string\n  glowColor?: string\n}) {\n  const glowColorRgba = hexToRgba(glowColor)\n  const glowColorVia = hexToRgba(glowColor, 0.075)\n  const glowColorTo = hexToRgba(glowColor, 0.2)\n\n  return (\n    <Button\n      style={\n        {\n          \"--glow-color\": glowColorRgba,\n          \"--glow-color-via\": glowColorVia,\n          \"--glow-color-to\": glowColorTo,\n        } as React.CSSProperties\n      }\n      className={cn(\n        \"relative flex h-10 w-min items-center justify-center overflow-hidden rounded-md border border-r-0 bg-gradient-to-t !px-5 text-sm transition-colors duration-200\",\n        \"border-zinc-100 from-white to-neutral-100 text-black hover:text-black/80 dark:border-zinc-800 dark:from-zinc-900 dark:to-neutral-800 dark:text-white dark:hover:text-white/80\",\n        \"z-20 after:absolute after:inset-0 after:rounded-[inherit] after:bg-gradient-to-r after:from-transparent after:from-40% after:via-[var(--glow-color-via)] after:via-70% after:to-[var(--glow-color-to)] after:shadow-[rgba(255,_255,_255,_0.15)_0px_1px_0px_inset]\",\n        \"z-10 before:absolute before:right-0 before:h-[60%] before:w-[5px] before:rounded-l before:bg-[var(--glow-color)] before:shadow-[-2px_0_10px_var(--glow-color)] before:transition-all before:duration-200 hover:before:translate-x-full\",\n        className\n      )}\n    >\n      {children}\n    </Button>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "3d-wrapper",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx tailwind-merge motion"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/3d-wrapper.tsx",
+      "content": "\"use client\"\n\nimport React, { ReactNode, useRef } from \"react\"\nimport {\n  motion,\n  useMotionTemplate,\n  useMotionValue,\n  useSpring,\n} from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface Wrapper3DProps {\n  children: ReactNode\n  damping?: number\n  swiftness?: number\n  mass?: number\n  maxRotation?: number\n  translateZ?: number\n  perspective?: boolean\n  className?: string\n}\n\nexport function Wrapper3D({\n  children,\n  damping = 20,\n  swiftness = 80,\n  mass = 1.5,\n  maxRotation = 100,\n  translateZ = 75,\n  perspective = true,\n  className,\n}: Wrapper3DProps) {\n  const halfMaxRotation = maxRotation / 2\n\n  const refMotionDiv = useRef<HTMLDivElement | null>(null)\n\n  const x = useMotionValue(0)\n  const y = useMotionValue(0)\n\n  const xSpring = useSpring(x, {\n    damping: damping,\n    stiffness: swiftness,\n    mass: mass,\n  })\n\n  const ySpring = useSpring(y, {\n    damping: damping,\n    stiffness: swiftness,\n    mass: mass,\n  })\n\n  const transform = useMotionTemplate`rotateX(${xSpring}deg) rotateY(${ySpring}deg)`\n\n  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {\n    if (!refMotionDiv.current) return\n\n    const rect = refMotionDiv.current.getBoundingClientRect()\n    const mouseX = e.clientX - rect.left\n    const mouseY = e.clientY - rect.top\n\n    const rX = ((mouseY / rect.height) * maxRotation - halfMaxRotation) * -1\n    const rY = (mouseX / rect.width) * maxRotation - halfMaxRotation\n\n    x.set(rX)\n    y.set(rY)\n  }\n\n  const handleMouseLeave = () => {\n    x.set(0)\n    y.set(0)\n  }\n\n  return (\n    <motion.div\n      ref={refMotionDiv}\n      onMouseMove={handleMouseMove}\n      onMouseLeave={handleMouseLeave}\n      initial={{ opacity: 0, scale: 0.8 }}\n      animate={{ opacity: 1, scale: 1 }}\n      transition={{ duration: 1, ease: \"easeOut\" }}\n      style={{\n        transformStyle: \"preserve-3d\",\n        transform,\n        ...(perspective && { perspective: \"1000px\" }),\n      }}\n      className={cn(className)}\n    >\n      <div\n        style={{\n          transform: `translateZ(${translateZ}px)`,\n          transformStyle: \"preserve-3d\",\n        }}\n      >\n        {children}\n      </div>\n    </motion.div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

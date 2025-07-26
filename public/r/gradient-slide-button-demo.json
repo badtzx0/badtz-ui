@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-slide-button-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "gradient-slide-button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/gradient-slide-button-demo.tsx",
+      "content": "import { GradientSlideButton } from \"@/registry/new-york-v4/ui/gradient-slide-button\"\n\nexport default function GradientSlideButtonDemo() {\n  return (\n    <div>\n      <GradientSlideButton className=\"rounded-3xl\">\n        Hover me\n      </GradientSlideButton>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

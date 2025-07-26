@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mini-keyboard-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "animated-keyboard"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/mini-keyboard-demo.tsx",
+      "content": "import {\n  Keyboard,\n  Keycap,\n  KeyRow,\n} from \"@/registry/new-york-v4/ui/animated-keyboard\"\n\nconst KEY_HEIGHT = \"48px\"\n\nfunction TopRow() {\n  return (\n    <KeyRow gap=\"md\">\n      <Keycap\n        char=\"⇥\"\n        variant=\"tab\"\n        height={KEY_HEIGHT}\n        className=\"w-16 text-xs\"\n      />\n      <Keycap\n        char=\"1\"\n        secondaryChar=\"!\"\n        variant=\"double\"\n        height={KEY_HEIGHT}\n        className=\"w-12\"\n      />\n      <Keycap char=\"A\" height={KEY_HEIGHT} className=\"w-12\" />\n    </KeyRow>\n  )\n}\n\nfunction BottomRow() {\n  return (\n    <KeyRow gap=\"md\">\n      <Keycap char=\"Q\" height={KEY_HEIGHT} className=\"w-12\" />\n      <Keycap\n        char=\"2\"\n        secondaryChar=\"@\"\n        variant=\"double\"\n        height={KEY_HEIGHT}\n        className=\"w-12\"\n      />\n      <Keycap\n        char=\"⇧\"\n        variant=\"caps\"\n        height={KEY_HEIGHT}\n        className=\"w-16 text-xs\"\n      />\n    </KeyRow>\n  )\n}\n\nexport default function MiniKeyboardDemo() {\n  return (\n    <div className=\"flex justify-center\">\n      <Keyboard className=\"w-fit bg-[#21222550]\">\n        <TopRow />\n        <BottomRow />\n      </Keyboard>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

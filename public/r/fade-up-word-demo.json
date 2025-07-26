@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fade-up-word-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "fade-up-word"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/fade-up-word-demo.tsx",
+      "content": "import { FadeUpWord } from \"@/registry/new-york-v4/ui/fade-up-word\"\n\nexport default function FadeUpWordDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <FadeUpWord as=\"h1\">Lorem ipsum dolor sit amet</FadeUpWord>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

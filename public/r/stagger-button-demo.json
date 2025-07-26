@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stagger-button-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "stagger-button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/stagger-button-demo.tsx",
+      "content": "import { StaggerButton } from \"@/registry/new-york-v4/ui/stagger-button\"\n\nexport default function StaggerButtonDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <StaggerButton>Hover Me</StaggerButton>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

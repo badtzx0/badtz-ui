@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flipping-card",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/flipping-card.tsx",
+      "content": "import React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface FlippingCardProps {\n  className?: string\n  height?: number\n  width?: number\n  frontContent?: React.ReactNode\n  backContent?: React.ReactNode\n}\n\nexport function FlippingCard({\n  className,\n  frontContent,\n  backContent,\n  height = 300,\n  width = 350,\n}: FlippingCardProps) {\n  return (\n    <div\n      className=\"group/flipping-card [perspective:1000px]\"\n      style={\n        {\n          \"--height\": `${height}px`,\n          \"--width\": `${width}px`,\n        } as React.CSSProperties\n      }\n    >\n      <div\n        className={cn(\n          \"relative rounded-xl border border-neutral-200 bg-white shadow-lg transition-all duration-700 [transform-style:preserve-3d] group-hover/flipping-card:[transform:rotateY(180deg)] dark:border-neutral-800 dark:bg-neutral-950\",\n          \"h-[var(--height)] w-[var(--width)]\",\n          className\n        )}\n      >\n        {/* Front Face */}\n        <div className=\"absolute inset-0 h-full w-full [transform:rotateY(0deg)] rounded-[inherit] bg-white text-neutral-950 [backface-visibility:hidden] [transform-style:preserve-3d] dark:bg-zinc-950 dark:text-neutral-50\">\n          <div className=\"h-full w-full [transform:translateZ(70px)_scale(.93)]\">\n            {frontContent}\n          </div>\n        </div>\n        {/* Back Face */}\n        <div className=\"absolute inset-0 h-full w-full [transform:rotateY(180deg)] rounded-[inherit] bg-white text-neutral-950 [backface-visibility:hidden] [transform-style:preserve-3d] dark:bg-zinc-950 dark:text-neutral-50\">\n          <div className=\"h-full w-full [transform:translateZ(70px)_scale(.93)]\">\n            {backContent}\n          </div>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

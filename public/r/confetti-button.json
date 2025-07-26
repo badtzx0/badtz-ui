@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confetti-button",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx tailwind-merge canvas-confetti @types/canvas-confetti"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/confetti-button.tsx",
+      "content": "\"use client\"\n\nimport React, { MouseEventHandler, ReactNode, useRef } from \"react\"\nimport confetti from \"canvas-confetti\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface ConfettiButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  className?: string\n  children: ReactNode\n  angle?: number\n  particleCount?: number\n  startVelocity?: number\n  spread?: number\n  onClick?: MouseEventHandler<HTMLButtonElement>\n}\n\nexport function ConfettiButton({\n  className,\n  children,\n  angle = 90,\n  particleCount = 75,\n  startVelocity = 35,\n  spread = 70,\n  onClick,\n  ...props\n}: ConfettiButtonProps) {\n  const buttonRef = useRef<HTMLButtonElement>(null)\n\n  const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {\n    if (buttonRef.current) {\n      const rect = buttonRef.current.getBoundingClientRect()\n      confetti({\n        particleCount,\n        startVelocity,\n        angle,\n        spread,\n        origin: {\n          x: (rect.left + rect.width / 2) / window.innerWidth,\n          y: (rect.top + rect.height / 2) / window.innerHeight,\n        },\n      })\n    }\n    if (onClick) {\n      onClick(event)\n    }\n  }\n\n  return (\n    <button\n      ref={buttonRef}\n      onClick={handleClick}\n      className={cn(\n        \"inline-flex h-10 cursor-pointer items-center justify-center gap-2 rounded-md bg-neutral-100 px-4 py-2 text-sm font-medium whitespace-nowrap text-black transition-colors duration-300 hover:bg-neutral-200 disabled:pointer-events-none disabled:opacity-50 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0\",\n        className\n      )}\n      {...props}\n    >\n      {children}\n    </button>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

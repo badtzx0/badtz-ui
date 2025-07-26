@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "infinite-ribbon",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/infinite-ribbon.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface InfiniteRibbonProps {\n  repeat?: number\n  duration?: number\n  reverse?: boolean\n  rotation?: number\n  children: React.ReactNode\n  className?: string\n}\n\nexport function InfiniteRibbon({\n  repeat = 5,\n  duration = 10,\n  reverse = false,\n  rotation = 0,\n  children,\n  className,\n}: InfiniteRibbonProps) {\n  const animationClass = reverse\n    ? \"animate-infinite-ribbon-reverse\"\n    : \"animate-infinite-ribbon\"\n\n  return (\n    <div\n      className={cn(\n        \"max-w-full overflow-hidden bg-zinc-100 py-1 text-lg text-black dark:bg-zinc-800 dark:text-white\",\n        className\n      )}\n      style={{ transform: `rotate(${rotation}deg)` }}\n    >\n      <div\n        className={cn(\"flex whitespace-nowrap\", animationClass)}\n        style={{ \"--ribbon-duration\": `${duration}s` } as React.CSSProperties}\n      >\n        {Array.from({ length: repeat }, (_, index) => (\n          <span key={index} className=\"mr-8 inline-block select-none\">\n            {children}\n          </span>\n        ))}\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-infinite-ribbon": "infinite-ribbon var(--ribbon-duration) linear infinite",
+      "animate-infinite-ribbon-reverse": "infinite-ribbon-reverse var(--ribbon-duration) linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes infinite-ribbon": {
+      "0%": {
+        "transform": "translateX(0)"
+      },
+      "100%": {
+        "transform": "translateX(-100%)"
+      }
+    },
+    "@keyframes infinite-ribbon-reverse": {
+      "0%": {
+        "transform": "translateX(-100%)"
+      },
+      "100%": {
+        "transform": "translateX(0)"
+      }
+    }
+  }
+}

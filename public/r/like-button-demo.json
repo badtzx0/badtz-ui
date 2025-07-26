@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "like-button-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "like-button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/like-button-demo.tsx",
+      "content": "import { LikeButton } from \"@/registry/new-york-v4/ui/like-button\"\n\nexport default function LikeButtonDemo() {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <LikeButton>Like</LikeButton>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

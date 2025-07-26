@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hyperspace-background-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "hyperspace-background"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/hyperspace-background-demo.tsx",
+      "content": "import { HyperspaceBackground } from \"@/registry/new-york-v4/ui/hyperspace-background\"\n\nexport default function HyperspaceBackgroundDemo() {\n  return (\n    <div className=\"relative flex h-[400px] w-full items-center justify-center overflow-hidden rounded-lg bg-black\">\n      <HyperspaceBackground />\n      <h1 className=\"font-gilroy relative z-10 bg-gradient-to-br from-white to-zinc-400 bg-clip-text px-2 text-center text-4xl font-semibold text-transparent mix-blend-difference\">\n        Ship at the <br />\n        speed of light\n      </h1>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

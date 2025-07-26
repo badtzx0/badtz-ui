@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/marquee.tsx",
+      "content": "import { cn } from \"@/lib/utils\"\n\nexport function Marquee({\n  children,\n  direction = \"left\",\n  repeat = 4,\n  duration = 60,\n  className,\n  ...props\n}: {\n  children: React.ReactNode\n  direction?: \"left\" | \"right\"\n  repeat?: number\n  duration?: number\n  className?: string\n} & React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      {...props}\n      className={cn(\n        \"group flex [gap:var(--gap)] overflow-hidden [--gap:1rem]\",\n        className\n      )}\n      style={{ \"--duration\": `${duration}s` } as React.CSSProperties}\n    >\n      {Array(repeat)\n        .fill(0)\n        .map((_, i) => (\n          <div\n            key={i}\n            className={cn(\"flex shrink-0 justify-around [gap:var(--gap)]\", {\n              \"animate-marquee-left\": direction === \"left\",\n              \"animate-marquee-right\": direction === \"right\",\n              \"group-hover:[animation-play-state:paused]\": true,\n            })}\n          >\n            {children}\n          </div>\n        ))}\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "animate-marquee-left": "marquee-left var(--duration, 30s) linear infinite",
+      "animate-marquee-right": "marquee-right var(--duration, 30s) linear infinite"
+    }
+  },
+  "css": {
+    "@keyframes marquee-left": {
+      "from": {
+        "transform": "translateX(0)"
+      },
+      "to": {
+        "transform": "translateX(calc(-100% - var(--gap)))"
+      }
+    },
+    "@keyframes marquee-right": {
+      "from": {
+        "transform": "translateX(calc(-100% - var(--gap)))"
+      },
+      "to": {
+        "transform": "translateX(0)"
+      }
+    }
+  }
+}

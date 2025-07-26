@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "swipe-button-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "swipe-button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/swipe-button-demo.tsx",
+      "content": "\"use client\"\n\nimport confetti from \"canvas-confetti\"\n\nimport { SwipeButton } from \"@/registry/new-york-v4/ui/swipe-button\"\n\nexport default function SwipeButtonDemo() {\n  const triggerConfetti = () => {\n    confetti({\n      particleCount: 100,\n      spread: 70,\n      origin: { y: 0.6 },\n    })\n  }\n\n  return (\n    <div>\n      <SwipeButton onSwipeComplete={triggerConfetti} />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

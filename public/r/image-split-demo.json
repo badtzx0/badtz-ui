@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-split-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "image-split"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/image-split-demo.tsx",
+      "content": "\"use client\"\n\nimport React, { useEffect, useState } from \"react\"\nimport { useTheme } from \"next-themes\"\n\nimport { ImageSplit } from \"@/registry/new-york-v4/ui/image-split\"\n\nexport default function ImageSplitDemo() {\n  const { theme } = useTheme()\n  const [borderOpacity, setBorderOpacity] = useState(0.3)\n  const [borderColor, setBorderColor] = useState(\"#FFFFFF\")\n  const [imageSrc, setImageSrc] = useState(\"/images/doc-dark.webp\")\n\n  useEffect(() => {\n    setBorderColor(theme === \"dark\" ? \"#FFFFFF\" : \"#000000\")\n    setBorderOpacity(theme === \"dark\" ? 0.2 : 0.1)\n    setImageSrc(\n      theme === \"dark\" ? \"/images/doc-dark.webp\" : \"/images/doc-light.webp\"\n    )\n  }, [theme])\n\n  return (\n    <div className=\"relative h-full max-h-[450px] w-full overflow-y-auto\">\n      <div className=\"absolute inset-x-0 top-0 flex h-[450px] items-center justify-center gap-2\">\n        <span className=\"font-gilroy text-foreground text-3xl\">\n          Scroll to reveal\n        </span>\n      </div>\n      <div className=\"px-6 pt-[450px] pb-6 sm:px-8 sm:pb-8\">\n        <ImageSplit\n          src={imageSrc}\n          className=\"rounded\"\n          borderColor={borderColor}\n          initialBorderOpacity={borderOpacity}\n          sections={9}\n        />\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

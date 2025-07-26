@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "border-beam-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "border-beam"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/border-beam-demo.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useState } from \"react\"\nimport { useTheme } from \"next-themes\"\n\nimport { BorderBeam } from \"@/registry/new-york-v4/ui/border-beam\"\n\nexport default function BorderBeamDemo() {\n  const { theme } = useTheme()\n  const [lightColor, setLightColor] = useState(\"#FAFAFA\")\n\n  useEffect(() => {\n    setLightColor(theme === \"dark\" ? \"#FAFAFA\" : \"#FF2056\")\n  }, [theme])\n\n  return (\n    <div className=\"relative overflow-hidden rounded-lg shadow-sm\">\n      <BorderBeam lightColor={lightColor} lightWidth={350} duration={8} />\n      <div className=\"h-full w-full max-w-72 space-y-2 px-6 py-4\">\n        <h3 className=\"font-gilroy text-2xl\">Border Beam</h3>\n        <p className=\"text-sm\">\n          This card showcases a dynamic border beam effect, adding a subtle,\n          animated glow around the edges.\n        </p>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stagger-blur-effect-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "stagger-blur-effect"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/stagger-blur-effect-demo.tsx",
+      "content": "import { StaggerBlurEffect } from \"@/registry/new-york-v4/ui/stagger-blur-effect\"\n\nexport default function StaggerBlurEffectDemo() {\n  return (\n    <div>\n      <StaggerBlurEffect>I &lt;3 Vercel</StaggerBlurEffect>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

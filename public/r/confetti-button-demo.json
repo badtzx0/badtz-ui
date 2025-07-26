@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confetti-button-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "confetti-button"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/confetti-button-demo.tsx",
+      "content": "import { ConfettiButton } from \"@/registry/new-york-v4/ui/confetti-button\"\n\nexport default function ConfettiButtonDemo() {\n  return <ConfettiButton>Button</ConfettiButton>\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

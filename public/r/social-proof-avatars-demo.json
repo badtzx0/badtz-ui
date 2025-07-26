@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "social-proof-avatars-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "social-proof-avatars"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/social-proof-avatars-demo.tsx",
+      "content": "import { SocialProofAvatars } from \"@/registry/new-york-v4/ui/social-proof-avatars\"\n\nconst avatars = [\n  {\n    alt: \"Avatar 1\",\n    src: \"https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-1.webp\",\n  },\n  {\n    alt: \"Avatar 2\",\n    src: \"https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-2.webp\",\n  },\n  {\n    alt: \"Avatar 3\",\n    src: \"https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-3.webp\",\n  },\n  {\n    alt: \"Avatar 4\",\n    src: \"https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-4.webp\",\n  },\n  {\n    alt: \"Avatar 5\",\n    src: \"https://cdn.badtz-ui.com/images/components/avatar-proof/avatar-5.webp\",\n  },\n]\n\nexport default function SocialProofAvatarsDemo() {\n  return (\n    <SocialProofAvatars avatars={avatars} extraCount={70}>\n      <p className=\"whitespace-nowrap\">\n        +70 <strong className=\"font-semibold\">satisfied</strong> clients\n      </p>\n    </SocialProofAvatars>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

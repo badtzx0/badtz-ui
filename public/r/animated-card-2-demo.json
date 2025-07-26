@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-card-2-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "animated-card-2"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/animated-card-2-demo.tsx",
+      "content": "import {\n  AnimatedCard,\n  CardBody,\n  CardDescription,\n  CardTitle,\n  CardVisual,\n} from \"@/registry/new-york-v4/ui/animated-card\"\nimport { Visual2 } from \"@/registry/new-york-v4/ui/visual-2\"\n\nexport default function AnimatedCard2Demo() {\n  return (\n    <AnimatedCard>\n      <CardVisual>\n        <Visual2 mainColor=\"#ff6900\" secondaryColor=\"#f54900\" />\n      </CardVisual>\n      <CardBody>\n        <CardTitle>Just find the right caption</CardTitle>\n        <CardDescription>\n          This card will tell everything you want\n        </CardDescription>\n      </CardBody>\n    </AnimatedCard>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

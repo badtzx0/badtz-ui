@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "infinite-ribbon-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "infinite-ribbon"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/infinite-ribbon-demo.tsx",
+      "content": "import { InfiniteRibbon } from \"@/registry/new-york-v4/ui/infinite-ribbon\"\n\nexport default function InfiniteRibbonDemo() {\n  return (\n    <div className=\"relative flex h-[350px] w-full items-center justify-center overflow-hidden\">\n      <InfiniteRibbon rotation={5} className=\"absolute\">\n        Build fast, responsive, and beautiful interfaces with ready-to-use\n        components. Designed for developers who demand the best.\n      </InfiniteRibbon>\n      <InfiniteRibbon reverse={true} rotation={-5}>\n        Build fast, responsive, and beautiful interfaces with ready-to-use\n        components. Designed for developers who demand the best.\n      </InfiniteRibbon>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

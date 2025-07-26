@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "border-beam",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx tailwind-merge motion"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/border-beam.tsx",
+      "content": "\"use client\"\n\nimport React, { CSSProperties, useEffect, useRef } from \"react\"\nimport { motion } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface BorderBeamProps {\n  lightWidth?: number\n  duration?: number\n  lightColor?: string\n  borderWidth?: number\n  className?: string\n  [key: string]: unknown\n}\n\nexport function BorderBeam({\n  lightWidth = 200,\n  duration = 10,\n  lightColor = \"#FAFAFA\",\n  borderWidth = 1,\n  className,\n  ...props\n}: BorderBeamProps) {\n  const pathRef = useRef<HTMLDivElement>(null)\n\n  const updatePath = () => {\n    if (pathRef.current) {\n      const div = pathRef.current\n      div.style.setProperty(\n        \"--path\",\n        `path(\"M 0 0 H ${div.offsetWidth} V ${div.offsetHeight} H 0 V 0\")`\n      )\n    }\n  }\n\n  useEffect(() => {\n    updatePath()\n    window.addEventListener(\"resize\", updatePath)\n\n    return () => {\n      window.removeEventListener(\"resize\", updatePath)\n    }\n  }, [])\n\n  return (\n    <div\n      style={\n        {\n          \"--duration\": duration,\n          \"--border-width\": `${borderWidth}px`,\n        } as CSSProperties\n      }\n      ref={pathRef}\n      className={cn(\n        `absolute z-0 h-full w-full rounded-[inherit]`,\n        `after:absolute after:inset-[var(--border-width)] after:rounded-[inherit] after:content-['']`,\n        \"border-[length:var(--border-width)] ![mask-clip:padding-box,border-box]\",\n        \"![mask-composite:intersect] [mask:linear-gradient(transparent,transparent),linear-gradient(red,red)]\",\n        `before:absolute before:inset-0 before:z-[-1] before:rounded-[inherit] before:border-[length:var(--border-width)] before:border-black/10 dark:before:border-white/10`,\n        className\n      )}\n      {...props}\n    >\n      <motion.div\n        className=\"absolute inset-0 aspect-square bg-[radial-gradient(ellipse_at_center,var(--light-color),transparent,transparent)]\"\n        style={\n          {\n            \"--light-color\": lightColor,\n            \"--light-width\": `${lightWidth}px`,\n            width: \"var(--light-width)\",\n            offsetPath: \"var(--path)\",\n          } as CSSProperties\n        }\n        animate={{\n          offsetDistance: [\"0%\", \"100%\"],\n        }}\n        transition={{\n          duration: duration,\n          repeat: Infinity,\n          ease: \"linear\",\n        }}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

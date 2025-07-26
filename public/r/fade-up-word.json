@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fade-up-word",
+  "type": "registry:ui",
+  "dependencies": [
+    "clsx tailwind-merge motion"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/ui/fade-up-word.tsx",
+      "content": "\"use client\"\n\nimport { useRef } from \"react\"\nimport { HTMLMotionProps, motion, useInView } from \"motion/react\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype HeadingLevel = \"h1\" | \"h2\" | \"h3\" | \"h4\"\n\ninterface FadeUpWordProps\n  extends Omit<HTMLMotionProps<HeadingLevel>, \"children\"> {\n  children: string\n  as?: HeadingLevel\n  className?: string\n}\n\nexport function FadeUpWord({\n  children,\n  as = \"h2\",\n  className,\n  ...props\n}: FadeUpWordProps) {\n  const ref = useRef(null)\n  const isInView = useInView(ref, { once: true })\n  const Component = motion[as]\n\n  return (\n    <Component\n      ref={ref}\n      className={cn(\n        \"flex flex-wrap gap-[0.5rem] text-4xl font-semibold tracking-tight\",\n        className\n      )}\n      {...props}\n    >\n      {children.split(\" \").map((word, i) => (\n        <motion.span\n          key={i}\n          initial={{ opacity: 0, y: 20 }}\n          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}\n          transition={{\n            duration: 0.5,\n            delay: i * 0.1,\n            ease: [0.33, 1, 0.68, 1],\n          }}\n        >\n          {word}\n        </motion.span>\n      ))}\n    </Component>\n  )\n}\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stripe-animated-gradient-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "stripe-animated-gradient"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/stripe-animated-gradient-demo.tsx",
+      "content": "import { AnimatedGradient } from \"@/registry/new-york-v4/ui/stripe-animated-gradient\"\n\nexport function AnimatedGradientDemo() {\n  return (\n    <div className=\"relative flex h-[450px] max-h-[400px] w-full items-center justify-center overflow-hidden rounded-md\">\n      <AnimatedGradient\n        color1=\"#a960ee\"\n        color2=\"#ff333d\"\n        color3=\"#90e0ff\"\n        color4=\"#ffcb57\"\n      />\n      <h1 className=\"font-gilroy pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-2 text-center text-4xl font-semibold text-black\">\n        Stripe Animated\n        <br />\n        Gradient\n      </h1>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

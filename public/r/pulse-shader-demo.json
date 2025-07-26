@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pulse-shader-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "pulse-shader"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/pulse-shader-demo.tsx",
+      "content": "\"use client\"\n\nimport dynamic from \"next/dynamic\"\n\nconst PulseShaderScene = dynamic(\n  () => import(\"@/registry/new-york-v4/ui/pulse-shader-scene\"),\n  {\n    ssr: false,\n    loading: () => (\n      <div className=\"h-full w-full bg-zinc-100 dark:bg-neutral-950\">\n        {/* Skeleton loader */}\n      </div>\n    ),\n  }\n)\n\nexport default function PulseShaderDemo() {\n  return (\n    <div className=\"h-auto max-h-[400px] w-full overflow-hidden rounded-lg\">\n      <PulseShaderScene imageSrc=\"https://cdn.badtz-ui.com/images/shaders/aurora-borealis-image.webp\" />\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "particles-stars-demo",
+  "type": "registry:example",
+  "registryDependencies": [
+    "particles"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york-v4/examples/particles-stars-demo.tsx",
+      "content": "import { Particles } from \"@/registry/new-york-v4/ui/particles\"\n\nexport default function ParticlesDemoStars() {\n  return (\n    <div className=\"relative flex h-[400px] w-full items-center justify-center overflow-hidden rounded-md bg-neutral-950\">\n      <Particles variant=\"stars\" />\n      <span className=\"font-gilroy pointer-events-none bg-gradient-to-br from-white to-zinc-400 bg-clip-text py-2 text-4xl text-transparent\">\n        Stars\n      </span>\n    </div>\n  )\n}\n",
+      "type": "registry:example"
+    }
+  ]
+}
