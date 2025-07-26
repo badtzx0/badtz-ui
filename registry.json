@@ -5,25 +5,16 @@
     {
       "name": "index",
       "type": "registry:style",
-      "dependencies": [
-        "class-variance-authority",
-        "lucide-react"
-      ],
-      "devDependencies": [
-        "tw-animate-css"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
+      "dependencies": ["class-variance-authority", "lucide-react"],
+      "devDependencies": ["tw-animate-css"],
+      "registryDependencies": ["utils"],
       "files": [],
       "cssVars": {}
     },
     {
       "name": "cursor-cards",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge motion"
-      ],
+      "dependencies": ["clsx tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/cursor-cards.tsx",
@@ -35,7 +26,10 @@
       "name": "animated-keyboard",
       "type": "registry:ui",
       "dependencies": [
-        "clsx tailwind-merge framer-motion class-variance-authority"
+        "clsx",
+        "tailwind-merge",
+        "motion",
+        "class-variance-authority"
       ],
       "files": [
         {
@@ -47,9 +41,7 @@
     {
       "name": "flipping-card",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/flipping-card.tsx",
@@ -60,9 +52,7 @@
     {
       "name": "animated-list",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge motion"
-      ],
+      "dependencies": ["clsx tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/animated-list.tsx",
@@ -86,9 +76,7 @@
     {
       "name": "marquee",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/marquee.tsx",
@@ -123,9 +111,7 @@
     {
       "name": "social-proof-avatars",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/social-proof-avatars.tsx",
@@ -136,9 +122,7 @@
     {
       "name": "border-beam",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge motion"
-      ],
+      "dependencies": ["clsx tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/border-beam.tsx",
@@ -149,9 +133,7 @@
     {
       "name": "cloud-orbit",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge motion"
-      ],
+      "dependencies": ["clsx tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/cloud-orbit.tsx",
@@ -162,9 +144,7 @@
     {
       "name": "dock",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge motion"
-      ],
+      "dependencies": ["clsx tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/dock.tsx",
@@ -175,9 +155,7 @@
     {
       "name": "expandable-card",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge motion"
-      ],
+      "dependencies": ["clsx tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/expandable-card.tsx",
@@ -188,9 +166,7 @@
     {
       "name": "image-split",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/image-split.tsx",
@@ -201,9 +177,7 @@
     {
       "name": "image-trail",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge gsap"
-      ],
+      "dependencies": ["clsx", "tailwind-merge", "gsap"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/image-trail.tsx",
@@ -214,9 +188,7 @@
     {
       "name": "infinite-ribbon",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/infinite-ribbon.tsx",
@@ -251,9 +223,7 @@
     {
       "name": "3d-wrapper",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge motion"
-      ],
+      "dependencies": ["clsx tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/3d-wrapper.tsx",
@@ -327,9 +297,7 @@
     {
       "name": "animated-card-1",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/animated-card.tsx",
@@ -344,9 +312,7 @@
     {
       "name": "animated-card-2",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/animated-card.tsx",
@@ -361,9 +327,7 @@
     {
       "name": "animated-card-3",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/animated-card.tsx",
@@ -378,9 +342,7 @@
     {
       "name": "stripe-animated-gradient",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/stripe-animated-gradient.tsx",
@@ -395,9 +357,7 @@
     {
       "name": "hyperspace-background",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/hyperspace-background.tsx",
@@ -408,9 +368,7 @@
     {
       "name": "blur-reveal",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge motion"
-      ],
+      "dependencies": ["clsx tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/blur-reveal.tsx",
@@ -421,9 +379,7 @@
     {
       "name": "fade-up-word",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge motion"
-      ],
+      "dependencies": ["clsx tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/fade-up-word.tsx",
@@ -434,9 +390,7 @@
     {
       "name": "stagger-blur-effect",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge motion"
-      ],
+      "dependencies": ["clsx tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/stagger-blur-effect.tsx",
@@ -447,12 +401,8 @@
     {
       "name": "glowing-button",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/glowing-button.tsx",
@@ -468,9 +418,7 @@
         "canvas-confetti",
         "@types/canvas-confetti"
       ],
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/swipe-button.tsx",
@@ -481,9 +429,7 @@
     {
       "name": "gradient-slide-button",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/gradient-slide-button.tsx",
@@ -494,9 +440,7 @@
     {
       "name": "star-button",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/star-button.tsx",
@@ -535,9 +479,7 @@
     {
       "name": "shuffle-button",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/shuffle-button.tsx",
@@ -548,9 +490,7 @@
     {
       "name": "stagger-button",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge motion"
-      ],
+      "dependencies": ["clsx tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/stagger-button.tsx",
@@ -561,9 +501,7 @@
     {
       "name": "like-button",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge motion"
-      ],
+      "dependencies": ["clsx tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/like-button.tsx",
@@ -574,9 +512,7 @@
     {
       "name": "button",
       "type": "registry:ui",
-      "dependencies": [
-        "clsx tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/button.tsx",
@@ -597,9 +533,7 @@
     {
       "name": "cursor-card-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "cursor-cards"
-      ],
+      "registryDependencies": ["cursor-cards"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/cursor-card-demo.tsx",
@@ -610,9 +544,7 @@
     {
       "name": "animated-keyboard-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "animated-keyboard"
-      ],
+      "registryDependencies": ["animated-keyboard"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/animated-keyboard-demo.tsx",
@@ -623,9 +555,7 @@
     {
       "name": "animated-keyboard-rgb-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "animated-keyboard"
-      ],
+      "registryDependencies": ["animated-keyboard"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/animated-keyboard-rgb-demo.tsx",
@@ -636,9 +566,7 @@
     {
       "name": "mini-keyboard-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "animated-keyboard"
-      ],
+      "registryDependencies": ["animated-keyboard"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/mini-keyboard-demo.tsx",
@@ -649,9 +577,7 @@
     {
       "name": "flipping-card-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "flipping-card"
-      ],
+      "registryDependencies": ["flipping-card"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/flipping-card-demo.tsx",
@@ -662,9 +588,7 @@
     {
       "name": "animated-list-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "animated-list"
-      ],
+      "registryDependencies": ["animated-list"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/animated-list-demo.tsx",
@@ -675,9 +599,7 @@
     {
       "name": "particles-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "particles"
-      ],
+      "registryDependencies": ["particles"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/particles-demo.tsx",
@@ -688,9 +610,7 @@
     {
       "name": "particles-snow-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "particles"
-      ],
+      "registryDependencies": ["particles"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/particles-snow-demo.tsx",
@@ -701,9 +621,7 @@
     {
       "name": "particles-stars-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "particles"
-      ],
+      "registryDependencies": ["particles"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/particles-stars-demo.tsx",
@@ -714,9 +632,7 @@
     {
       "name": "marquee-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "marquee"
-      ],
+      "registryDependencies": ["marquee"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/marquee-demo.tsx",
@@ -727,9 +643,7 @@
     {
       "name": "social-proof-avatars-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "social-proof-avatars"
-      ],
+      "registryDependencies": ["social-proof-avatars"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/social-proof-avatars-demo.tsx",
@@ -740,9 +654,7 @@
     {
       "name": "border-beam-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "border-beam"
-      ],
+      "registryDependencies": ["border-beam"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/border-beam-demo.tsx",
@@ -753,9 +665,7 @@
     {
       "name": "cloud-orbit-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "cloud-orbit"
-      ],
+      "registryDependencies": ["cloud-orbit"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/cloud-orbit-demo.tsx",
@@ -766,9 +676,7 @@
     {
       "name": "dock-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "dock"
-      ],
+      "registryDependencies": ["dock"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/dock-demo.tsx",
@@ -779,9 +687,7 @@
     {
       "name": "expandable-card-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "expandable-card"
-      ],
+      "registryDependencies": ["expandable-card"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/expandable-card-demo.tsx",
@@ -792,9 +698,7 @@
     {
       "name": "image-split-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "image-split"
-      ],
+      "registryDependencies": ["image-split"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/image-split-demo.tsx",
@@ -805,9 +709,7 @@
     {
       "name": "image-trail-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "image-trail"
-      ],
+      "registryDependencies": ["image-trail"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/image-trail-demo.tsx",
@@ -818,9 +720,7 @@
     {
       "name": "infinite-ribbon-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "infinite-ribbon"
-      ],
+      "registryDependencies": ["infinite-ribbon"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/infinite-ribbon-demo.tsx",
@@ -831,9 +731,7 @@
     {
       "name": "infinite-ribbon-demo-2",
       "type": "registry:example",
-      "registryDependencies": [
-        "infinite-ribbon"
-      ],
+      "registryDependencies": ["infinite-ribbon"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/infinite-ribbon-demo-2.tsx",
@@ -844,9 +742,7 @@
     {
       "name": "3d-wrapper-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "3d-wrapper"
-      ],
+      "registryDependencies": ["3d-wrapper"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/3d-wrapper-demo.tsx",
@@ -857,9 +753,7 @@
     {
       "name": "pixel-distorsion-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "pixel-distorsion"
-      ],
+      "registryDependencies": ["pixel-distorsion"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/pixel-distorsion-demo.tsx",
@@ -870,9 +764,7 @@
     {
       "name": "pulse-shader-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "pulse-shader"
-      ],
+      "registryDependencies": ["pulse-shader"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/pulse-shader-demo.tsx",
@@ -883,9 +775,7 @@
     {
       "name": "mouse-wave-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "mouse-wave"
-      ],
+      "registryDependencies": ["mouse-wave"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/mouse-wave-demo.tsx",
@@ -896,9 +786,7 @@
     {
       "name": "animated-card-1-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "animated-card-1"
-      ],
+      "registryDependencies": ["animated-card-1"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/animated-card-1-demo.tsx",
@@ -909,9 +797,7 @@
     {
       "name": "animated-card-2-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "animated-card-2"
-      ],
+      "registryDependencies": ["animated-card-2"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/animated-card-2-demo.tsx",
@@ -922,9 +808,7 @@
     {
       "name": "animated-card-3-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "animated-card-3"
-      ],
+      "registryDependencies": ["animated-card-3"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/animated-card-3-demo.tsx",
@@ -935,9 +819,7 @@
     {
       "name": "stripe-animated-gradient-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "stripe-animated-gradient"
-      ],
+      "registryDependencies": ["stripe-animated-gradient"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/stripe-animated-gradient-demo.tsx",
@@ -948,9 +830,7 @@
     {
       "name": "hyperspace-background-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "hyperspace-background"
-      ],
+      "registryDependencies": ["hyperspace-background"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/hyperspace-background-demo.tsx",
@@ -961,9 +841,7 @@
     {
       "name": "blur-reveal-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "blur-reveal"
-      ],
+      "registryDependencies": ["blur-reveal"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/blur-reveal-demo.tsx",
@@ -974,9 +852,7 @@
     {
       "name": "fade-up-word-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "fade-up-word"
-      ],
+      "registryDependencies": ["fade-up-word"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/fade-up-word-demo.tsx",
@@ -987,9 +863,7 @@
     {
       "name": "stagger-blur-effect-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "stagger-blur-effect"
-      ],
+      "registryDependencies": ["stagger-blur-effect"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/stagger-blur-effect-demo.tsx",
@@ -1000,9 +874,7 @@
     {
       "name": "glowing-button-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "glowing-button"
-      ],
+      "registryDependencies": ["glowing-button"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/glowing-button-demo.tsx",
@@ -1013,9 +885,7 @@
     {
       "name": "swipe-button-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "swipe-button"
-      ],
+      "registryDependencies": ["swipe-button"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/swipe-button-demo.tsx",
@@ -1026,9 +896,7 @@
     {
       "name": "gradient-slide-button-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "gradient-slide-button"
-      ],
+      "registryDependencies": ["gradient-slide-button"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/gradient-slide-button-demo.tsx",
@@ -1039,9 +907,7 @@
     {
       "name": "star-button-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "star-button"
-      ],
+      "registryDependencies": ["star-button"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/star-button-demo.tsx",
@@ -1052,9 +918,7 @@
     {
       "name": "confetti-button-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "confetti-button"
-      ],
+      "registryDependencies": ["confetti-button"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/confetti-button-demo.tsx",
@@ -1065,9 +929,7 @@
     {
       "name": "shuffle-button-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "shuffle-button"
-      ],
+      "registryDependencies": ["shuffle-button"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/shuffle-button-demo.tsx",
@@ -1078,9 +940,7 @@
     {
       "name": "stagger-button-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "stagger-button"
-      ],
+      "registryDependencies": ["stagger-button"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/stagger-button-demo.tsx",
@@ -1091,9 +951,7 @@
     {
       "name": "like-button-demo",
       "type": "registry:example",
-      "registryDependencies": [
-        "like-button"
-      ],
+      "registryDependencies": ["like-button"],
       "files": [
         {
           "path": "registry/new-york-v4/examples/like-button-demo.tsx",
@@ -1104,10 +962,7 @@
     {
       "name": "utils",
       "type": "registry:lib",
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/new-york-v4/lib/utils.ts",
