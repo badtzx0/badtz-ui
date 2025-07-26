@@ -4,7 +4,7 @@ export const ui: Registry["items"] = [
   {
     name: "cursor-cards",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge motion"],
+    dependencies: ["clsx", "tailwind-merge", "motion"],
     files: [
       {
         path: "ui/cursor-cards.tsx",
@@ -16,7 +16,10 @@ export const ui: Registry["items"] = [
     name: "animated-keyboard",
     type: "registry:ui",
     dependencies: [
-      "clsx tailwind-merge framer-motion class-variance-authority",
+      "clsx",
+      "tailwind-merge",
+      "framer-motion",
+      "class-variance-authority",
     ],
     files: [
       {
@@ -28,7 +31,7 @@ export const ui: Registry["items"] = [
   {
     name: "flipping-card",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge"],
+    dependencies: ["clsx", "tailwind-merge"],
     files: [
       {
         path: "ui/flipping-card.tsx",
@@ -39,7 +42,7 @@ export const ui: Registry["items"] = [
   {
     name: "animated-list",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge motion"],
+    dependencies: ["clsx", "tailwind-merge", "motion"],
     files: [
       {
         path: "ui/animated-list.tsx",
@@ -50,7 +53,12 @@ export const ui: Registry["items"] = [
   {
     name: "particles",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge @tsparticles/react @tsparticles/slim"],
+    dependencies: [
+      "clsx",
+      "tailwind-merge",
+      "@tsparticles/react",
+      "@tsparticles/slim",
+    ],
     files: [
       {
         path: "ui/particles.tsx",
@@ -61,7 +69,7 @@ export const ui: Registry["items"] = [
   {
     name: "marquee",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge"],
+    dependencies: ["clsx", "tailwind-merge"],
     files: [
       {
         path: "ui/marquee.tsx",
@@ -98,7 +106,7 @@ export const ui: Registry["items"] = [
   {
     name: "social-proof-avatars",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge"],
+    dependencies: ["clsx", "tailwind-merge"],
     files: [
       {
         path: "ui/social-proof-avatars.tsx",
@@ -109,7 +117,7 @@ export const ui: Registry["items"] = [
   {
     name: "border-beam",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge motion"],
+    dependencies: ["clsx", "tailwind-merge", "motion"],
     files: [
       {
         path: "ui/border-beam.tsx",
@@ -120,7 +128,7 @@ export const ui: Registry["items"] = [
   {
     name: "cloud-orbit",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge motion"],
+    dependencies: ["clsx", "tailwind-merge", "motion"],
     files: [
       {
         path: "ui/cloud-orbit.tsx",
@@ -131,7 +139,7 @@ export const ui: Registry["items"] = [
   {
     name: "dock",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge motion"],
+    dependencies: ["clsx", "tailwind-merge", "motion"],
     files: [
       {
         path: "ui/dock.tsx",
@@ -142,7 +150,7 @@ export const ui: Registry["items"] = [
   {
     name: "expandable-card",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge motion"],
+    dependencies: ["clsx", "tailwind-merge", "motion"],
     files: [
       {
         path: "ui/expandable-card.tsx",
@@ -153,7 +161,7 @@ export const ui: Registry["items"] = [
   {
     name: "image-split",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge"],
+    dependencies: ["clsx", "tailwind-merge"],
     files: [
       {
         path: "ui/image-split.tsx",
@@ -164,7 +172,7 @@ export const ui: Registry["items"] = [
   {
     name: "image-trail",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge gsap"],
+    dependencies: ["clsx", "tailwind-merge", "gsap"],
     files: [
       {
         path: "ui/image-trail.tsx",
@@ -175,7 +183,7 @@ export const ui: Registry["items"] = [
   {
     name: "infinite-ribbon",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge"],
+    dependencies: ["clsx", "tailwind-merge"],
     files: [
       {
         path: "ui/infinite-ribbon.tsx",
@@ -212,7 +220,7 @@ export const ui: Registry["items"] = [
   {
     name: "3d-wrapper",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge motion"],
+    dependencies: ["clsx", "tailwind-merge", "motion"],
     files: [
       {
         path: "ui/3d-wrapper.tsx",
@@ -224,7 +232,11 @@ export const ui: Registry["items"] = [
     name: "pixel-distorsion",
     type: "registry:ui",
     dependencies: [
-      "clsx tailwind-merge @react-three/fiber @react-three/drei three",
+      "clsx",
+      "tailwind-merge",
+      "@react-three/fiber",
+      "@react-three/drei",
+      "three",
     ],
     files: [
       {
@@ -245,7 +257,11 @@ export const ui: Registry["items"] = [
     name: "pulse-shader",
     type: "registry:ui",
     dependencies: [
-      "clsx tailwind-merge @react-three/fiber @react-three/drei three",
+      "clsx",
+      "tailwind-merge",
+      "@react-three/fiber",
+      "@react-three/drei",
+      "three",
     ],
     files: [
       {
@@ -266,7 +282,11 @@ export const ui: Registry["items"] = [
     name: "mouse-wave",
     type: "registry:ui",
     dependencies: [
-      "clsx tailwind-merge @react-three/fiber @react-three/drei three",
+      "clsx",
+      "tailwind-merge",
+      "@react-three/fiber",
+      "@react-three/drei",
+      "three",
     ],
     files: [
       {
@@ -286,7 +306,7 @@ export const ui: Registry["items"] = [
   {
     name: "animated-card-1",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge"],
+    dependencies: ["clsx", "tailwind-merge"],
     files: [
       {
         path: "ui/animated-card.tsx",
@@ -301,7 +321,7 @@ export const ui: Registry["items"] = [
   {
     name: "animated-card-2",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge"],
+    dependencies: ["clsx", "tailwind-merge"],
     files: [
       {
         path: "ui/animated-card.tsx",
@@ -316,7 +336,7 @@ export const ui: Registry["items"] = [
   {
     name: "animated-card-3",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge"],
+    dependencies: ["clsx", "tailwind-merge"],
     files: [
       {
         path: "ui/animated-card.tsx",
@@ -331,7 +351,7 @@ export const ui: Registry["items"] = [
   {
     name: "stripe-animated-gradient",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge"],
+    dependencies: ["clsx", "tailwind-merge"],
     files: [
       {
         path: "ui/stripe-animated-gradient.tsx",
@@ -346,7 +366,7 @@ export const ui: Registry["items"] = [
   {
     name: "hyperspace-background",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge"],
+    dependencies: ["clsx", "tailwind-merge"],
     files: [
       {
         path: "ui/hyperspace-background.tsx",
@@ -357,7 +377,7 @@ export const ui: Registry["items"] = [
   {
     name: "blur-reveal",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge motion"],
+    dependencies: ["clsx", "tailwind-merge", "motion"],
     files: [
       {
         path: "ui/blur-reveal.tsx",
@@ -368,7 +388,7 @@ export const ui: Registry["items"] = [
   {
     name: "fade-up-word",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge motion"],
+    dependencies: ["clsx", "tailwind-merge", "motion"],
     files: [
       {
         path: "ui/fade-up-word.tsx",
@@ -379,7 +399,7 @@ export const ui: Registry["items"] = [
   {
     name: "stagger-blur-effect",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge motion"],
+    dependencies: ["clsx", "tailwind-merge", "motion"],
     files: [
       {
         path: "ui/stagger-blur-effect.tsx",
@@ -390,7 +410,7 @@ export const ui: Registry["items"] = [
   {
     name: "glowing-button",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge"],
+    dependencies: ["clsx", "tailwind-merge"],
     registryDependencies: ["button"],
     files: [
       {
@@ -404,7 +424,8 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     registryDependencies: ["button"],
     dependencies: [
-      "clsx tailwind-merge",
+      "clsx",
+      "tailwind-merge",
       "canvas-confetti",
       "@types/canvas-confetti",
     ],
@@ -418,7 +439,7 @@ export const ui: Registry["items"] = [
   {
     name: "gradient-slide-button",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge"],
+    dependencies: ["clsx", "tailwind-merge"],
     files: [
       {
         path: "ui/gradient-slide-button.tsx",
@@ -429,7 +450,7 @@ export const ui: Registry["items"] = [
   {
     name: "star-button",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge"],
+    dependencies: ["clsx", "tailwind-merge"],
     files: [
       {
         path: "ui/star-button.tsx",
@@ -457,7 +478,10 @@ export const ui: Registry["items"] = [
     name: "confetti-button",
     type: "registry:ui",
     dependencies: [
-      "clsx tailwind-merge canvas-confetti @types/canvas-confetti",
+      "clsx",
+      "tailwind-merge",
+      "canvas-confetti",
+      "@types/canvas-confetti",
     ],
     files: [
       {
@@ -469,7 +493,7 @@ export const ui: Registry["items"] = [
   {
     name: "shuffle-button",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge"],
+    dependencies: ["clsx", "tailwind-merge"],
     files: [
       {
         path: "ui/shuffle-button.tsx",
@@ -480,7 +504,7 @@ export const ui: Registry["items"] = [
   {
     name: "stagger-button",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge motion"],
+    dependencies: ["clsx", "tailwind-merge", "motion"],
     files: [
       {
         path: "ui/stagger-button.tsx",
@@ -491,7 +515,7 @@ export const ui: Registry["items"] = [
   {
     name: "like-button",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge motion"],
+    dependencies: ["clsx", "tailwind-merge", "motion"],
     files: [
       {
         path: "ui/like-button.tsx",
@@ -502,7 +526,7 @@ export const ui: Registry["items"] = [
   {
     name: "button",
     type: "registry:ui",
-    dependencies: ["clsx tailwind-merge"],
+    dependencies: ["clsx", "tailwind-merge"],
     files: [
       {
         path: "ui/button.tsx",
