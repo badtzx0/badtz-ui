@@ -14,7 +14,7 @@
     {
       "name": "cursor-cards",
       "type": "registry:ui",
-      "dependencies": ["clsx tailwind-merge", "motion"],
+      "dependencies": ["clsx", "tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/cursor-cards.tsx",
@@ -52,7 +52,7 @@
     {
       "name": "animated-list",
       "type": "registry:ui",
-      "dependencies": ["clsx tailwind-merge", "motion"],
+      "dependencies": ["clsx", "tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/animated-list.tsx",
@@ -64,7 +64,10 @@
       "name": "particles",
       "type": "registry:ui",
       "dependencies": [
-        "clsx tailwind-merge @tsparticles/react @tsparticles/slim"
+        "clsx",
+        "tailwind-merge",
+        "@tsparticles/react",
+        "@tsparticles/slim"
       ],
       "files": [
         {
@@ -122,7 +125,7 @@
     {
       "name": "border-beam",
       "type": "registry:ui",
-      "dependencies": ["clsx tailwind-merge", "motion"],
+      "dependencies": ["clsx", "tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/border-beam.tsx",
@@ -133,7 +136,7 @@
     {
       "name": "cloud-orbit",
       "type": "registry:ui",
-      "dependencies": ["clsx tailwind-merge", "motion"],
+      "dependencies": ["clsx", "tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/cloud-orbit.tsx",
@@ -144,7 +147,7 @@
     {
       "name": "dock",
       "type": "registry:ui",
-      "dependencies": ["clsx tailwind-merge", "motion"],
+      "dependencies": ["clsx", "tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/dock.tsx",
@@ -155,7 +158,7 @@
     {
       "name": "expandable-card",
       "type": "registry:ui",
-      "dependencies": ["clsx tailwind-merge", "motion"],
+      "dependencies": ["clsx", "tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/expandable-card.tsx",
@@ -223,7 +226,7 @@
     {
       "name": "3d-wrapper",
       "type": "registry:ui",
-      "dependencies": ["clsx tailwind-merge", "motion"],
+      "dependencies": ["clsx", "tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/3d-wrapper.tsx",
@@ -235,7 +238,11 @@
       "name": "pixel-distorsion",
       "type": "registry:ui",
       "dependencies": [
-        "clsx tailwind-merge @react-three/fiber @react-three/drei three"
+        "clsx",
+        "tailwind-merge",
+        "@react-three/fiber",
+        "@react-three/drei",
+        "three"
       ],
       "files": [
         {
@@ -256,7 +263,11 @@
       "name": "pulse-shader",
       "type": "registry:ui",
       "dependencies": [
-        "clsx tailwind-merge @react-three/fiber @react-three/drei three"
+        "clsx",
+        "tailwind-merge",
+        "@react-three/fiber",
+        "@react-three/drei",
+        "three"
       ],
       "files": [
         {
@@ -277,7 +288,11 @@
       "name": "mouse-wave",
       "type": "registry:ui",
       "dependencies": [
-        "clsx tailwind-merge @react-three/fiber @react-three/drei three"
+        "clsx",
+        "tailwind-merge",
+        "@react-three/fiber",
+        "@react-three/drei",
+        "three"
       ],
       "files": [
         {
