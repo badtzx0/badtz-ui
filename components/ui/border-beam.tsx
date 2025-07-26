@@ -5,7 +5,6 @@ import React, { CSSProperties, memo } from "react"
 import { cn } from "@/lib/utils"
 
 interface BorderBeamProps {
-  lightWidth?: number
   duration?: number
   lightColor?: string
   borderWidth?: number
@@ -14,7 +13,6 @@ interface BorderBeamProps {
 }
 
 function BorderBeamComponent({
-  lightWidth,
   duration = 2,
   lightColor = "#FAFAFA",
   borderWidth = 1,
