@@ -3,7 +3,10 @@
   "name": "animated-keyboard",
   "type": "registry:ui",
   "dependencies": [
-    "clsx tailwind-merge framer-motion class-variance-authority"
+    "clsx",
+    "tailwind-merge",
+    "motion",
+    "class-variance-authority"
   ],
   "files": [
     {

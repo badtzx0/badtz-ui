@@ -3,7 +3,8 @@
   "name": "glowing-button",
   "type": "registry:ui",
   "dependencies": [
-    "clsx tailwind-merge"
+    "clsx",
+    "tailwind-merge"
   ],
   "registryDependencies": [
     "button"

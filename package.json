@@ -15,7 +15,7 @@
     "registry:build": "shadcn build",
     "build-registry": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && npx prettier --log-level silent --write \"registry/**/*.{ts,tsx,json,mdx}\" --cache",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
-    "postinstall": "prisma generate && fumadocs-mdx"
+    "postinstall": "prisma generate && fumadocs-mdx && pnpm registry:build"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

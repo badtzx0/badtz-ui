@@ -3,7 +3,8 @@
   "name": "expandable-card",
   "type": "registry:ui",
   "dependencies": [
-    "clsx tailwind-merge motion"
+    "clsx tailwind-merge",
+    "motion"
   ],
   "files": [
     {

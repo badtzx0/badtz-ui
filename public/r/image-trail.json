@@ -3,7 +3,9 @@
   "name": "image-trail",
   "type": "registry:ui",
   "dependencies": [
-    "clsx tailwind-merge gsap"
+    "clsx",
+    "tailwind-merge",
+    "gsap"
   ],
   "files": [
     {
