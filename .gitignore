@@ -3,7 +3,12 @@
 # dependencies
 /node_modules
 /.pnp
-.pnp.js
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
 # testing
 /coverage
@@ -15,14 +20,9 @@
 # production
 /build
 
-# dev page
-/app/(dev)/dev/
-
-# cursor rules
-.cursorrules
-
-# cursor ignore
-.cursorignore
+#dev
+/dev
+/app/dev
 
 # misc
 .DS_Store
@@ -32,10 +32,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
 
-# local env files
-.env*.local
-.env
+# env files (can opt-in for committing if needed)
+.env*
 
 # vercel
 .vercel
@@ -45,7 +45,7 @@ yarn-error.log*
 next-env.d.ts
 
 
-# Contentlayer
+# generated content
 .contentlayer
-
-
+.content-collections
+.source

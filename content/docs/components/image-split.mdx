@@ -1,603 +1,72 @@
 ---
 title: Image Split
 description: This component provides a dynamic and visually captivating way to display images split into multiple sections.
+component: true
 ---
 
 <ComponentPreview
   name="image-split-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%] m-0 p-0 overflow-hidden"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
   description="This component provides a dynamic and visually captivating way to display images split into multiple sections."
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import { ImageSplit } from "@/components/ui/image-split";
-    import React, { useState, useEffect } from "react";
-    import { useTheme } from "next-themes";
-
-    export default function ImageSplitDemo() {
-      const { theme } = useTheme();
-      const [borderOpacity, setBorderOpacity] = useState(0.3);
-      const [borderColor, setBorderColor] = useState("#FFFFFF");
-      const [imageSrc, setImageSrc] = useState(
-        "/images/components/image-split/badtz-ui-documentation-dark.webp"
-      );
-
-      useEffect(() => {
-        setBorderColor(theme === "dark" ? "#FFFFFF" : "#000000");
-        setBorderOpacity(theme === "dark" ? 0.2 : 0.1);
-        setImageSrc(
-          theme === "dark"
-            ? "/images/components/image-split/badtz-ui-documentation-dark.webp"
-            : "/images/components/image-split/badtz-ui-documentation-light.webp"
-        );
-      }, [theme]);
-
-      return (
-        <div className="overflow-y-auto h-full w-full max-h-[450px] relative">
-          <div className="h-[450px] inset-x-0 top-0 absolute flex items-center justify-center gap-2">
-            <span className="font-gilroy text-3xl text-foreground">
-              Scroll to reveal
-            </span>
-          </div>
-          <div className="pt-[450px] px-6 sm:px-8 pb-6 sm:pb-8">
-            <ImageSplit
-              src={imageSrc}
-              className="rounded"
-              borderColor={borderColor}
-              initialBorderOpacity={borderOpacity}
-              sections={9}
-            />
-          </div>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import { ImageSplit } from "@/components/ui/image-split";
-    import React, { useState, useRef, useEffect } from "react";
-    import { useTheme } from "next-themes";
-
-    export default function ImageSplitDemo() {
-      const { theme } = useTheme();
-      const [borderOpacity, setBorderOpacity] = useState(0.3);
-      const [borderColor, setBorderColor] = useState("#FFFFFF");
-      const [imageSrc, setImageSrc] = useState(
-        "/images/components/image-split/badtz-ui-documentation-dark.webp"
-      );
-
-      useEffect(() => {
-        setBorderColor(theme === "dark" ? "#FFFFFF" : "#000000");
-        setBorderOpacity(theme === "dark" ? 0.2 : 0.1);
-        setImageSrc(
-          theme === "dark"
-            ? "/images/components/image-split/badtz-ui-documentation-dark.webp"
-            : "/images/components/image-split/badtz-ui-documentation-light.webp"
-        );
-      }, [theme]);
-
-      return (
-        <div className="overflow-y-auto h-full w-full max-h-[450px] relative">
-          <div className="h-[450px] inset-x-0 top-0 absolute flex items-center justify-center gap-2">
-            <span className="font-gilroy text-3xl text-foreground">
-              Scroll to reveal
-            </span>
-          </div>
-          <div className="pt-[450px] px-6 sm:px-8 pb-6 sm:pb-8">
-            <ImageSplit
-              src={imageSrc}
-              className="rounded"
-              borderColor={borderColor}
-              initialBorderOpacity={borderOpacity}
-              sections={9}
-            />
-          </div>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
+  align="center"
+/>
 
 ## Installation
 
-<Tabs defaultValue="cli">
-  <TabsList>
-    <TabsTrigger value="cli">CLI</TabsTrigger>
-    <TabsTrigger value="manual">Manual</TabsTrigger>
-  </TabsList>
-
-  <TabsContent value="cli">
-    ```bash
-    npx shadcn@latest add https://badtz-ui.com/r/image-split.json
-    ```
-  </TabsContent>
-
-  <TabsContent value="manual">
-    <Steps>
-      <Step>Install the following dependencies:</Step>
-
-      ```bash
-      npm install clsx tailwind-merge
-      ```
-
-      <Step>Add the <Kbd>utils</Kbd> file to the <Kbd>@/lib</Kbd> folder</Step>
-
-      <UtilsSource>
-        <Highlighter slot="javascript">
-          ```jsx
-          import { clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
-
-          export function cn(...inputs) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          import { ClassValue, clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
-
-          export function cn(...inputs: ClassValue[]) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-      </UtilsSource>
-
-      <Step>Copy and paste the <Kbd>image-split</Kbd> code into your project.</Step>
-
-      <ComponentSource name="image-split">
-        <Highlighter slot="javascript">
-          ```jsx
-          "use client";
-
-          import React, { useState, useRef, useEffect } from "react";
-          import { cn } from "@/lib/utils";
-
-          const hexToRgb = (hex) => {
-            let validHex = /^#?([a-fA-F0-9]{3}|[a-fA-F0-9]{6})$/.test(hex);
-            if (!validHex) return null;
-
-            let cleanHex = hex.replace("#", "");
-
-            if (cleanHex.length === 3) {
-              cleanHex = cleanHex
-                .split("")
-                .map((char) => char + char)
-                .join("");
-            }
-
-            const bigint = parseInt(cleanHex, 16);
-            const r = (bigint >> 16) & 255;
-            const g = (bigint >> 8) & 255;
-            const b = bigint & 255;
-
-            return `${r}, ${g}, ${b}`;
-          };
-
-          export function ImageSplit({
-            src,
-            sections = 9,
-            offsetStep = 30,
-            initialBorderOpacity = 0.4,
-            enableBorder = true,
-            borderColor = "#ffffff",
-            viewportThreshold = 0.3,
-            className,
-            ...props
-          }) {
-            const [imagePieces, setImagePieces] = useState([]);
-            const [borderOpacity, setBorderOpacity] = useState(initialBorderOpacity);
-            const [progress, setProgress] = useState(0);
-            const canvasRef = useRef(null);
-            const parentRef = useRef(null);
-            const imgRefs = useRef([]);
-            const scrollContainerRef = useRef(null);
-            const animationFrameRef = useRef();
-            const borderRgb = hexToRgb(borderColor) || "255, 255, 255";
-
-            useEffect(() => {
-              const image = new Image();
-              image.src = src;
-              image.onload = () => cutImageUp(image);
-            }, [src, sections]);
-
-            useEffect(() => {
-              setBorderOpacity(progress * initialBorderOpacity);
-            }, [progress]);
-
-            useEffect(() => {
-              const parent = parentRef.current;
-              if (!parent) return;
-
-              scrollContainerRef.current = getScrollParent(parent);
-              setupScrollListener();
-
-              return () => {
-                if (animationFrameRef.current) {
-                  cancelAnimationFrame(animationFrameRef.current);
-                }
-              };
-            }, []);
-
-            const getScrollParent = (element) => {
-              while (element) {
-                const style = getComputedStyle(element);
-                if (["auto", "scroll"].includes(style.overflowY)) return element;
-                if (!element.parentElement) return null;
-                element = element.parentElement;
-              }
-              return null;
-            };
-
-            const setupScrollListener = () => {
-              const scrollContainer = scrollContainerRef.current;
-              const parent = parentRef.current;
-              if (!parent) return;
-
-              const updateProgress = () => {
-                const parentRect = parent.getBoundingClientRect();
-                const viewportHeight = window.innerHeight;
-
-                let progress;
-                if (scrollContainer instanceof HTMLElement) {
-                  const scrollContainerRect = scrollContainer.getBoundingClientRect();
-                  const start = scrollContainerRect.bottom;
-                  const end =
-                    scrollContainerRect.top + viewportHeight * viewportThreshold;
-                  const current = parentRect.top;
-                  progress = (current - end) / (start - end);
-                } else {
-                  const startTrigger = viewportHeight * viewportThreshold;
-                  const elementTop = parentRect.top;
-                  const elementHeight = parentRect.height;
-
-                  progress =
-                    (elementTop - startTrigger) /
-                    (viewportHeight - elementHeight - startTrigger);
-                }
-
-                progress = Math.min(1, Math.max(0, progress));
-                setProgress(progress);
-
-                imgRefs.current.forEach((img, index) => {
-                  if (!img) return;
-                  const offset = getOffset(index);
-                  img.style.transform = `translateY(${offset * progress}px)`;
-                });
-              };
-
-              const handleScroll = () => {
-                if (animationFrameRef.current) {
-                  cancelAnimationFrame(animationFrameRef.current);
-                }
-                animationFrameRef.current = requestAnimationFrame(updateProgress);
-              };
-
-              const target = scrollContainer || window;
-              target.addEventListener("scroll", handleScroll, { passive: true });
-              handleScroll();
-
-              return () => target.removeEventListener("scroll", handleScroll);
-            };
-
-            const cutImageUp = (image) => {
-              const canvas = canvasRef.current;
-              if (!canvas) return;
-
-              const pieceWidth = Math.floor(image.width / sections);
-              const pieceHeight = image.height;
-              const context = canvas.getContext("2d");
-              if (!context) return;
-
-              const newImagePieces = [];
-              for (let i = 0; i < sections; i++) {
-                canvas.width = pieceWidth;
-                canvas.height = pieceHeight;
-                context.clearRect(0, 0, canvas.width, canvas.height);
-                context.drawImage(
-                  image,
-                  i * pieceWidth,
-                  0,
-                  pieceWidth,
-                  pieceHeight,
-                  0,
-                  0,
-                  pieceWidth,
-                  pieceHeight
-                );
-                newImagePieces.push(canvas.toDataURL());
-              }
-              setImagePieces(newImagePieces);
-            };
-
-            const getOffset = (index) => {
-              if (index === 0 || index === sections - 1) return 0;
-              return Math.min(index, sections - 1 - index) * offsetStep;
-            };
-
-            return (
-              <div
-                ref={parentRef}
-                className={cn("flex relative w-full rounded-[inherit]", className)}
-                {...props}
-              >
-                <canvas ref={canvasRef} className="hidden" />
-
-                {imagePieces.map((piece, index) => (
-                  <img
-                    key={index}
-                    src={piece}
-                    alt={`section-${index}`}
-                    ref={(el) => {
-                      imgRefs.current[index] = el;
-                    }}
-                    className={cn(
-                      "object-contain transition-transform duration-300 ease-out",
-                      {
-                        "rounded-l-[inherit]": index === 0,
-                        "rounded-r-[inherit]": index === imagePieces.length - 1,
-                      }
-                    )}
-                    style={{
-                      flex: "1 0 auto",
-                      transform: `translateY(${getOffset(index)}px)`,
-                      zIndex: sections - index,
-                      borderRight:
-                        enableBorder && index !== imagePieces.length - 1
-                          ? `1px solid rgba(${borderRgb}, ${borderOpacity})`
-                          : "none",
-                      marginRight:
-                        enableBorder && index !== imagePieces.length - 1 ? "-1px" : "0",
-                      boxSizing: "border-box",
-                    }}
-                  />
-                ))}
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          "use client";
-
-          import React, { useState, useRef, useEffect } from "react";
-          import { cn } from "@/lib/utils";
-
-          interface ImageSplitProps extends React.HTMLAttributes<HTMLDivElement> {
-            src: string;
-            sections?: number;
-            offsetStep?: number;
-            initialBorderOpacity?: number;
-            enableBorder?: boolean;
-            borderColor?: string;
-            viewportThreshold?: number;
-            className?: string;
-          }
-
-          const hexToRgb = (hex: string): string | null => {
-            const validHex = /^#?([a-fA-F0-9]{3}|[a-fA-F0-9]{6})$/.test(hex);
-            if (!validHex) return null;
-
-            let cleanHex = hex.replace("#", "");
-
-            if (cleanHex.length === 3) {
-              cleanHex = cleanHex
-                .split("")
-                .map((char) => char + char)
-                .join("");
-            }
-
-            const bigint = parseInt(cleanHex, 16);
-            const r = (bigint >> 16) & 255;
-            const g = (bigint >> 8) & 255;
-            const b = bigint & 255;
-
-            return `${r}, ${g}, ${b}`;
-          };
-
-          export function ImageSplit({
-            src,
-            sections = 9,
-            offsetStep = 30,
-            initialBorderOpacity = 0.4,
-            enableBorder = true,
-            borderColor = "#ffffff",
-            viewportThreshold = 0.3,
-            className,
-            ...props
-          }: ImageSplitProps) {
-            const [imagePieces, setImagePieces] = useState<string[]>([]);
-            const [borderOpacity, setBorderOpacity] =
-              useState<number>(initialBorderOpacity);
-            const [progress, setProgress] = useState<number>(0);
-            const canvasRef = useRef<HTMLCanvasElement | null>(null);
-            const parentRef = useRef<HTMLDivElement | null>(null);
-            const imgRefs = useRef<(HTMLImageElement | null)[]>([]);
-            const scrollContainerRef = useRef<HTMLElement | null>(null);
-            const animationFrameRef = useRef<number>();
-            const borderRgb = hexToRgb(borderColor) || "255, 255, 255";
-
-            useEffect(() => {
-              const image = new Image();
-              image.src = src;
-              image.onload = () => cutImageUp(image);
-            }, [src, sections]);
-
-            useEffect(() => {
-              setBorderOpacity(progress * initialBorderOpacity);
-            }, [progress]);
-
-            useEffect(() => {
-              const parent = parentRef.current;
-              if (!parent) return;
-
-              scrollContainerRef.current = getScrollParent(parent);
-              setupScrollListener();
-
-              return () => {
-                if (animationFrameRef.current) {
-                  cancelAnimationFrame(animationFrameRef.current);
-                }
-              };
-            }, []);
-
-            const getScrollParent = (element: HTMLElement | null): HTMLElement | null => {
-              while (element) {
-                const style = getComputedStyle(element);
-                if (["auto", "scroll"].includes(style.overflowY)) return element;
-                if (!element.parentElement) return null;
-                element = element.parentElement;
-              }
-              return null;
-            };
-
-            const setupScrollListener = () => {
-              const scrollContainer = scrollContainerRef.current;
-              const parent = parentRef.current;
-              if (!parent) return;
-
-              const updateProgress = () => {
-                const parentRect = parent.getBoundingClientRect();
-                const viewportHeight = window.innerHeight;
-
-                let progress;
-                if (scrollContainer instanceof HTMLElement) {
-                  const scrollContainerRect = scrollContainer.getBoundingClientRect();
-                  const start = scrollContainerRect.bottom;
-                  const end =
-                    scrollContainerRect.top + viewportHeight * viewportThreshold;
-                  const current = parentRect.top;
-                  progress = (current - end) / (start - end);
-                } else {
-                  const startTrigger = viewportHeight * viewportThreshold;
-                  const elementTop = parentRect.top;
-                  const elementHeight = parentRect.height;
-
-                  progress =
-                    (elementTop - startTrigger) /
-                    (viewportHeight - elementHeight - startTrigger);
-                }
-
-                progress = Math.min(1, Math.max(0, progress));
-                setProgress(progress);
-
-                imgRefs.current.forEach((img, index) => {
-                  if (!img) return;
-                  const offset = getOffset(index);
-                  img.style.transform = `translateY(${offset * progress}px)`;
-                });
-              };
-
-              const handleScroll = () => {
-                if (animationFrameRef.current) {
-                  cancelAnimationFrame(animationFrameRef.current);
-                }
-                animationFrameRef.current = requestAnimationFrame(updateProgress);
-              };
-
-              const target = scrollContainer || window;
-              target.addEventListener("scroll", handleScroll, { passive: true });
-              handleScroll();
-
-              return () => target.removeEventListener("scroll", handleScroll);
-            };
-
-            const cutImageUp = (image: HTMLImageElement) => {
-              const canvas = canvasRef.current;
-              if (!canvas) return;
-
-              const pieceWidth = Math.floor(image.width / sections);
-              const pieceHeight = image.height;
-              const context = canvas.getContext("2d");
-              if (!context) return;
-
-              const newImagePieces: string[] = [];
-              for (let i = 0; i < sections; i++) {
-                canvas.width = pieceWidth;
-                canvas.height = pieceHeight;
-                context.clearRect(0, 0, canvas.width, canvas.height);
-                context.drawImage(
-                  image,
-                  i * pieceWidth,
-                  0,
-                  pieceWidth,
-                  pieceHeight,
-                  0,
-                  0,
-                  pieceWidth,
-                  pieceHeight
-                );
-                newImagePieces.push(canvas.toDataURL());
-              }
-              setImagePieces(newImagePieces);
-            };
-
-            const getOffset = (index: number) => {
-              if (index === 0 || index === sections - 1) return 0;
-              return Math.min(index, sections - 1 - index) * offsetStep;
-            };
-
-            return (
-              <div
-                ref={parentRef}
-                className={cn("flex relative w-full rounded-[inherit]", className)}
-                {...props}
-              >
-                <canvas ref={canvasRef} className="hidden" />
-
-                {imagePieces.map((piece, index) => (
-                  <img
-                    key={index}
-                    src={piece}
-                    alt={`section-${index}`}
-                    ref={(el: HTMLImageElement | null) => {
-                      imgRefs.current[index] = el;
-                    }}
-                    className={cn(
-                      "object-contain transition-transform duration-300 ease-out",
-                      {
-                        "rounded-l-[inherit]": index === 0,
-                        "rounded-r-[inherit]": index === imagePieces.length - 1,
-                      }
-                    )}
-                    style={{
-                      width: `${100 / sections}%`,
-                      transform: `translateY(${getOffset(index)}px)`,
-                      zIndex: sections - index,
-                      borderRight:
-                        enableBorder && index !== imagePieces.length - 1
-                          ? `1px solid rgba(${borderRgb}, ${borderOpacity})`
-                          : "none",
-                      marginRight:
-                        enableBorder && index !== imagePieces.length - 1 ? "-1px" : "0",
-                      boxSizing: "border-box",
-                    }}
-                  />
-                ))}
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-      </ComponentSource>
-
-      <Step>Update the import paths to match your project setup.</Step>
-    </Steps>
-  </TabsContent>
-</Tabs>
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/image-split.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge motion
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="image-split" title="components/ui/image-split.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { ImageSplit } from "@/components/ui/image-split";
 ```
 
-```tsx
+```tsx showLineNumbers
 <ImageSplit
   src="/images/components/image-split/badtz-ui-documentation-dark.webp"
   sections={9}
@@ -606,20 +75,56 @@ import { ImageSplit } from "@/components/ui/image-split";
 
 ## Props
 
-<Kbd>ImageSplit</Kbd> props.
+`ImageSplit` props.
 
-| Prop                 | Type    | Description                                                          | Default   |
-| -------------------- | ------- | -------------------------------------------------------------------- | --------- |
-| src                  | <Kbd>string</Kbd>  | The URL of the image to be split.                                    | -         |
-| sections             | <Kbd>number</Kbd>  | The number of sections the image is divided into.                    | 9         |
-| offsetStep           | <Kbd>number</Kbd>  | The step value for vertical offset applied to each image section.    | 30        |
-| initialBorderOpacity | <Kbd>number</Kbd>  | The initial opacity of the borders between image sections.           | 0.4       |
-| enableBorder         | <Kbd>boolean</Kbd> | Whether to display borders between image sections.                   | true      |
-| borderColor          | <Kbd>string</Kbd>  | The color of the borders between sections in hex format.             | "#ffffff" |
-| viewportThreshold    | <Kbd>number</Kbd>  | The percentage of the viewport height at which the animation starts. | 0.3       |
-| className            | <Kbd>string</Kbd>  | Additional CSS classes for styling the container.                    | -         |
-| [key: string]        | <Kbd>any</Kbd>     | Any additional props passed to the parent `<div>`.                   | -         |
+<TypeTable
+  type={{
+    src: {
+      type: "string",
+      description: "The URL of the image to be split."
+    },
+    sections: {
+      type: "number",
+      description: "The number of sections the image is divided into.",
+      default: "9"
+    },
+    offsetStep: {
+      type: "number",
+      description: "The step value for vertical offset applied to each image section.",
+      default: "30"
+    },
+    initialBorderOpacity: {
+      type: "number",
+      description: "The initial opacity of the borders between image sections.",
+      default: "0.4"
+    },
+    enableBorder: {
+      type: "boolean",
+      description: "Whether to display borders between image sections.",
+      default: "true"
+    },
+    borderColor: {
+      type: "string",
+      description: "The color of the borders between sections in hex format.",
+      default: '"#ffffff"'
+    },
+    viewportThreshold: {
+      type: "number",
+      description: "The percentage of the viewport height at which the animation starts.",
+      default: "0.3"
+    },
+    className: {
+      type: "string",
+      description: "Additional CSS classes for styling the container."
+    },
+    "[key: string]": {
+      type: "any",
+      description: "Any additional props passed to the parent `<div>`."
+    }
+  }}
+/>
+
 
 ## Credits
 
-<li className="text-sm text-muted-foreground mt-4">This component is inspired by <MdxLink href="https://reflect.app/">Reflect</MdxLink></li>
+This component is inspired by [Reflect](https://reflect.app/).

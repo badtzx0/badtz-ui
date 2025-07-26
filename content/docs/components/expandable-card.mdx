@@ -1,631 +1,72 @@
 ---
 title: Expandable Card
 description: A versatile and engaging UI component that allows users to explore content in a more immersive way.
+component: true
 ---
 
 <ComponentPreview
   name="expandable-card-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="A card that allows users to explore content in a more immersive way."
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import { ExpandableCard } from "@/components/ui/expandable-card";
-
-    export default function ExpandableCardDemo() {
-      return (
-        <ExpandableCard
-          title="Whispering Forest"
-          src="https://cdn.badtz-ui.com/images/components/expandable-card/haunted-house.webp"
-          description="A Yokai Tale"
-          classNameExpanded="[&_h4]:text-black dark:[&_h4]:text-white [&_h4]:font-medium"
-        >
-          <h4>The Village's Secret</h4>
-          <p>
-            Deep within the mist-covered mountains of Japan, there lies a small,
-            secluded village known as <i>Yamadori</i>. For centuries, the villagers
-            have lived in harmony with nature, but they also harbor a dark secret—an
-            ancient pact with the spirits of the forest, the
-            <i>yokai</i>. These mischievous and often dangerous creatures roam the
-            woods, unseen by most, but their presence is always felt in the eerie
-            whispers that fill the night air.
-          </p>
-          <h4>The Mysterious Disappearances</h4>
-          <p>
-            Recently, strange occurrences have unsettled the peace of
-            <i>Yamadori</i>. People have started to disappear without a trace,
-            vanishing into the dense forest at night. Some say it is the work of the{" "}
-            <i>yurei</i>, the vengeful spirits of those who died unjustly. Others
-            whisper of the return of the fearsome <i>Tengu</i>, bird-like creatures
-            that punish the prideful. The villagers, terrified, call upon a
-            wandering priest, known as a <i>yamabushi</i>, to uncover the truth and
-            appease the spirits.
-          </p>
-          <h4>The Encounter with the Kitsune</h4>
-          <p>
-            One night, while performing a sacred ritual, the <i>yamabushi</i>
-            encounters a mysterious figure in the forest—a beautiful woman with
-            fox-like features. She reveals herself to be a <i>kitsune</i>, a
-            shapeshifting fox spirit. The <i>kitsune</i> warns the priest that the
-            recent turmoil is a result of a broken promise made to the forest
-            spirits long ago. Unless the villagers honor the pact, the wrath of the{" "}
-            <i>yokai</i> will consume the village.
-          </p>
-          <h4>The Final Confrontation</h4>
-          <p>
-            With time running out, the <i>yamabushi</i> must uncover the forgotten
-            history of Yamadori and restore balance between the human and spirit
-            worlds. Guided by the <i>kitsune</i> and aided by the protective spirits
-            of the forest, he ventures deep into the heart of the Whispering Forest
-            to confront the malevolent forces that seek to destroy the village. In a
-            climactic battle of wills, the fate of Yamadori hangs in the balance, as
-            the <i>yamabushi</i> faces off against the vengeful spirits in a final
-            effort to bring peace to both realms.
-          </p>
-        </ExpandableCard>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import { ExpandableCard } from "@/components/ui/expandable-card";
-
-    export default function ExpandableCardDemo() {
-      return (
-        <ExpandableCard
-          title="Whispering Forest"
-          src="https://cdn.badtz-ui.com/images/components/expandable-card/haunted-house.webp"
-          description="A Yokai Tale"
-          classNameExpanded="[&_h4]:text-black dark:[&_h4]:text-white [&_h4]:font-medium"
-        >
-          <h4>The Village's Secret</h4>
-          <p>
-            Deep within the mist-covered mountains of Japan, there lies a small,
-            secluded village known as <i>Yamadori</i>. For centuries, the villagers
-            have lived in harmony with nature, but they also harbor a dark secret—an
-            ancient pact with the spirits of the forest, the
-            <i>yokai</i>. These mischievous and often dangerous creatures roam the
-            woods, unseen by most, but their presence is always felt in the eerie
-            whispers that fill the night air.
-          </p>
-          <h4>The Mysterious Disappearances</h4>
-          <p>
-            Recently, strange occurrences have unsettled the peace of
-            <i>Yamadori</i>. People have started to disappear without a trace,
-            vanishing into the dense forest at night. Some say it is the work of the{" "}
-            <i>yurei</i>, the vengeful spirits of those who died unjustly. Others
-            whisper of the return of the fearsome <i>Tengu</i>, bird-like creatures
-            that punish the prideful. The villagers, terrified, call upon a
-            wandering priest, known as a <i>yamabushi</i>, to uncover the truth and
-            appease the spirits.
-          </p>
-          <h4>The Encounter with the Kitsune</h4>
-          <p>
-            One night, while performing a sacred ritual, the <i>yamabushi</i>
-            encounters a mysterious figure in the forest—a beautiful woman with
-            fox-like features. She reveals herself to be a <i>kitsune</i>, a
-            shapeshifting fox spirit. The <i>kitsune</i> warns the priest that the
-            recent turmoil is a result of a broken promise made to the forest
-            spirits long ago. Unless the villagers honor the pact, the wrath of the{" "}
-            <i>yokai</i> will consume the village.
-          </p>
-          <h4>The Final Confrontation</h4>
-          <p>
-            With time running out, the <i>yamabushi</i> must uncover the forgotten
-            history of Yamadori and restore balance between the human and spirit
-            worlds. Guided by the <i>kitsune</i> and aided by the protective spirits
-            of the forest, he ventures deep into the heart of the Whispering Forest
-            to confront the malevolent forces that seek to destroy the village. In a
-            climactic battle of wills, the fate of Yamadori hangs in the balance, as
-            the <i>yamabushi</i> faces off against the vengeful spirits in a final
-            effort to bring peace to both realms.
-          </p>
-        </ExpandableCard>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="Displays an expandable card."
+  align="center"
+/>
 
 ## Installation
 
-<Tabs defaultValue="cli">
-  <TabsList>
-    <TabsTrigger value="cli">CLI</TabsTrigger>
-    <TabsTrigger value="manual">Manual</TabsTrigger>
-  </TabsList>
+<CodeTabs>
 
-  <TabsContent value="cli">
-    ```bash
-    npx shadcn@latest add https://badtz-ui.com/r/expandable-card.json
-    ```
-  </TabsContent>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
 
-  <TabsContent value="manual">
-    <Steps>
-      <Step>Install the following dependencies:</Step>
+<TabsContent value="cli">
 
-      ```bash
-      npm install clsx tailwind-merge framer-motion
-      ```
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/expandable-card.json
+```
 
-      <Step>Add the <Kbd>utils</Kbd> file to the <Kbd>@/lib</Kbd> folder</Step>
+</TabsContent>
 
-      <UtilsSource>
-        <Highlighter slot="javascript">
-          ```jsx
-          import { clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<TabsContent value="manual">
 
-          export function cn(...inputs) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          import { ClassValue, clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<Steps>
 
-          export function cn(...inputs: ClassValue[]) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-      </UtilsSource>
+<Step>Install the following dependencies:</Step>
 
-      <Step>Copy and paste the <Kbd>expandable-card</Kbd> code into your project.</Step>
+```bash
+npm install clsx tailwind-merge motion
+```
 
-      <ComponentSource name="expandable-card">
-        <Highlighter slot="javascript">
-          ```jsx
-          "use client";
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
 
-          import * as React from "react";
-          import { AnimatePresence, motion } from "framer-motion";
-          import { cn } from "@/lib/utils";
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
 
-          export function ExpandableCard({
-            title,
-            src,
-            description,
-            children,
-            className,
-            classNameExpanded,
-            ...props
-          }) {
-            const [active, setActive] = React.useState(false);
-            const cardRef = React.useRef(null);
-            const id = React.useId();
+<Step>Copy and paste the following code into your project.</Step>
 
-            React.useEffect(() => {
-              const onKeyDown = (event) => {
-                if (event.key === "Escape") {
-                  setActive(false);
-                }
-              };
+<ComponentSource name="expandable-card" title="components/ui/expandable-card.tsx" />
 
-              const handleClickOutside = (event) => {
-                if (cardRef.current && !cardRef.current.contains(event.target)) {
-                  setActive(false);
-                }
-              };
+<Step>Update the import paths to match your project setup.</Step>
 
-              window.addEventListener("keydown", onKeyDown);
-              document.addEventListener("mousedown", handleClickOutside);
-              document.addEventListener("touchstart", handleClickOutside);
+</Steps>
 
-              return () => {
-                window.removeEventListener("keydown", onKeyDown);
-                document.removeEventListener("mousedown", handleClickOutside);
-                document.removeEventListener("touchstart", handleClickOutside);
-              };
-            }, []);
+</TabsContent>
 
-            return (
-              <>
-                <AnimatePresence>
-                  {active && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="fixed inset-0 bg-white/50 dark:bg-black/50 backdrop-blur-md h-full w-full z-10"
-                    />
-                  )}
-                </AnimatePresence>
-                <AnimatePresence>
-                  {active && (
-                    <div
-                      className={cn(
-                        "fixed inset-0 grid place-items-center z-[100] sm:mt-16 before:pointer-events-none"
-                      )}
-                    >
-                      <motion.div
-                        layoutId={`card-${title}-${id}`}
-                        ref={cardRef}
-                        className={cn(
-                          "w-full max-w-[850px] h-full flex flex-col overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] sm:rounded-t-3xl bg-zinc-50 shadow-sm dark:shadow-none dark:bg-zinc-950 relative",
-                          classNameExpanded
-                        )}
-                        {...props}
-                      >
-                        <motion.div layoutId={`image-${title}-${id}`}>
-                          <div className="relative before:absolute before:inset-x-0 before:bottom-[-1px] before:h-[70px] before:z-50 before:bg-gradient-to-t dark:before:from-zinc-950 before:from-zinc-50">
-                            <img
-                              src={src}
-                              alt={title}
-                              className="w-full h-80 object-cover object-center"
-                            />
-                          </div>
-                        </motion.div>
-                        <div className="relative h-full before:fixed before:inset-x-0 before:bottom-0 before:h-[70px] before:z-50 before:bg-gradient-to-t dark:before:from-zinc-950 before:from-zinc-50">
-                          <div className="flex justify-between items-start p-8 h-auto">
-                            <div>
-                              <motion.p
-                                layoutId={`description-${description}-${id}`}
-                                className="text-zinc-500 dark:text-zinc-400 text-lg"
-                              >
-                                {description}
-                              </motion.p>
-                              <motion.h3
-                                layoutId={`title-${title}-${id}`}
-                                className="font-semibold text-black dark:text-white text-4xl sm:text-4xl mt-0.5"
-                              >
-                                {title}
-                              </motion.h3>
-                            </div>
-                            <motion.button
-                              aria-label="Close card"
-                              layoutId={`button-${title}-${id}`}
-                              className="h-10 w-10 shrink-0 flex items-center justify-center rounded-full bg-zinc-50 dark:bg-zinc-950 text-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-950 dark:text-white/70 text-black/70 border border-gray-200/90 dark:border-zinc-900 hover:border-gray-300/90 hover:text-black dark:hover:text-white dark:hover:border-zinc-800 transition-colors duration-300 focus:outline-none"
-                              onClick={() => setActive(false)}
-                            >
-                              <motion.div
-                                animate={{ rotate: active ? 45 : 0 }}
-                                transition={{ duration: 0.4 }}
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="20"
-                                  height="20"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                >
-                                  <path d="M5 12h14" />
-                                  <path d="M12 5v14" />
-                                </svg>
-                              </motion.div>
-                            </motion.button>
-                          </div>
-                          <div className="relative px-6 sm:px-8">
-                            <motion.div
-                              layout
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              exit={{ opacity: 0 }}
-                              className="text-zinc-500 dark:text-zinc-400 text-base pb-10 flex flex-col items-start gap-4 overflow-auto"
-                            >
-                              {children}
-                            </motion.div>
-                          </div>
-                        </div>
-                      </motion.div>
-                    </div>
-                  )}
-                </AnimatePresence>
-
-                <motion.div
-                  role="dialog"
-                  aria-labelledby={`card-title-${id}`}
-                  aria-modal="true"
-                  layoutId={`card-${title}-${id}`}
-                  onClick={() => setActive(true)}
-                  className={cn(
-                    "p-3 flex flex-col justify-between items-center bg-zinc-50 shadow-sm dark:shadow-none dark:bg-zinc-950 rounded-2xl cursor-pointer border border-gray-200/70 dark:border-zinc-900",
-                    className
-                  )}
-                >
-                  <div className="flex gap-4 flex-col">
-                    <motion.div layoutId={`image-${title}-${id}`}>
-                      <img
-                        src={src}
-                        alt={title}
-                        className="w-64 h-56 rounded-lg object-cover object-center"
-                      />
-                    </motion.div>
-                    <div className="flex justify-between items-center">
-                      <div className="flex flex-col">
-                        <motion.p
-                          layoutId={`description-${description}-${id}`}
-                          className="text-zinc-500 dark:text-zinc-400 md:text-left text-sm font-medium"
-                        >
-                          {description}
-                        </motion.p>
-                        <motion.h3
-                          layoutId={`title-${title}-${id}`}
-                          className="text-black dark:text-white md:text-left font-semibold"
-                        >
-                          {title}
-                        </motion.h3>
-                      </div>
-                      <motion.button
-                        aria-label="Open card"
-                        layoutId={`button-${title}-${id}`}
-                        className={cn(
-                          "h-8 w-8 shrink-0 flex items-center justify-center rounded-full bg-zinc-50 dark:bg-zinc-950 text-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-950 dark:text-white/70 text-black/70 border border-gray-200/90 dark:border-zinc-900 hover:border-gray-300/90 hover:text-black dark:hover:text-white dark:hover:border-zinc-800 transition-colors duration-300 focus:outline-none",
-                          className
-                        )}
-                      >
-                        <motion.div
-                          animate={{ rotate: active ? 45 : 0 }}
-                          transition={{ duration: 0.4 }}
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path d="M5 12h14" />
-                            <path d="M12 5v14" />
-                          </svg>
-                        </motion.div>
-                      </motion.button>
-                    </div>
-                  </div>
-                </motion.div>
-              </>
-            );
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          "use client";
-
-          import * as React from "react";
-          import { AnimatePresence, motion } from "framer-motion";
-          import { cn } from "@/lib/utils";
-
-          interface ExpandableCardProps {
-            title: string;
-            src: string;
-            description: string;
-            children?: React.ReactNode;
-            className?: string;
-            classNameExpanded?: string;
-            [key: string]: any;
-          }
-
-          export function ExpandableCard({
-            title,
-            src,
-            description,
-            children,
-            className,
-            classNameExpanded,
-            ...props
-          }: ExpandableCardProps) {
-            const [active, setActive] = React.useState(false);
-            const cardRef = React.useRef<HTMLDivElement>(null);
-            const id = React.useId();
-
-            React.useEffect(() => {
-              const onKeyDown = (event: KeyboardEvent) => {
-                if (event.key === "Escape") {
-                  setActive(false);
-                }
-              };
-
-              const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-                if (cardRef.current && !cardRef.current.contains(event.target as Node)) {
-                  setActive(false);
-                }
-              };
-
-              window.addEventListener("keydown", onKeyDown);
-              document.addEventListener("mousedown", handleClickOutside);
-              document.addEventListener("touchstart", handleClickOutside);
-
-              return () => {
-                window.removeEventListener("keydown", onKeyDown);
-                document.removeEventListener("mousedown", handleClickOutside);
-                document.removeEventListener("touchstart", handleClickOutside);
-              };
-            }, []);
-
-            return (
-              <>
-                <AnimatePresence>
-                  {active && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="fixed inset-0 bg-white/50 dark:bg-black/50 backdrop-blur-md h-full w-full z-10"
-                    />
-                  )}
-                </AnimatePresence>
-                <AnimatePresence>
-                  {active && (
-                    <div
-                      className={cn(
-                        "fixed inset-0 grid place-items-center z-[100] sm:mt-16 before:pointer-events-none"
-                      )}
-                    >
-                      <motion.div
-                        layoutId={`card-${title}-${id}`}
-                        ref={cardRef}
-                        className={cn(
-                          "w-full max-w-[850px] h-full flex flex-col overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch] sm:rounded-t-3xl bg-zinc-50 shadow-sm dark:shadow-none dark:bg-zinc-950 relative",
-                          classNameExpanded
-                        )}
-                        {...props}
-                      >
-                        <motion.div layoutId={`image-${title}-${id}`}>
-                          <div className="relative before:absolute before:inset-x-0 before:bottom-[-1px] before:h-[70px] before:z-50 before:bg-gradient-to-t dark:before:from-zinc-950 before:from-zinc-50">
-                            <img
-                              src={src}
-                              alt={title}
-                              className="w-full h-80 object-cover object-center"
-                            />
-                          </div>
-                        </motion.div>
-                        <div className="relative h-full before:fixed before:inset-x-0 before:bottom-0 before:h-[70px] before:z-50 before:bg-gradient-to-t dark:before:from-zinc-950 before:from-zinc-50">
-                          <div className="flex justify-between items-start p-8 h-auto">
-                            <div>
-                              <motion.p
-                                layoutId={`description-${description}-${id}`}
-                                className="text-zinc-500 dark:text-zinc-400 text-lg"
-                              >
-                                {description}
-                              </motion.p>
-                              <motion.h3
-                                layoutId={`title-${title}-${id}`}
-                                className="font-semibold text-black dark:text-white text-4xl sm:text-4xl mt-0.5"
-                              >
-                                {title}
-                              </motion.h3>
-                            </div>
-                            <motion.button
-                              aria-label="Close card"
-                              layoutId={`button-${title}-${id}`}
-                              className="h-10 w-10 shrink-0 flex items-center justify-center rounded-full bg-zinc-50 dark:bg-zinc-950 text-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-950 dark:text-white/70 text-black/70 border border-gray-200/90 dark:border-zinc-900 hover:border-gray-300/90 hover:text-black dark:hover:text-white dark:hover:border-zinc-800 transition-colors duration-300 focus:outline-none"
-                              onClick={() => setActive(false)}
-                            >
-                              <motion.div
-                                animate={{ rotate: active ? 45 : 0 }}
-                                transition={{ duration: 0.4 }}
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="20"
-                                  height="20"
-                                  viewBox="0 0 24 24"
-                                  fill="none"
-                                  stroke="currentColor"
-                                  strokeWidth="2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                >
-                                  <path d="M5 12h14" />
-                                  <path d="M12 5v14" />
-                                </svg>
-                              </motion.div>
-                            </motion.button>
-                          </div>
-                          <div className="relative px-6 sm:px-8">
-                            <motion.div
-                              layout
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              exit={{ opacity: 0 }}
-                              className="text-zinc-500 dark:text-zinc-400 text-base pb-10 flex flex-col items-start gap-4 overflow-auto"
-                            >
-                              {children}
-                            </motion.div>
-                          </div>
-                        </div>
-                      </motion.div>
-                    </div>
-                  )}
-                </AnimatePresence>
-
-                <motion.div
-                  role="dialog"
-                  aria-labelledby={`card-title-${id}`}
-                  aria-modal="true"
-                  layoutId={`card-${title}-${id}`}
-                  onClick={() => setActive(true)}
-                  className={cn(
-                    "p-3 flex flex-col justify-between items-center bg-zinc-50 shadow-sm dark:shadow-none dark:bg-zinc-950 rounded-2xl cursor-pointer border border-gray-200/70 dark:border-zinc-900",
-                    className
-                  )}
-                >
-                  <div className="flex gap-4 flex-col">
-                    <motion.div layoutId={`image-${title}-${id}`}>
-                      <img
-                        src={src}
-                        alt={title}
-                        className="w-64 h-56 rounded-lg object-cover object-center"
-                      />
-                    </motion.div>
-                    <div className="flex justify-between items-center">
-                      <div className="flex flex-col">
-                        <motion.p
-                          layoutId={`description-${description}-${id}`}
-                          className="text-zinc-500 dark:text-zinc-400 md:text-left text-sm font-medium"
-                        >
-                          {description}
-                        </motion.p>
-                        <motion.h3
-                          layoutId={`title-${title}-${id}`}
-                          className="text-black dark:text-white md:text-left font-semibold"
-                        >
-                          {title}
-                        </motion.h3>
-                      </div>
-                      <motion.button
-                        aria-label="Open card"
-                        layoutId={`button-${title}-${id}`}
-                        className={cn(
-                          "h-8 w-8 shrink-0 flex items-center justify-center rounded-full bg-zinc-50 dark:bg-zinc-950 text-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-950 dark:text-white/70 text-black/70 border border-gray-200/90 dark:border-zinc-900 hover:border-gray-300/90 hover:text-black dark:hover:text-white dark:hover:border-zinc-800 transition-colors duration-300 focus:outline-none",
-                          className
-                        )}
-                      >
-                        <motion.div
-                          animate={{ rotate: active ? 45 : 0 }}
-                          transition={{ duration: 0.4 }}
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path d="M5 12h14" />
-                            <path d="M12 5v14" />
-                          </svg>
-                        </motion.div>
-                      </motion.button>
-                    </div>
-                  </div>
-                </motion.div>
-              </>
-            );
-          }
-          ```
-        </Highlighter>
-      </ComponentSource>
-
-      <Step>Update the import paths to match your project setup.</Step>
-    </Steps>
-  </TabsContent>
-</Tabs>
+</CodeTabs>
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { ExpandableCard } from "@/components/ui/expandable-card";
 ```
 
-```tsx
+```tsx showLineNumbers
 <ExpandableCard
   title="Whispering Forest"
   src="/images/components/expandable-card/haunted-house.webp"
@@ -637,18 +78,42 @@ import { ExpandableCard } from "@/components/ui/expandable-card";
 
 ## Props
 
-<Kbd>ExpandableCard</Kbd> props.
+`ExpandableCard` props.
 
-| Prop              | Type            | Description                                            | Default |
-| ----------------- | --------------- | ------------------------------------------------------ | ------- |
-| title             | <Kbd>string</Kbd>          | The title displayed on the card.                       | -       |
-| src               | <Kbd>string</Kbd>          | The URL of the image displayed at the top of the card. | -       |
-| description       | <Kbd>string</Kbd>          | A short description displayed below the title.         | -       |
-| children          | <Kbd>React.ReactNode</Kbd> | Additional content displayed inside the expanded card. | -       |
-| className         | <Kbd>string</Kbd>          | Custom CSS classes for styling the card.               | -       |
-| classNameExpanded | <Kbd>string</Kbd>          | CSS classes applied when the card is expanded.         | -       |
-| [key: string]     | <Kbd>any</Kbd>             | Any additional props passed to the parent component.   | -       |
+<TypeTable
+  type={{
+    title: {
+      type: "string",
+      description: "The title displayed on the card."
+    },
+    src: {
+      type: "string",
+      description: "The URL of the image displayed at the top of the card."
+    },
+    description: {
+      type: "string",
+      description: "A short description displayed below the title."
+    },
+    children: {
+      type: "React.ReactNode",
+      description: "Additional content displayed inside the expanded card."
+    },
+    className: {
+      type: "string",
+      description: "Custom CSS classes for styling the card."
+    },
+    classNameExpanded: {
+      type: "string",
+      description: "CSS classes applied when the card is expanded."
+    },
+    "[key: string]": {
+      type: "any",
+      description: "Any additional props passed to the parent component."
+    }
+  }}
+/>
+
 
 ## Credits
 
-<li className="text-sm text-muted-foreground mt-4">This component is inspired by{" "}<MdxLink href="https://linear.app/">Linear</MdxLink></li>
+This component is inspired by [Linear](https://linear.app/).

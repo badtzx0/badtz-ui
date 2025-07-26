@@ -1,0 +1,106 @@
+---
+title: Stagger Button
+description: A dynamic button that animates on hover, where each letter of the text flips in 3D with a staggered effect.
+component: true
+---
+
+<ComponentPreview
+  name="stagger-button-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="A dynamic button that animates on hover, where each letter of the text flips in 3D with a staggered effect."
+  align="center"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/stagger-button.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge motion
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="stagger-button" title="components/ui/stagger-button.tsx" />
+
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { StaggerButton } from "@/components/ui/stagger-button";
+```
+
+```tsx showLineNumbers
+<StaggerButton>
+  Hover Me
+</StaggerButton>
+```
+
+## Props
+
+`StaggerButton` props.
+
+<TypeTable
+  type={{
+    children: {
+      type: "ReactNode",
+      description: "The text or elements to display and animate inside the button."
+    },
+    className: {
+      type: "string",
+      description: "Additional custom classes for styling."
+    },
+    duration: {
+      type: "number",
+      description: "Duration of the animation for each character flip (in seconds).",
+      default: "0.2"
+    },
+    staggerDelay: {
+      type: "number",
+      description: "Delay between the animations of each character (in seconds).",
+      default: "0.05"
+    },
+    height: {
+      type: "number",
+      description: "The height of the button, affecting the 3D flip effect.",
+      default: "26"
+    }
+  }}
+/>

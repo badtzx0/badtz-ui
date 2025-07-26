@@ -1,0 +1,115 @@
+---
+title: Shuffle Button
+description: A dynamic button that shuffles the characters of its text when hovered over, creating an engaging animation.
+component: true
+---
+
+<ComponentPreview
+  name="shuffle-button-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="A dynamic button that shuffles the characters of its text when hovered over, creating an engaging animation."
+  align="center"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/shuffle-button.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="shuffle-button" title="components/ui/shuffle-button.tsx" />
+
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { ShuffleButton } from "@/components/ui/shuffle-button";
+```
+
+```tsx showLineNumbers
+<ShuffleButton>Hover Me</ShuffleButton>
+```
+
+<Callout type="warning">
+For the best effect, we recommend using a monospace font or applying a fixed width.
+</Callout>
+
+
+## Props
+
+`ShuffleButton` props.
+
+<TypeTable
+  type={{
+    children: {
+      type: "React.ReactNode",
+      description: "The content inside the button.",
+      required: true
+    },
+    className: {
+      type: "string",
+      description: "Additional custom classes for styling."
+    },
+    angle: {
+      type: "number",
+      description: "The direction in which the confetti is fired, in degrees.",
+      default: "90"
+    },
+    particleCount: {
+      type: "number",
+      description: "The number of confetti particles emitted on click.",
+      default: "75"
+    },
+    startVelocity: {
+      type: "number",
+      description: "The initial velocity of the confetti particles.",
+      default: "35"
+    },
+    spread: {
+      type: "number",
+      description: "The spread angle of the confetti explosion.",
+      default: "70"
+    }
+  }}
+/>

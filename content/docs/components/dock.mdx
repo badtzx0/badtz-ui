@@ -1,434 +1,72 @@
 ---
 title: Dock
 description: An interactive icon dock that smoothly scales icons/images on hover, providing a responsive and engaging visual effect.
+component: true
 ---
 
 <ComponentPreview
   name="dock-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An interactive icon dock"
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import { Dock, DockIcon } from "@/components/ui/dock";
-
-    export default function DockDemo() {
-      const dockItems = [
-        {
-          src: "https://cdn.badtz-ui.com/images/components/dock/tailwindcss-logo.webp",
-          name: "TailwindCSS",
-          href: "#tailwindcss",
-        },
-        {
-          src: "https://cdn.badtz-ui.com/images/components/dock/edge-logo.webp",
-          name: "Edge",
-          href: "#linear",
-        },
-        {
-          src: "https://cdn.badtz-ui.com/images/components/dock/motion-logo.webp",
-          name: "Motion",
-          href: "#motion",
-        },
-        {
-          src: "https://cdn.badtz-ui.com/images/components/dock/react-logo.webp",
-          name: "React",
-          href: "#react",
-        },
-        {
-          src: "https://cdn.badtz-ui.com/images/components/dock/linear-logo.webp",
-          name: "Linear",
-          href: "#linear",
-        },
-        {
-          src: "https://cdn.badtz-ui.com/images/components/dock/drizzle-orm-logo.webp",
-          name: "Drizzle ORM",
-          href: "#drizzle-orm",
-        },
-        {
-          src: "https://cdn.badtz-ui.com/images/components/dock/deepseek-logo.webp",
-          name: "Deepseek",
-          href: "#linear",
-        },
-      ];
-
-      return (
-        <Dock>
-          {dockItems.map((item, index) => (
-            <DockIcon key={index} src={item.src} name={item.name} href={item.href} />
-          ))}
-        </Dock>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import { Dock, DockIcon } from "@/components/ui/dock";
-
-    export default function DockDemo() {
-      const dockItems = [
-        {
-          src: "https://cdn.badtz-ui.com/images/components/dock/tailwindcss-logo.webp",
-          name: "TailwindCSS",
-          href: "#tailwindcss",
-        },
-        {
-          src: "https://cdn.badtz-ui.com/images/components/dock/edge-logo.webp",
-          name: "Edge",
-          href: "#linear",
-        },
-        {
-          src: "https://cdn.badtz-ui.com/images/components/dock/motion-logo.webp",
-          name: "Motion",
-          href: "#motion",
-        },
-        {
-          src: "https://cdn.badtz-ui.com/images/components/dock/react-logo.webp",
-          name: "React",
-          href: "#react",
-        },
-        {
-          src: "https://cdn.badtz-ui.com/images/components/dock/linear-logo.webp",
-          name: "Linear",
-          href: "#linear",
-        },
-        {
-          src: "https://cdn.badtz-ui.com/images/components/dock/drizzle-orm-logo.webp",
-          name: "Drizzle ORM",
-          href: "#drizzle-orm",
-        },
-        {
-          src: "https://cdn.badtz-ui.com/images/components/dock/deepseek-logo.webp",
-          name: "Deepseek",
-          href: "#linear",
-        },
-      ];
-
-      return (
-        <Dock>
-          {dockItems.map((item, index) => (
-            <DockIcon key={index} src={item.src} name={item.name} href={item.href} />
-          ))}
-        </Dock>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="Displays a dock with a smooth scaling effect that adapts to the size of the container."
+  align="center"
+/>
 
 ## Installation
 
-<Tabs defaultValue="cli">
-  <TabsList>
-    <TabsTrigger value="cli">CLI</TabsTrigger>
-    <TabsTrigger value="manual">Manual</TabsTrigger>
-  </TabsList>
+<CodeTabs>
 
-  <TabsContent value="cli">
-    ```bash
-    npx shadcn@latest add https://badtz-ui.com/r/dock.json
-    ```
-  </TabsContent>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
 
-  <TabsContent value="manual">
-    <Steps>
-      <Step>Install the following dependencies:</Step>
+<TabsContent value="cli">
 
-      ```bash
-      npm install clsx tailwind-merge
-      ```
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/dock.json
+```
 
-      <Step>Add the <Kbd>utils</Kbd> file to the <Kbd>@/lib</Kbd> folder</Step>
+</TabsContent>
 
-      <UtilsSource>
-        <Highlighter slot="javascript">
-          ```jsx
-          import { clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<TabsContent value="manual">
 
-          export function cn(...inputs) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          import { ClassValue, clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<Steps>
 
-          export function cn(...inputs: ClassValue[]) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-      </UtilsSource>
+<Step>Install the following dependencies:</Step>
 
-      <Step>Copy and paste the <Kbd>dock</Kbd> code into your project.</Step>
+```bash
+npm install clsx tailwind-merge motion
+```
 
-      <ComponentSource name="dock">
-        <Highlighter slot="javascript">
-          ```jsx
-          "use client";
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
 
-          import * as React from "react";
-          import { cn } from "@/lib/utils";
-          import { useRef } from "react";
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
 
-          export const scaleValue = function (value, from, to) {
-            const scale = (to[1] - to[0]) / (from[1] - from[0]);
-            const capped = Math.min(from[1], Math.max(from[0], value)) - from[0];
-            return Math.floor(capped * scale + to[0]);
-          };
+<Step>Copy and paste the following code into your project.</Step>
 
-          export function DockIcon({
-            className,
-            src,
-            href,
-            name,
-            handleIconHover,
-            children,
-            iconSize,
-          }) {
-            const ref = useRef(null);
+<ComponentSource name="dock" title="components/ui/dock.tsx" />
 
-            return (
-              <>
-                <style jsx>
-                  {`
-                    .icon:hover + .icon {
-                      width: calc(var(--icon-size) * 1.33 + var(--dock-offset-right, 0px));
-                      height: calc(var(--icon-size) * 1.33 + var(--dock-offset-right, 0px));
-                      margin-top: calc(var(--icon-size) * -0.33 + var(--dock-offset-right, 0) * -1);
-                    }
+<Step>Update the import paths to match your project setup.</Step>
 
-                    .icon:hover + .icon + .icon {
-                      width: calc(var(--icon-size) * 1.17 + var(--dock-offset-right, 0px));
-                      height: calc(var(--icon-size) * 1.17 + var(--dock-offset-right, 0px));
-                      margin-top: calc(var(--icon-size) * -0.17 + var(--dock-offset-right, 0) * -1);
-                    }
+</Steps>
 
-                    .icon:has(+ .icon:hover) {
-                      width: calc(var(--icon-size) * 1.33 + var(--dock-offset-left, 0px));
-                      height: calc(var(--icon-size) * 1.33 + var(--dock-offset-left, 0px));
-                      margin-top: calc(var(--icon-size) * -0.33 + var(--dock-offset-left, 0) * -1);
-                    }
+</TabsContent>
 
-                    .icon:has(+ .icon + .icon:hover) {
-                      width: calc(var(--icon-size) * 1.17 + var(--dock-offset-left, 0px));
-                      height: calc(var(--icon-size) * 1.17 + var(--dock-offset-left, 0px));
-                      margin-top: calc(var(--icon-size) * -0.17 + var(--dock-offset-left, 0) * -1);
-                    }
-                  `}
-                </style>
-                <li ref={ref} style={{ transition: "width, height, margin-top, cubic-bezier(0.25, 1, 0.5, 1) 150ms", "--icon-size": `${iconSize}px` }} onMouseMove={handleIconHover} className={cn("icon h-[var(--icon-size)] w-[var(--icon-size)] px-[calc(var(--icon-size)*0.075)] group/li cursor-pointer hover:w-[calc(var(--icon-size)*1.5)] hover:h-[calc(var(--icon-size)*1.5)] hover:-mt-[calc(var(--icon-size)/2)] [&_img]:object-contain flex items-center justify-center", className)}>
-                  <a href={href} className="relative aspect-square rounded-[10px] p-1.5 w-full bg-gradient-to-t from-neutral-100 dark:from-zinc-900 to-white dark:to-zinc-800 dark:shadow-[rgba(255,_255,_255,_0.3)_0px_1px_0px_inset] shadow-[rgba(0,_0,_0,_0.05)_0px_1px_0px_inset] border border-gray-100 dark:border-zinc-900 after:inset-0 after:absolute after:shadow-md after:shadow-zinc-800/10 after:rounded-[inherit] group/a">
-                    <span className="text-xs absolute top-[-40px] border border-gray-100 dark:border-zinc-800 text-black dark:text-white rounded-md bg-gradient-to-t from-neutral-100 dark:from-zinc-900 to-white dark:to-zinc-800 p-1 px-2 left-1/2 -translate-x-1/2 opacity-0 transition-opacity duration-200 group-hover/li:opacity-100 whitespace-nowrap">{name}</span>
-                    {src ? <img src={src} alt={name} className="rounded-[inherit] h-full w-full" /> : children}
-                  </a>
-                </li>
-              </>
-            );
-          }
-
-          export function Dock({
-            className,
-            children,
-            maxAdditionalSize = 5,
-            iconSize = 55,
-          }) {
-            const dockRef = useRef(null);
-
-            const handleIconHover = (e) => {
-              if (!dockRef.current) return;
-              const mousePos = e.clientX;
-              const iconPosLeft = e.currentTarget.getBoundingClientRect().left;
-              const iconWidth = e.currentTarget.getBoundingClientRect().width;
-
-              const cursorDistance = (mousePos - iconPosLeft) / iconWidth;
-              const offsetPixels = scaleValue(
-                cursorDistance,
-                [0, 1],
-                [maxAdditionalSize * -1, maxAdditionalSize]
-              );
-
-              dockRef.current.style.setProperty(
-                "--dock-offset-left",
-                `${offsetPixels * -1}px`
-              );
-
-              dockRef.current.style.setProperty(
-                "--dock-offset-right",
-                `${offsetPixels}px`
-              );
-            };
-
-            return (
-              <nav ref={dockRef} role="navigation" aria-label="Main Dock">
-                <ul className={cn("flex items-center bg-gradient-to-t from-neutral-50 dark:from-zinc-950 to-white dark:to-zinc-900 border border-gray-100 dark:border-zinc-900 p-1 rounded-xl ", className)}>
-                  {React.Children.map(children, (child) =>
-                    React.isValidElement(child)
-                      ? React.cloneElement(child, {
-                          handleIconHover,
-                          iconSize,
-                        })
-                      : child
-                  )}
-                </ul>
-              </nav>
-            );
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          "use client";
-
-          import * as React from "react";
-          import { cn } from "@/lib/utils";
-          import { useRef } from "react";
-
-          interface DockProps {
-            className?: string;
-            children: React.ReactNode;
-            maxAdditionalSize?: number;
-            iconSize?: number;
-          }
-
-          interface DockIconProps {
-            className?: string;
-            src?: string;
-            href: string;
-            name: string;
-            handleIconHover?: (e: React.MouseEvent<HTMLLIElement>) => void;
-            children?: React.ReactNode;
-            iconSize?: number;
-          }
-
-          type ScaleValueParams = [number, number];
-
-          export const scaleValue = function (
-            value: number,
-            from: ScaleValueParams,
-            to: ScaleValueParams
-          ): number {
-            const scale = (to[1] - to[0]) / (from[1] - from[0]);
-            const capped = Math.min(from[1], Math.max(from[0], value)) - from[0];
-            return Math.floor(capped * scale + to[0]);
-          };
-
-          export function DockIcon({
-            className,
-            src,
-            href,
-            name,
-            handleIconHover,
-            children,
-            iconSize,
-          }: DockIconProps) {
-            const ref = useRef<HTMLLIElement | null>(null);
-
-            return (
-              <>
-                <style jsx>
-                  {`
-                    .icon:hover + .icon {
-                      width: calc(var(--icon-size) * 1.33 + var(--dock-offset-right, 0px));
-                      height: calc(var(--icon-size) * 1.33 + var(--dock-offset-right, 0px));
-                      margin-top: calc(var(--icon-size) * -0.33 + var(--dock-offset-right, 0) * -1);
-                    }
-
-                    .icon:hover + .icon + .icon {
-                      width: calc(var(--icon-size) * 1.17 + var(--dock-offset-right, 0px));
-                      height: calc(var(--icon-size) * 1.17 + var(--dock-offset-right, 0px));
-                      margin-top: calc(var(--icon-size) * -0.17 + var(--dock-offset-right, 0) * -1);
-                    }
-
-                    .icon:has(+ .icon:hover) {
-                      width: calc(var(--icon-size) * 1.33 + var(--dock-offset-left, 0px));
-                      height: calc(var(--icon-size) * 1.33 + var(--dock-offset-left, 0px));
-                      margin-top: calc(var(--icon-size) * -0.33 + var(--dock-offset-left, 0) * -1);
-                    }
-
-                    .icon:has(+ .icon + .icon:hover) {
-                      width: calc(var(--icon-size) * 1.17 + var(--dock-offset-left, 0px));
-                      height: calc(var(--icon-size) * 1.17 + var(--dock-offset-left, 0px));
-                      margin-top: calc(var(--icon-size) * -0.17 + var(--dock-offset-left, 0) * -1);
-                    }
-                  `}
-                </style>
-                <li ref={ref} style={{ transition: "width, height, margin-top, cubic-bezier(0.25, 1, 0.5, 1) 150ms", "--icon-size": `${iconSize}px` } as React.CSSProperties} onMouseMove={handleIconHover} className={cn("icon h-[var(--icon-size)] w-[var(--icon-size)] px-[calc(var(--icon-size)*0.075)] group/li cursor-pointer hover:w-[calc(var(--icon-size)*1.5)] hover:h-[calc(var(--icon-size)*1.5)] hover:-mt-[calc(var(--icon-size)/2)] [&_img]:object-contain flex items-center justify-center", className)}>
-                  <a href={href} className="relative aspect-square rounded-[10px] p-1.5 w-full bg-gradient-to-t from-neutral-100 dark:from-zinc-900 to-white dark:to-zinc-800 dark:shadow-[rgba(255,_255,_255,_0.3)_0px_1px_0px_inset] shadow-[rgba(0,_0,_0,_0.05)_0px_1px_0px_inset] border border-gray-100 dark:border-zinc-900 after:inset-0 after:absolute after:shadow-md after:shadow-zinc-800/10 after:rounded-[inherit] group/a">
-                    <span className="text-xs absolute top-[-40px] border border-gray-100 dark:border-zinc-800 text-black dark:text-white rounded-md bg-gradient-to-t from-neutral-100 dark:from-zinc-900 to-white dark:to-zinc-800 p-1 px-2 left-1/2 -translate-x-1/2 opacity-0 transition-opacity duration-200 group-hover/li:opacity-100 whitespace-nowrap">{name}</span>
-                    {src ? <img src={src} alt={name} className="rounded-[inherit] h-full w-full" /> : children}
-                  </a>
-                </li>
-              </>
-            );
-          }
-
-          export function Dock({
-            className,
-            children,
-            maxAdditionalSize = 5,
-            iconSize = 55,
-          }: DockProps) {
-            const dockRef = useRef<HTMLDivElement | null>(null);
-
-            const handleIconHover = (e: React.MouseEvent<HTMLLIElement>) => {
-              if (!dockRef.current) return;
-              const mousePos = e.clientX;
-              const iconPosLeft = e.currentTarget.getBoundingClientRect().left;
-              const iconWidth = e.currentTarget.getBoundingClientRect().width;
-
-              const cursorDistance = (mousePos - iconPosLeft) / iconWidth;
-              const offsetPixels = scaleValue(
-                cursorDistance,
-                [0, 1],
-                [maxAdditionalSize * -1, maxAdditionalSize]
-              );
-
-              dockRef.current.style.setProperty(
-                "--dock-offset-left",
-                `${offsetPixels * -1}px`
-              );
-
-              dockRef.current.style.setProperty(
-                "--dock-offset-right",
-                `${offsetPixels}px`
-              );
-            };
-
-            return (
-              <nav ref={dockRef} role="navigation" aria-label="Main Dock">
-                <ul className={cn("flex items-center bg-gradient-to-t from-neutral-50 dark:from-zinc-950 to-white dark:to-zinc-900 border border-gray-100 dark:border-zinc-900 p-1 rounded-xl ", className)}>
-                  {React.Children.map(children, (child) =>
-                    React.isValidElement<DockIconProps>(child)
-                      ? React.cloneElement(child as React.ReactElement<DockIconProps>, {
-                          handleIconHover,
-                          iconSize,
-                        })
-                      : child
-                  )}
-                </ul>
-              </nav>
-            );
-          }
-          ```
-        </Highlighter>
-      </ComponentSource>
-
-      <Step>Update the import paths to match your project setup.</Step>
-    </Steps>
-  </TabsContent>
-</Tabs>
+</CodeTabs>
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { Dock, DockIcon } from "@/components/ui/dock";
 ```
 
-```tsx
+```tsx showLineNumbers
 <Dock>
   <DockIcon
     src="/images/components/dock/tailwindcss-logo.webp"
@@ -449,9 +87,11 @@ import { Dock, DockIcon } from "@/components/ui/dock";
 </Dock>
 ```
 
-> You can also pass icons as children if you don't want to use an image.
+<Callout>
+You can also pass icons as children if you don't want to use an image.
+</Callout>
 
-```tsx
+```tsx showLineNumbers
 <Dock className="[&_svg]:size-6">
   <DockIcon name="Settings" href="#setings">
     <SettingsIcon>
@@ -462,31 +102,67 @@ import { Dock, DockIcon } from "@/components/ui/dock";
 
 ## Props
 
-<Kbd>Dock</Kbd> props.
+`Dock` props.
 
-| Prop              | Type            | Description                                               | Default |
-| ----------------- | --------------- | --------------------------------------------------------- | ------- |
-| className         | <Kbd>string</Kbd>          | Additional custom classes for styling.                    | -       |
-| children          | <Kbd>React.ReactNode</Kbd> | Child elements to be rendered inside the Dock.            | -       |
-| maxAdditionalSize | <Kbd>number</Kbd>          | Maximum additional size applied when hovering over icons. | 5       |
-| iconSize          | <Kbd>number</Kbd>          | Default size of the icons in pixels.                      | 55      |
+<TypeTable
+  type={{
+    className: {
+      type: "string",
+      description: "Additional custom classes for styling."
+    },
+    children: {
+      type: "React.ReactNode",
+      description: "Child elements to be rendered inside the Dock."
+    },
+    maxAdditionalSize: {
+      type: "number",
+      description: "Maximum additional size applied when hovering over icons.",
+      default: "5"
+    },
+    iconSize: {
+      type: "number",
+      description: "Default size of the icons in pixels.",
+      default: "55"
+    }
+  }}
+/>
 
-<Kbd>DockIcon</Kbd> props.
+`DockIcon` props.
 
-| Prop            | Type                                               | Description                                               | Default |
-| --------------- | -------------------------------------------------- | --------------------------------------------------------- | ------- |
-| className       | <Kbd>string</Kbd>                                             | Additional custom classes for styling.                    | -       |
-| src             | <Kbd>string</Kbd>                                             | The source URL for the icon image.                        | -       |
-| href            | <Kbd>string</Kbd>                                             | The link the icon should navigate to when clicked.        | -       |
-| name            | <Kbd>string</Kbd>                                             | The name of the icon, displayed as a tooltip on hover.    | -       |
-| handleIconHover | <Kbd>(e: React.MouseEvent&lt;HTMLLIElement&gt;) => void</Kbd> | Function to handle hover events on the icon.              | -       |
-| children        | <Kbd>React.ReactNode</Kbd>                                    | Alternative to `src`: allows passing custom JSX elements. | -       |
-| iconSize        | <Kbd>number</Kbd>                                             | The size of the icon in pixels.                           | 55      |
+<TypeTable
+  type={{
+    className: {
+      type: "string",
+      description: "Additional custom classes for styling."
+    },
+    src: {
+      type: "string",
+      description: "The source URL for the icon image."
+    },
+    href: {
+      type: "string",
+      description: "The link the icon should navigate to when clicked."
+    },
+    name: {
+      type: "string",
+      description: "The name of the icon, displayed as a tooltip on hover."
+    },
+    handleIconHover: {
+      type: "(e: React.MouseEvent<HTMLLIElement>) => void",
+      description: "Function to handle hover events on the icon."
+    },
+    children: {
+      type: "React.ReactNode",
+      description: "Alternative to `src`: allows passing custom JSX elements."
+    },
+    iconSize: {
+      type: "number",
+      description: "The size of the icon in pixels.",
+      default: "55"
+    }
+  }}
+/>
 
 ## Disclaimer
 
 We are not affiliated with any of the brands whose logos are used in this component. These logos are displayed for demonstration purposes only.
-
-## Credits
-
-<li className="text-sm text-muted-foreground mt-4">For SVGs, I recommend using <MdxLink href="https://svgl.app/">SVGL</MdxLink></li>

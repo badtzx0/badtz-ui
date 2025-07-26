@@ -1,0 +1,96 @@
+---
+title: Fade Up Word
+description: A text component that reveals its content with a smooth fade-up animation, activated by default when the text enters the viewport.
+component: true
+---
+
+<ComponentPreview
+replayable
+  name="fade-up-word-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="A text component that reveals its content with a smooth fade-up animation, activated by default when the text enters the viewport."
+  align="center"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/fade-up-word.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="fade-up-word" title="components/ui/fade-up-word.tsx" />
+
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { FadeUpWord } from "@/components/ui/fade-up-word";
+```
+
+```tsx showLineNumbers
+<FadeUpWord>Lorem ipsum dolor sit amet</FadeUpWord>
+```
+
+## Props
+
+`FadeUpWord` props.
+
+<TypeTable
+  type={{
+    as: {
+      type: '"h1" | "h2" | "h3" | "h4"',
+      description: "HTML heading level to use.",
+      default: '"h2"'
+    },
+    className: {
+      type: "string",
+      description: "Additional CSS classes for custom styling."
+    },
+    children: {
+      type: "string",
+      description: "Text to animate (each word will be animated separately)."
+    }
+  }}
+/>
+

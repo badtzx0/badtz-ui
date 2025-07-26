@@ -1,689 +1,124 @@
 ---
 title: Particles
 description: A versatile and performant component for creating engaging, animated content displays with smooth infinite scrolling animations. Perfect for showcasing client logos, testimonials, feature highlights, and promotional content with customizable speed, direction, and responsive design.
+component: true
 ---
 
 <ComponentPreview
   name="particles-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%] !p-0"
-  description="A versatile and performant component for creating engaging, animated content displays with smooth infinite scrolling animations."
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import { Particles } from "@/components/ui/particles";
-
-    export default function ParticlesDemo() {
-      return (
-        <div className="w-full h-[380px] rounded-md overflow-hidden relative flex items-center justify-center bg-black">
-          <Particles variant="default" />
-          <span className="font-gilroy text-4xl pointer-events-none bg-gradient-to-br from-white to-zinc-400 bg-clip-text text-transparent py-2">
-            Particles
-          </span>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import { Particles } from "@/components/ui/particles";
-
-    export default function ParticlesDemo() {
-      return (
-        <div className="w-full h-[380px] rounded-md overflow-hidden relative flex items-center justify-center bg-black">
-          <Particles variant="default" />
-          <span className="font-gilroy text-4xl pointer-events-none bg-gradient-to-br from-white to-zinc-400 bg-clip-text text-transparent py-2">
-            Particles
-          </span>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="A particles component"
+  align="center"
+/>
 
 ## Installation
 
-<Tabs defaultValue="cli">
-  <TabsList>
-    <TabsTrigger value="cli">CLI</TabsTrigger>
-    <TabsTrigger value="manual">Manual</TabsTrigger>
-  </TabsList>
+<CodeTabs>
 
-  <TabsContent value="cli">
-    ```bash
-    npx shadcn@latest add https://badtz-ui.com/r/particles.json
-    ```
-  </TabsContent>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
 
-  <TabsContent value="manual">
-    <Steps>
-      <Step>Install the following dependencies:</Step>
+<TabsContent value="cli">
 
-      ```bash
-      npm install clsx tailwind-merge @tsparticles/slim @tsparticles/react
-      ```
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/particles.json
+```
 
-      <Step>Add the <Kbd>utils</Kbd> file to the <Kbd>@/lib</Kbd> folder</Step>
+</TabsContent>
 
-      <UtilsSource>
-        <Highlighter slot="javascript">
-          ```jsx
-          import { clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<TabsContent value="manual">
 
-          export function cn(...inputs) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          import { ClassValue, clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<Steps>
 
-          export function cn(...inputs: ClassValue[]) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-      </UtilsSource>
+<Step>Install the following dependencies:</Step>
 
-      <Step>Copy and paste the <Kbd>particles</Kbd> code into your project.</Step>
+```bash
+npm install clsx tailwind-merge @tsparticles/react @tsparticles/slim
+```
 
-      <ComponentSource name="particles">
-        <Highlighter slot="javascript">
-          ```jsx
-          "use client";
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
 
-          import { useEffect, useId, useState } from "react";
-          import { cn } from "@/lib/utils";
-          import {
-            Particles as TSParticles,
-            initParticlesEngine,
-          } from "@tsparticles/react";
-          import { loadSlim } from "@tsparticles/slim";
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
 
-          const variantStyles = {
-            default: {
-              count: 200,
-              size: 2,
-              speed: 1.5,
-              opacity: 0.8,
-              color: "#FFFFFF",
-            },
-            snow: {
-              count: 300,
-              size: 1.2,
-              speed: 1,
-              opacity: 0.6,
-              color: "#FFFFFF",
-              options: {
-                interactivity: {
-                  detectOn: "canvas",
-                  events: {
-                    onHover: {
-                      enable: false,
-                    },
-                  },
-                },
-                particles: {
-                  move: {
-                    enable: true,
-                    speed: {
-                      min: 2,
-                      max: 3,
-                    },
-                    direction: "bottom",
-                    random: true,
-                    straight: false,
-                    outModes: {
-                      default: "out",
-                    },
-                  },
-                  shape: {
-                    type: "circle",
-                  },
-                },
-              },
-            },
-            stars: {
-              count: 200,
-              size: 1.5,
-              speed: 0,
-              opacity: 0.8,
-              color: "#FFFFFF",
-              options: {
-                interactivity: {
-                  detectOn: "canvas",
-                  events: {
-                    onHover: {
-                      enable: false,
-                    },
-                  },
-                },
-                particles: {
-                  move: {
-                    enable: false,
-                  },
-                  twinkle: {
-                    particles: {
-                      enable: true,
-                      frequency: 0.1,
-                      opacity: 1,
-                    },
-                  },
-                  shape: {
-                    type: "star",
-                  },
-                  shadow: {
-                    enable: true,
-                    color: "#FFFFFF",
-                    blur: 5,
-                    offset: {
-                      x: 0,
-                      y: 0,
-                    },
-                  },
-                  glow: {
-                    enable: true,
-                    color: "#FFFFFF",
-                    distance: 10,
-                    size: 2,
-                  },
-                },
-              },
-            },
-          };
+<Step>Copy and paste the following code into your project.</Step>
 
-          export function Particles({
-            className,
-            variant = "default",
-            style = {},
-            interactive = true,
-            customOptions = {},
-          }) {
-            const [isInitialized, setIsInitialized] = useState(false);
+<ComponentSource name="particles" title="components/ui/particles.tsx" />
 
-            useEffect(() => {
-              initParticlesEngine(async (engine) => {
-                await loadSlim(engine);
-              }).then(() => {
-                setIsInitialized(true);
-              });
-            }, []);
+<Step>Update the import paths to match your project setup.</Step>
 
-            const id = useId();
+</Steps>
 
-            const baseStyle = variantStyles[variant];
-            const finalStyle = { ...baseStyle, ...style };
+</TabsContent>
 
-            const defaultOptions = {
-              detectRetina: true,
-              fpsLimit: 120,
-              interactivity: {
-                detectOn: "canvas",
-                events: {
-                  onHover: {
-                    enable:
-                      variant === "snow" || variant === "stars" ? false : interactive,
-                    mode: "repulse",
-                  },
-                },
-                modes: {
-                  repulse: {
-                    distance: 150,
-                    duration: 1.2,
-                    factor: 6,
-                    speed: 0.5,
-                  },
-                },
-              },
-              particles: {
-                number: {
-                  value: finalStyle.count,
-                },
-                color: {
-                  value: finalStyle.color,
-                },
-                opacity: {
-                  value: {
-                    min: (finalStyle.opacity || 0.8) / 5,
-                    max: finalStyle.opacity || 0.8,
-                  },
-                  animation: {
-                    enable: true,
-                    sync: false,
-                    speed: 2,
-                  },
-                },
-                size: {
-                  value: {
-                    min: (finalStyle.size || 2) / 5,
-                    max: finalStyle.size || 2,
-                  },
-                },
-                move: {
-                  enable: true,
-                  speed: {
-                    min: (finalStyle.speed || 1.5) / 5,
-                    max: finalStyle.speed || 1.5,
-                  },
-                  direction: "none",
-                  random: true,
-                  straight: false,
-                  outModes: {
-                    default: "out",
-                  },
-                  attract: {
-                    enable: false,
-                    rotateX: 600,
-                    rotateY: 1200,
-                  },
-                },
-              },
-              fullScreen: {
-                enable: false,
-                zIndex: 1,
-              },
-              background: {
-                color: {
-                  value: "transparent",
-                },
-              },
-            };
-
-            const deepMerge = (target, source) => {
-              const output = { ...target };
-              if (source) {
-                Object.keys(source).forEach((key) => {
-                  if (source[key] instanceof Object && key in target) {
-                    output[key] = deepMerge(target[key], source[key]);
-                  } else {
-                    output[key] = source[key];
-                  }
-                });
-              }
-              return output;
-            };
-
-            const variantOptions = baseStyle.options || {};
-            const mergedOptions = deepMerge(defaultOptions, variantOptions);
-            const finalOptions = deepMerge(mergedOptions, customOptions);
-
-            return (
-              isInitialized && (
-                <TSParticles
-                  id={id}
-                  options={finalOptions}
-                  className={cn("absolute inset-0", className)}
-                />
-              )
-            );
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          "use client";
-
-          import { useEffect, useId, useState } from "react";
-          import { cn } from "@/lib/utils";
-          import {
-            Particles as TSParticles,
-            initParticlesEngine,
-          } from "@tsparticles/react";
-          import { loadSlim } from "@tsparticles/slim";
-
-          type ParticleVariant = "default" | "snow" | "stars";
-
-          interface ParticleStyle {
-            count?: number;
-            size?: number;
-            speed?: number;
-            opacity?: number;
-            color?: string;
-          }
-
-          interface ParticlesProps {
-            className?: string;
-            variant?: ParticleVariant;
-            style?: ParticleStyle;
-            interactive?: boolean;
-            customOptions?: Record<string, unknown>;
-          }
-
-          const variantStyles: Record<
-            ParticleVariant,
-            ParticleStyle & { options?: Record<string, unknown> }
-          > = {
-            default: {
-              count: 200,
-              size: 2,
-              speed: 1.5,
-              opacity: 0.8,
-              color: "#FFFFFF",
-            },
-            snow: {
-              count: 300,
-              size: 1.2,
-              speed: 1,
-              opacity: 0.6,
-              color: "#FFFFFF",
-              options: {
-                interactivity: {
-                  detectOn: "canvas",
-                  events: {
-                    onHover: {
-                      enable: false,
-                    },
-                  },
-                },
-                particles: {
-                  move: {
-                    enable: true,
-                    speed: {
-                      min: 2,
-                      max: 3,
-                    },
-                    direction: "bottom",
-                    random: true,
-                    straight: false,
-                    outModes: {
-                      default: "out",
-                    },
-                  },
-                  shape: {
-                    type: "circle",
-                  },
-                },
-              },
-            },
-            stars: {
-              count: 200,
-              size: 1.5,
-              speed: 0,
-              opacity: 0.8,
-              color: "#FFFFFF",
-              options: {
-                interactivity: {
-                  detectOn: "canvas",
-                  events: {
-                    onHover: {
-                      enable: false,
-                    },
-                  },
-                },
-                particles: {
-                  move: {
-                    enable: false,
-                  },
-                  twinkle: {
-                    particles: {
-                      enable: true,
-                      frequency: 0.1,
-                      opacity: 1,
-                    },
-                  },
-                  shape: {
-                    type: "star",
-                  },
-                  shadow: {
-                    enable: true,
-                    color: "#FFFFFF",
-                    blur: 5,
-                    offset: {
-                      x: 0,
-                      y: 0,
-                    },
-                  },
-                  glow: {
-                    enable: true,
-                    color: "#FFFFFF",
-                    distance: 10,
-                    size: 2,
-                  },
-                },
-              },
-            },
-          };
-
-          export function Particles({
-            className,
-            variant = "default",
-            style = {},
-            interactive = true,
-            customOptions = {},
-          }: ParticlesProps) {
-            const [isInitialized, setIsInitialized] = useState(false);
-
-            useEffect(() => {
-              initParticlesEngine(async (engine) => {
-                await loadSlim(engine);
-              }).then(() => {
-                setIsInitialized(true);
-              });
-            }, []);
-
-            const id = useId();
-
-            const baseStyle = variantStyles[variant];
-            const finalStyle = { ...baseStyle, ...style };
-
-            const defaultOptions = {
-              detectRetina: true,
-              fpsLimit: 120,
-              interactivity: {
-                detectOn: "canvas",
-                events: {
-                  onHover: {
-                    enable:
-                      variant === "snow" || variant === "stars" ? false : interactive,
-                    mode: "repulse",
-                  },
-                },
-                modes: {
-                  repulse: {
-                    distance: 150,
-                    duration: 1.2,
-                    factor: 6,
-                    speed: 0.5,
-                  },
-                },
-              },
-              particles: {
-                number: {
-                  value: finalStyle.count,
-                },
-                color: {
-                  value: finalStyle.color,
-                },
-                opacity: {
-                  value: {
-                    min: (finalStyle.opacity || 0.8) / 5,
-                    max: finalStyle.opacity || 0.8,
-                  },
-                  animation: {
-                    enable: true,
-                    sync: false,
-                    speed: 2,
-                  },
-                },
-                size: {
-                  value: {
-                    min: (finalStyle.size || 2) / 5,
-                    max: finalStyle.size || 2,
-                  },
-                },
-                move: {
-                  enable: true,
-                  speed: {
-                    min: (finalStyle.speed || 1.5) / 5,
-                    max: finalStyle.speed || 1.5,
-                  },
-                  direction: "none",
-                  random: true,
-                  straight: false,
-                  outModes: {
-                    default: "out",
-                  },
-                  attract: {
-                    enable: false,
-                    rotateX: 600,
-                    rotateY: 1200,
-                  },
-                },
-              },
-              fullScreen: {
-                enable: false,
-                zIndex: 1,
-              },
-              background: {
-                color: {
-                  value: "transparent",
-                },
-              },
-            };
-
-            const deepMerge = (target: any, source: any) => {
-              const output = { ...target };
-              if (source) {
-                Object.keys(source).forEach((key) => {
-                  if (source[key] instanceof Object && key in target) {
-                    output[key] = deepMerge(target[key], source[key]);
-                  } else {
-                    output[key] = source[key];
-                  }
-                });
-              }
-              return output;
-            };
-
-            const variantOptions = baseStyle.options || {};
-            const mergedOptions = deepMerge(defaultOptions, variantOptions);
-            const finalOptions = deepMerge(mergedOptions, customOptions);
-
-            return (
-              isInitialized && (
-                <TSParticles
-                  id={id}
-                  options={finalOptions}
-                  className={cn("absolute inset-0", className)}
-                />
-              )
-            );
-          }
-          ```
-        </Highlighter>
-      </ComponentSource>
-
-      <Step>Update the import paths to match your project setup.</Step>
-    </Steps>
-  </TabsContent>
-</Tabs>
+</CodeTabs>
 
 ## Examples
 
 <ComponentPreview
-  name="particles-demo-2"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%] !p-0"
-  description="A versatile and performant component for creating engaging, animated content displays with smooth infinite scrolling animations."
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import { Particles } from "@/components/ui/particles";
-
-    export default function ParticlesDemoStars() {
-      return (
-        <div className="w-full h-[380px] rounded-md overflow-hidden relative flex items-center justify-center bg-black">
-          <Particles variant="stars" />
-          <span className="font-gilroy text-4xl pointer-events-none bg-gradient-to-br from-white to-zinc-400 bg-clip-text text-transparent py-2">
-            Particles
-          </span>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import { Particles } from "@/components/ui/particles";
-
-    export default function ParticlesDemoStars() {
-      return (
-        <div className="w-full h-[380px] rounded-md overflow-hidden relative flex items-center justify-center bg-black">
-          <Particles variant="stars" />
-          <span className="font-gilroy text-4xl pointer-events-none bg-gradient-to-br from-white to-zinc-400 bg-clip-text text-transparent py-2">
-            Particles
-          </span>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
+  name="particles-stars-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="Displays a particles component"
+  align="center"
+/>
 
 <ComponentPreview
-  name="particles-demo-3"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%] !p-0"
-  description="A versatile and performant component for creating engaging, animated content displays with smooth infinite scrolling animations."
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import { Particles } from "@/components/ui/particles";
-
-    export default function ParticlesDemoSnow() {
-      return (
-        <div className="w-full h-[380px] rounded-md overflow-hidden relative flex items-center justify-center bg-black">
-          <Particles variant="snow" />
-          <span className="font-gilroy text-4xl pointer-events-none bg-gradient-to-br from-white to-zinc-400 bg-clip-text text-transparent py-2">
-            Particles
-          </span>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import { Particles } from "@/components/ui/particles";
-
-    export default function ParticlesDemoSnow() {
-      return (
-        <div className="w-full h-[380px] rounded-md overflow-hidden relative flex items-center justify-center bg-black">
-          <Particles variant="snow" />
-          <span className="font-gilroy text-4xl pointer-events-none bg-gradient-to-br from-white to-zinc-400 bg-clip-text text-transparent py-2">
-            Particles
-          </span>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
+  name="particles-snow-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="Displays a particles component with snow variant"
+  align="center"
+/>
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { Particles } from "@/components/ui/particles";
 ```
 
-```tsx
+```tsx showLineNumbers
 <Particles variant="snow" />
 ```
 
 ## Props
 
-<Kbd>particles</Kbd> props.
+`particles` props.
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| className | <Kbd>string</Kbd> | - | Additional CSS classes to apply to the component |
-| variant | <Kbd>"default" \| "snow" \| "stars"</Kbd> | "default" | The visual style of the particles |
-| style | <Kbd>ParticleStyle</Kbd> | {} | Custom particle styling options |
-| interactive | <Kbd>boolean</Kbd> | true | Whether particles should respond to mouse interactions |
-| customOptions | <Kbd>Record</Kbd> | {} | Additional configuration options for the particles engine |
+<TypeTable
+  type={{
+    className: {
+      type: "string",
+      description: "Additional CSS classes to apply to the component"
+    },
+    variant: {
+      type: '"default" | "snow" | "stars"',
+      description: "The visual style of the particles",
+      default: '"default"'
+    },
+    style: {
+      type: "ParticleStyle",
+      description: "Custom particle styling options",
+      default: "{}"
+    },
+    interactive: {
+      type: "boolean",
+      description: "Whether particles should respond to mouse interactions",
+      default: "true"
+    },
+    customOptions: {
+      type: "Record",
+      description: "Additional configuration options for the particles engine",
+      default: "{}"
+    }
+  }}
+/>
 
 ## Credits
 
-<li className="text-sm text-muted-foreground mt-4">All credits go to <MdxLink href="https://github.com/matteobruni/tsparticles">tsparticles</MdxLink></li>
+All credits goes to [tsparticles](https://github.com/matteobruni/tsparticles).

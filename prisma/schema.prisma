@@ -1,26 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
   provider = "prisma-client-js"
+  output   = "../generated/prisma"
 }
 
 datasource db {
-  provider = "mongodb"
-  url = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
-model NewsletterSubscriber {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  email   String   @unique
-  createdAt DateTime @default(now())
-
-  unsubscribeTokens UnsubscribeToken[] @relation("SubscriberTokens")
+enum UserRole {
+  ADMIN
+  FULL_ACCESS
+  ONE_YEAR_ACCESS
+  MONTHLY_ACCESS
+  TEMPLATE_1
+  TEMPLATE_2
+  USER
 }
 
-model UnsubscribeToken {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  token        String   @unique
-  expiresAt    DateTime
-  subscriberId String   @db.ObjectId
-  subscriber   NewsletterSubscriber @relation(fields: [subscriberId], references: [id], name: "SubscriberTokens")
+model User {
+  id            String     @id @default(cuid())
+  name          String
+  email         String     @unique
+  emailVerified Boolean
+  image         String?
+  roles         UserRole[]
+  customerId    String?    @unique
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  
+  oneYearExpiresAt    DateTime?
+  monthlyExpiresAt    DateTime?
+  
+  sessions      Session[]
+  accounts      Account[]
+}
 
+model Session {
+  id        String   @id @default(cuid())
+  expiresAt DateTime
+  token     String   @unique
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Account {
+  id                    String    @id @default(cuid())
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+}
+
+model Verification {
+  id         String    @id @default(cuid())
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime? @default(now())
+  updatedAt  DateTime? @updatedAt
 }

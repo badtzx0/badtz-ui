@@ -1,1448 +1,169 @@
 ---
-title: Keyboard
+title: Animated Keyboard
 description: Displays an animated keyboard with keycaps that can be customized with different colors and variants.
+component: true
 ---
 
 <ComponentPreview
-  name="keyboard-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%] overflow-hidden"
-  description="Displays an animated keyboard with keycaps that can be customized with different colors and variants."
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import {
-      KeyRow,
-      Keycap,
-      Keyboard,
-    } from "@/components/ui/animated-keyboard";
-
-    const KEY_HEIGHT = "42px";
-
-    const TOP_ROW_KEYS = [
-      { char: "~", secondaryChar: "`" },
-      { char: "2", secondaryChar: "@" },
-      { char: "3", secondaryChar: "#" },
-      { char: "4", secondaryChar: "$" },
-      { char: "5", secondaryChar: "%" },
-      { char: "6", secondaryChar: "^" },
-      { char: "7", secondaryChar: "&" },
-      { char: "8", secondaryChar: "*" },
-      { char: "9", secondaryChar: "(" },
-      { char: "0", secondaryChar: ")" },
-      { char: "-", secondaryChar: "_" },
-      { char: "=", secondaryChar: "+" },
-    ];
-
-    const SECOND_ROW_KEYS = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
-
-    const THIRD_ROW_KEYS = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
-
-    const FOURTH_ROW_KEYS = ["Z", "X", "C", "V", "B", "N", "M"];
-
-    const SPECIAL_KEYS = {
-      THIRD_ROW_END: [
-        { char: ";", secondaryChar: ":" },
-        { char: "'", secondaryChar: '"' },
-      ],
-      FOURTH_ROW_END: [
-        { char: ",", secondaryChar: "<" },
-        { char: ".", secondaryChar: ">" },
-        { char: "/", secondaryChar: "?" },
-      ],
-    };
-
-    function TopRow() {
-      return (
-        <KeyRow>
-          {TOP_ROW_KEYS.map((key) => (
-            <Keycap
-              key={key.char}
-              char={key.char}
-              secondaryChar={key.secondaryChar}
-              variant="double"
-              height={KEY_HEIGHT}
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function SecondRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="Tab"
-            variant="tab"
-            height={KEY_HEIGHT}
-            className="rounded-[6px]"
-          />
-          {SECOND_ROW_KEYS.map((char) => (
-            <Keycap
-              key={char}
-              char={char}
-              height={KEY_HEIGHT}
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function ThirdRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="Caps"
-            variant="caps"
-            height={KEY_HEIGHT}
-            className="rounded-[6px]"
-          />
-          {THIRD_ROW_KEYS.map((char) => (
-            <Keycap
-              key={char}
-              char={char}
-              height={KEY_HEIGHT}
-              className="rounded-[6px]"
-            />
-          ))}
-          {SPECIAL_KEYS.THIRD_ROW_END.map((key) => (
-            <Keycap
-              key={key.char}
-              char={key.char}
-              secondaryChar={key.secondaryChar}
-              variant="double"
-              height={KEY_HEIGHT}
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function FourthRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="Shift"
-            variant="shift"
-            height={KEY_HEIGHT}
-            className="rounded-[6px]"
-          />
-          {FOURTH_ROW_KEYS.map((char) => (
-            <Keycap
-              key={char}
-              char={char}
-              height={KEY_HEIGHT}
-              className="rounded-[6px]"
-            />
-          ))}
-          {SPECIAL_KEYS.FOURTH_ROW_END.map((key) => (
-            <Keycap
-              key={key.char}
-              char={key.char}
-              secondaryChar={key.secondaryChar}
-              variant="double"
-              height={KEY_HEIGHT}
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function BottomRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="alt"
-            variant="command"
-            height={KEY_HEIGHT}
-            className="rounded-[6px]"
-          />
-          <Keycap
-            char="⌘"
-            variant="command"
-            height={KEY_HEIGHT}
-            className="rounded-[6px]"
-          />
-          <Keycap
-            char="Space"
-            variant="space"
-            height={KEY_HEIGHT}
-            className="rounded-[6px]"
-          />
-          <Keycap
-            char="⎇"
-            variant="command"
-            height={KEY_HEIGHT}
-            className="rounded-[6px]"
-          />
-        </KeyRow>
-      );
-    }
-
-    export default function KeyboardDemo() {
-      return (
-        <div>
-          <Keyboard className="bg-transparent">
-            <TopRow />
-            <SecondRow />
-            <ThirdRow />
-            <FourthRow />
-            <BottomRow />
-          </Keyboard>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import {
-      KeyRow,
-      Keycap,
-      Keyboard,
-    } from "@/components/ui/animated-keyboard";
-
-    const KEY_HEIGHT = "42px";
-
-    const TOP_ROW_KEYS = [
-      { char: "~", secondaryChar: "`" },
-      { char: "2", secondaryChar: "@" },
-      { char: "3", secondaryChar: "#" },
-      { char: "4", secondaryChar: "$" },
-      { char: "5", secondaryChar: "%" },
-      { char: "6", secondaryChar: "^" },
-      { char: "7", secondaryChar: "&" },
-      { char: "8", secondaryChar: "*" },
-      { char: "9", secondaryChar: "(" },
-      { char: "0", secondaryChar: ")" },
-      { char: "-", secondaryChar: "_" },
-      { char: "=", secondaryChar: "+" },
-    ];
-
-    const SECOND_ROW_KEYS = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
-
-    const THIRD_ROW_KEYS = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
-
-    const FOURTH_ROW_KEYS = ["Z", "X", "C", "V", "B", "N", "M"];
-
-    const SPECIAL_KEYS = {
-      THIRD_ROW_END: [
-        { char: ";", secondaryChar: ":" },
-        { char: "'", secondaryChar: '"' },
-      ],
-      FOURTH_ROW_END: [
-        { char: ",", secondaryChar: "<" },
-        { char: ".", secondaryChar: ">" },
-        { char: "/", secondaryChar: "?" },
-      ],
-    };
-
-    function TopRow() {
-      return (
-        <KeyRow>
-          {TOP_ROW_KEYS.map((key) => (
-            <Keycap
-              key={key.char}
-              char={key.char}
-              secondaryChar={key.secondaryChar}
-              variant="double"
-              height={KEY_HEIGHT}
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function SecondRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="Tab"
-            variant="tab"
-            height={KEY_HEIGHT}
-            className="rounded-[6px]"
-          />
-          {SECOND_ROW_KEYS.map((char) => (
-            <Keycap
-              key={char}
-              char={char}
-              height={KEY_HEIGHT}
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function ThirdRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="Caps"
-            variant="caps"
-            height={KEY_HEIGHT}
-            className="rounded-[6px]"
-          />
-          {THIRD_ROW_KEYS.map((char) => (
-            <Keycap
-              key={char}
-              char={char}
-              height={KEY_HEIGHT}
-              className="rounded-[6px]"
-            />
-          ))}
-          {SPECIAL_KEYS.THIRD_ROW_END.map((key) => (
-            <Keycap
-              key={key.char}
-              char={key.char}
-              secondaryChar={key.secondaryChar}
-              variant="double"
-              height={KEY_HEIGHT}
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function FourthRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="Shift"
-            variant="shift"
-            height={KEY_HEIGHT}
-            className="rounded-[6px]"
-          />
-          {FOURTH_ROW_KEYS.map((char) => (
-            <Keycap
-              key={char}
-              char={char}
-              height={KEY_HEIGHT}
-              className="rounded-[6px]"
-            />
-          ))}
-          {SPECIAL_KEYS.FOURTH_ROW_END.map((key) => (
-            <Keycap
-              key={key.char}
-              char={key.char}
-              secondaryChar={key.secondaryChar}
-              variant="double"
-              height={KEY_HEIGHT}
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function BottomRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="alt"
-            variant="command"
-            height={KEY_HEIGHT}
-            className="rounded-[6px]"
-          />
-          <Keycap
-            char="⌘"
-            variant="command"
-            height={KEY_HEIGHT}
-            className="rounded-[6px]"
-          />
-          <Keycap
-            char="Space"
-            variant="space"
-            height={KEY_HEIGHT}
-            className="rounded-[6px]"
-          />
-          <Keycap
-            char="⎇"
-            variant="command"
-            height={KEY_HEIGHT}
-            className="rounded-[6px]"
-          />
-        </KeyRow>
-      );
-    }
-
-    export default function KeyboardDemo() {
-      return (
-        <div>
-          <Keyboard className="bg-transparent">
-            <TopRow />
-            <SecondRow />
-            <ThirdRow />
-            <FourthRow />
-            <BottomRow />
-          </Keyboard>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
-
+  name="animated-keyboard-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="Displays an animated keyboard with keycaps that can be customized with different colors and variants"
+  align="center"
+/>
 
 ## Installation
 
-<Tabs defaultValue="cli">
-  <TabsList>
-    <TabsTrigger value="cli">CLI</TabsTrigger>
-    <TabsTrigger value="manual">Manual</TabsTrigger>
-  </TabsList>
+<CodeTabs>
 
-  <TabsContent value="cli">
-    ```bash
-    npx shadcn@latest add https://badtz-ui.com/r/animated-keyboard.json
-    ```
-  </TabsContent>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
 
-  <TabsContent value="manual">
-    <Steps>
-      <Step>Install the following dependencies:</Step>
+<TabsContent value="cli">
 
-      ```bash
-      npm install clsx tailwind-merge framer-motion class-variance-authority
-      ```
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/animated-keyboard.json
+```
 
-      <Step>Add the <Kbd>utils</Kbd> file to the <Kbd>@/lib</Kbd> folder</Step>
+</TabsContent>
 
-      <UtilsSource>
-        <Highlighter slot="javascript">
-          ```jsx
-          import { clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<TabsContent value="manual">
 
-          export function cn(...inputs) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          import { ClassValue, clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<Steps>
 
-          export function cn(...inputs: ClassValue[]) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-      </UtilsSource>
+<Step>Install the following dependencies:</Step>
 
-      <Step>Copy and paste the <Kbd>animated-keyboard</Kbd> code into your project.</Step>
+```bash
+npm install clsx tailwind-merge framer-motion class-variance-authority
+```
 
-      <ComponentSource name="animated-keyboard">
-        <Highlighter slot="javascript">
-          ```jsx
-          "use client";
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
 
-          import { cn } from "@/lib/utils";
-          import { cva } from "class-variance-authority";
-          import { memo, useEffect, useState } from "react";
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
 
-          const keycapVariants = cva("bg-gradient-to-b border rounded-lg relative", {
-            variants: {
-              variant: {
-                default: "aspect-square",
-                double: "aspect-square",
-                tab: "aspect-[1.77] [&_span]:text-[calc(var(--keycap-height)/3.5)]",
-                caps: "aspect-[1.85] [&_span]:text-[calc(var(--keycap-height)/3.5)]",
-                shift: "aspect-[2.32] [&_span]:text-[calc(var(--keycap-height)/3.5)]",
-                command: "aspect-[1.34] [&_span]:text-[calc(var(--keycap-height)/3.5)]",
-                space: "aspect-[8.3] [&_span]:text-[calc(var(--keycap-height)/3.5)]",
-              },
-            },
-            defaultVariants: {
-              variant: "default",
-            },
-          });
+<Step>Copy and paste the following code into your project.</Step>
 
-          const keylightColors = {
-            default: {
-              light: "before:shadow-[0px_1px_5px_0px_#00000020]",
-              dark: "dark:before:shadow-[0px_2px_5px_0px_#ffffff20]",
-            },
-            red: {
-              light: "before:shadow-[0px_1px_5px_0px_#ff0000]",
-              dark: "dark:before:shadow-[0px_2px_5px_0px_#ff0000]",
-            },
-            blue: {
-              light: "before:shadow-[0px_1px_5px_0px_#0000ff]",
-              dark: "dark:before:shadow-[0px_2px_5px_0px_#0000ff]",
-            },
-            green: {
-              light: "before:shadow-[0px_1px_5px_0px_#00ff00]",
-              dark: "dark:before:shadow-[0px_2px_5px_0px_#00ff00]",
-            },
-            purple: {
-              light: "before:shadow-[0px_1px_5px_0px_#800080]",
-              dark: "dark:before:shadow-[0px_2px_5px_0px_#800080]",
-            },
-            rgb: {
-              light:
-                "before:shadow-[0px_1px_5px_0px_var(--rgb-color)] before:transition-[box-shadow] before:duration-300 before:ease-in-out",
-              dark: "dark:before:shadow-[0px_2px_5px_0px_var(--rgb-color)] before:transition-[box-shadow] before:duration-300 before:ease-in-out",
-            },
-          };
+<ComponentSource name="animated-keyboard" title="components/ui/animated-keyboard.tsx" />
 
-          const rgbColors = [
-            "#ff0000",
-            "#ff00ff",
-            "#0000ff",
-            "#00ffff",
-            "#00ff00",
-            "#ffff00",
-          ];
+<Step>Update the import paths to match your project setup.</Step>
 
-          const RGBAnimation = memo(function RGBAnimation({ currentColorIndex, keylightColor }) {
-            if (keylightColor !== "rgb") return null;
+</Steps>
 
-            return (
-              <style jsx global>{`
-                :root {
-                  --rgb-color: ${rgbColors[currentColorIndex]};
-                }
-              `}</style>
-            );
-          });
+</TabsContent>
 
-          export const Keycap = memo(function Keycap({
-            height = "56px",
-            keylightColor = "default",
-            char,
-            secondaryChar,
-            variant,
-            className,
-          }) {
-            const [currentColorIndex, setCurrentColorIndex] = useState(0);
-
-            if (secondaryChar && variant !== "double") {
-              console.warn("secondaryChar should only be used with variant 'double'");
-              secondaryChar = undefined;
-            }
-
-            useEffect(() => {
-              if (keylightColor !== "rgb") return;
-
-              const interval = setInterval(() => {
-                setCurrentColorIndex((prev) => (prev + 1) % rgbColors.length);
-              }, 3000);
-
-              return () => clearInterval(interval);
-            }, [keylightColor]);
-
-            return (
-              <>
-                <RGBAnimation
-                  currentColorIndex={currentColorIndex}
-                  keylightColor={keylightColor}
-                />
-                <div
-                  style={{
-                    "--keycap-height": height,
-                  }}
-                  className={cn(
-                    keycapVariants({ variant }),
-                    "from-neutral-50 to-neutral-100 border-neutral-200 cursor-default",
-                    "dark:from-neutral-900 dark:to-neutral-950 dark:border-neutral-800",
-                    "shadow-[0px_5px_0px_0px_#e5e5e5] dark:shadow-[0px_5px_0px_0px_#262626]",
-                    "transition-all duration-100 ease-in-out",
-                    "hover:shadow-[0px_2px_0px_0px_#e5e5e5] dark:hover:shadow-[0px_2px_0px_0px_#262626]",
-                    "before:inset-0 before:absolute before:rounded-[inherit]",
-                    "after:inset-[1px] after:absolute after:rounded-[inherit] after:shadow-[rgba(255,_255,_255,_0.05)_0px_1px_0px_inset]",
-                    keylightColors[keylightColor].light,
-                    keylightColors[keylightColor].dark,
-                    "hover:-translate-y-[-3px] hover:opacity-90",
-                    "h-[var(--keycap-height)]",
-                    "will-change-transform",
-                    className
-                  )}
-                >
-                  <div className="relative z-10 flex flex-col items-center justify-center h-full text-neutral-800 dark:text-neutral-100">
-                    {variant === "double" ? (
-                      <div className="flex flex-col items-center justify-between h-full w-full p-[15%]">
-                        <span className="text-[calc(var(--keycap-height)/4)] leading-none">
-                          {secondaryChar}
-                        </span>
-                        <span className="text-[calc(var(--keycap-height)/3.5)] leading-none">
-                          {char}
-                        </span>
-                      </div>
-                    ) : (
-                      <span className="text-[calc(var(--keycap-height)/2.75)] leading-none">
-                        {char}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </>
-            );
-          });
-
-          export function Keyboard({ children, className, gap = "md" }) {
-            return (
-              <div
-                className={cn(
-                  "grid grid-cols-1",
-                  {
-                    "gap-1": gap === "sm",
-                    "gap-2": gap === "md",
-                    "gap-3": gap === "lg",
-                  },
-                  "p-4 bg-neutral-100 dark:bg-neutral-900 rounded-xl shadow-sm",
-                  className
-                )}
-              >
-                {children}
-              </div>
-            );
-          }
-
-          export function KeyRow({ children, className, gap = "md" }) {
-            return (
-              <div
-                className={cn(
-                  "flex items-center justify-center",
-                  {
-                    "gap-1": gap === "sm",
-                    "gap-2": gap === "md",
-                    "gap-3": gap === "lg",
-                  },
-                  className
-                )}
-              >
-                {children}
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          "use client";
-          import { cn } from "@/lib/utils";
-          import { cva, type VariantProps } from "class-variance-authority";
-          import { memo, useEffect, useState } from "react";
-          import { ReactNode } from "react";
-
-          type KeycapProps = {
-            height?: string;
-            keylightColor?: "default" | "red" | "blue" | "green" | "purple" | "rgb";
-            char?: string;
-            secondaryChar?: string;
-            className?: string;
-          } & VariantProps<typeof keycapVariants>;
-
-          const keycapVariants = cva("bg-gradient-to-b border rounded-lg relative", {
-            variants: {
-              variant: {
-                default: "aspect-square",
-                double: "aspect-square",
-                tab: "aspect-[1.77] [&_span]:text-[calc(var(--keycap-height)/3.5)]",
-                caps: "aspect-[1.85] [&_span]:text-[calc(var(--keycap-height)/3.5)]",
-                shift: "aspect-[2.32] [&_span]:text-[calc(var(--keycap-height)/3.5)]",
-                command: "aspect-[1.34] [&_span]:text-[calc(var(--keycap-height)/3.5)]",
-                space: "aspect-[8.3] [&_span]:text-[calc(var(--keycap-height)/3.5)]",
-              },
-            },
-            defaultVariants: {
-              variant: "default",
-            },
-          });
-
-          const keylightColors = {
-            default: {
-              light: "before:shadow-[0px_1px_5px_0px_#00000020]",
-              dark: "dark:before:shadow-[0px_2px_5px_0px_#ffffff20]",
-            },
-            red: {
-              light: "before:shadow-[0px_1px_5px_0px_#ff0000]",
-              dark: "dark:before:shadow-[0px_2px_5px_0px_#ff0000]",
-            },
-            blue: {
-              light: "before:shadow-[0px_1px_5px_0px_#0000ff]",
-              dark: "dark:before:shadow-[0px_2px_5px_0px_#0000ff]",
-            },
-            green: {
-              light: "before:shadow-[0px_1px_5px_0px_#00ff00]",
-              dark: "dark:before:shadow-[0px_2px_5px_0px_#00ff00]",
-            },
-            purple: {
-              light: "before:shadow-[0px_1px_5px_0px_#800080]",
-              dark: "dark:before:shadow-[0px_2px_5px_0px_#800080]",
-            },
-            rgb: {
-              light:
-                "before:shadow-[0px_1px_5px_0px_var(--rgb-color)] before:transition-[box-shadow] before:duration-300 before:ease-in-out",
-              dark: "dark:before:shadow-[0px_2px_5px_0px_var(--rgb-color)] before:transition-[box-shadow] before:duration-300 before:ease-in-out",
-            },
-          };
-
-          const rgbColors = [
-            "#ff0000",
-            "#ff00ff",
-            "#0000ff",
-            "#00ffff",
-            "#00ff00",
-            "#ffff00",
-          ];
-
-          const RGBAnimation = memo(function RGBAnimation({
-            currentColorIndex,
-            keylightColor,
-          }: {
-            currentColorIndex: number;
-            keylightColor: string;
-          }) {
-            if (keylightColor !== "rgb") return null;
-
-            return (
-              <style jsx global>{`
-                :root {
-                  --rgb-color: ${rgbColors[currentColorIndex]};
-                }
-              `}</style>
-            );
-          });
-
-          export const Keycap = memo(function Keycap({
-            height = "56px",
-            keylightColor = "default",
-            char,
-            secondaryChar,
-            variant,
-            className,
-          }: KeycapProps) {
-            const [currentColorIndex, setCurrentColorIndex] = useState(0);
-
-            if (secondaryChar && variant !== "double") {
-              console.warn("secondaryChar should only be used with variant 'double'");
-              secondaryChar = undefined;
-            }
-
-            useEffect(() => {
-              if (keylightColor !== "rgb") return;
-
-              const interval = setInterval(() => {
-                setCurrentColorIndex((prev) => (prev + 1) % rgbColors.length);
-              }, 3000);
-
-              return () => clearInterval(interval);
-            }, [keylightColor]);
-
-            return (
-              <>
-                <RGBAnimation
-                  currentColorIndex={currentColorIndex}
-                  keylightColor={keylightColor}
-                />
-                <div
-                  style={{
-                    "--keycap-height": height,
-                  }}
-                  className={cn(
-                    keycapVariants({ variant }),
-                    "from-neutral-50 to-neutral-100 border-neutral-200 cursor-default",
-                    "dark:from-neutral-900 dark:to-neutral-950 dark:border-neutral-800",
-                    "shadow-[0px_5px_0px_0px_#e5e5e5] dark:shadow-[0px_5px_0px_0px_#262626]",
-                    "transition-all duration-100 ease-in-out",
-                    "hover:shadow-[0px_2px_0px_0px_#e5e5e5] dark:hover:shadow-[0px_2px_0px_0px_#262626]",
-                    "before:inset-0 before:absolute before:rounded-[inherit]",
-                    "after:inset-[1px] after:absolute after:rounded-[inherit] after:shadow-[rgba(255,_255,_255,_0.05)_0px_1px_0px_inset]",
-                    keylightColors[keylightColor].light,
-                    keylightColors[keylightColor].dark,
-                    "hover:-translate-y-[-3px] hover:opacity-90",
-                    "h-[var(--keycap-height)]",
-                    "will-change-transform",
-                    className
-                  )}
-                >
-                  <div className="relative z-10 flex flex-col items-center justify-center h-full text-neutral-800 dark:text-neutral-100">
-                    {variant === "double" ? (
-                      <div className="flex flex-col items-center justify-between h-full w-full p-[15%]">
-                        <span className="text-[calc(var(--keycap-height)/4)] leading-none">
-                          {secondaryChar}
-                        </span>
-                        <span className="text-[calc(var(--keycap-height)/3.5)] leading-none">
-                          {char}
-                        </span>
-                      </div>
-                    ) : (
-                      <span className="text-[calc(var(--keycap-height)/2.75)] leading-none">
-                        {char}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </>
-            );
-          });
-
-          type KeyboardProps = {
-            children: ReactNode;
-            className?: string;
-            gap?: "sm" | "md" | "lg";
-          };
-
-          export function Keyboard({ children, className, gap = "md" }: KeyboardProps) {
-            return (
-              <div
-                className={cn(
-                  "grid grid-cols-1",
-                  {
-                    "gap-1": gap === "sm",
-                    "gap-2": gap === "md",
-                    "gap-3": gap === "lg",
-                  },
-                  "p-4 bg-neutral-100 dark:bg-neutral-900 rounded-xl shadow-sm",
-                  className
-                )}
-              >
-                {children}
-              </div>
-            );
-          }
-
-          type KeyRowProps = {
-            children: ReactNode;
-            className?: string;
-            gap?: "sm" | "md" | "lg";
-          };
-
-          export function KeyRow({ children, className, gap = "md" }: KeyRowProps) {
-            return (
-              <div
-                className={cn(
-                  "flex items-center justify-center",
-                  {
-                    "gap-1": gap === "sm",
-                    "gap-2": gap === "md",
-                    "gap-3": gap === "lg",
-                  },
-                  className
-                )}
-              >
-                {children}
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-      </ComponentSource>
-
-      <Step>Update the import paths to match your project setup.</Step>
-    </Steps>
-  </TabsContent>
-</Tabs>
+</CodeTabs>
 
 ## Examples
 
 <ComponentPreview
-  name="rgb-keyboard-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="Displays an animated keyboard with keycaps that can be customized with different colors and variants."
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import {
-      KeyRow,
-      Keycap,
-      Keyboard,
-    } from "@/registry/components/animated-keyboard";
-
-    const KEY_HEIGHT = "42px";
-
-    const TOP_ROW_KEYS = [
-      { char: "~", secondaryChar: "`" },
-      { char: "2", secondaryChar: "@" },
-      { char: "3", secondaryChar: "#" },
-      { char: "4", secondaryChar: "$" },
-      { char: "5", secondaryChar: "%" },
-      { char: "6", secondaryChar: "^" },
-      { char: "7", secondaryChar: "&" },
-      { char: "8", secondaryChar: "*" },
-      { char: "9", secondaryChar: "(" },
-      { char: "0", secondaryChar: ")" },
-      { char: "-", secondaryChar: "_" },
-      { char: "=", secondaryChar: "+" },
-    ];
-
-    const SECOND_ROW_KEYS = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
-
-    const THIRD_ROW_KEYS = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
-
-    const FOURTH_ROW_KEYS = ["Z", "X", "C", "V", "B", "N", "M"];
-
-    const SPECIAL_KEYS = {
-      THIRD_ROW_END: [
-        { char: ";", secondaryChar: ":" },
-        { char: "'", secondaryChar: '"' },
-      ],
-      FOURTH_ROW_END: [
-        { char: ",", secondaryChar: "<" },
-        { char: ".", secondaryChar: ">" },
-        { char: "/", secondaryChar: "?" },
-      ],
-    };
-
-    function TopRow() {
-      return (
-        <KeyRow>
-          {TOP_ROW_KEYS.map((key) => (
-            <Keycap
-              key={key.char}
-              char={key.char}
-              secondaryChar={key.secondaryChar}
-              variant="double"
-              height={KEY_HEIGHT}
-              keylightColor="rgb"
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function SecondRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="Tab"
-            variant="tab"
-            height={KEY_HEIGHT}
-            keylightColor="rgb"
-            className="rounded-[6px]"
-          />
-          {SECOND_ROW_KEYS.map((char) => (
-            <Keycap
-              key={char}
-              char={char}
-              height={KEY_HEIGHT}
-              keylightColor="rgb"
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function ThirdRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="Caps"
-            variant="caps"
-            height={KEY_HEIGHT}
-            keylightColor="rgb"
-            className="rounded-[6px]"
-          />
-          {THIRD_ROW_KEYS.map((char) => (
-            <Keycap
-              key={char}
-              char={char}
-              height={KEY_HEIGHT}
-              keylightColor="rgb"
-              className="rounded-[6px]"
-            />
-          ))}
-          {SPECIAL_KEYS.THIRD_ROW_END.map((key) => (
-            <Keycap
-              key={key.char}
-              char={key.char}
-              secondaryChar={key.secondaryChar}
-              variant="double"
-              height={KEY_HEIGHT}
-              keylightColor="rgb"
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function FourthRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="Shift"
-            variant="shift"
-            height={KEY_HEIGHT}
-            keylightColor="rgb"
-            className="rounded-[6px]"
-          />
-          {FOURTH_ROW_KEYS.map((char) => (
-            <Keycap
-              key={char}
-              char={char}
-              height={KEY_HEIGHT}
-              keylightColor="rgb"
-              className="rounded-[6px]"
-            />
-          ))}
-          {SPECIAL_KEYS.FOURTH_ROW_END.map((key) => (
-            <Keycap
-              key={key.char}
-              char={key.char}
-              secondaryChar={key.secondaryChar}
-              variant="double"
-              height={KEY_HEIGHT}
-              keylightColor="rgb"
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function BottomRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="alt"
-            variant="command"
-            height={KEY_HEIGHT}
-            keylightColor="rgb"
-            className="rounded-[6px]"
-          />
-          <Keycap
-            char="⌘"
-            variant="command"
-            height={KEY_HEIGHT}
-            keylightColor="rgb"
-            className="rounded-[6px]"
-          />
-          <Keycap
-            char="Space"
-            variant="space"
-            height={KEY_HEIGHT}
-            keylightColor="rgb"
-            className="rounded-[6px]"
-          />
-          <Keycap
-            char="⎇"
-            variant="command"
-            height={KEY_HEIGHT}
-            keylightColor="rgb"
-            className="rounded-[6px]"
-          />
-        </KeyRow>
-      );
-    }
-
-    export default function RGBKeyboardDemo() {
-      return (
-        <div>
-          <Keyboard>
-            <TopRow />
-            <SecondRow />
-            <ThirdRow />
-            <FourthRow />
-            <BottomRow />
-          </Keyboard>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import {
-      KeyRow,
-      Keycap,
-      Keyboard,
-    } from "@/registry/components/animated-keyboard";
-
-    const KEY_HEIGHT = "42px";
-
-    const TOP_ROW_KEYS = [
-      { char: "~", secondaryChar: "`" },
-      { char: "2", secondaryChar: "@" },
-      { char: "3", secondaryChar: "#" },
-      { char: "4", secondaryChar: "$" },
-      { char: "5", secondaryChar: "%" },
-      { char: "6", secondaryChar: "^" },
-      { char: "7", secondaryChar: "&" },
-      { char: "8", secondaryChar: "*" },
-      { char: "9", secondaryChar: "(" },
-      { char: "0", secondaryChar: ")" },
-      { char: "-", secondaryChar: "_" },
-      { char: "=", secondaryChar: "+" },
-    ];
-
-    const SECOND_ROW_KEYS = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
-
-    const THIRD_ROW_KEYS = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
-
-    const FOURTH_ROW_KEYS = ["Z", "X", "C", "V", "B", "N", "M"];
-
-    const SPECIAL_KEYS = {
-      THIRD_ROW_END: [
-        { char: ";", secondaryChar: ":" },
-        { char: "'", secondaryChar: '"' },
-      ],
-      FOURTH_ROW_END: [
-        { char: ",", secondaryChar: "<" },
-        { char: ".", secondaryChar: ">" },
-        { char: "/", secondaryChar: "?" },
-      ],
-    };
-
-    function TopRow() {
-      return (
-        <KeyRow>
-          {TOP_ROW_KEYS.map((key) => (
-            <Keycap
-              key={key.char}
-              char={key.char}
-              secondaryChar={key.secondaryChar}
-              variant="double"
-              height={KEY_HEIGHT}
-              keylightColor="rgb"
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function SecondRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="Tab"
-            variant="tab"
-            height={KEY_HEIGHT}
-            keylightColor="rgb"
-            className="rounded-[6px]"
-          />
-          {SECOND_ROW_KEYS.map((char) => (
-            <Keycap
-              key={char}
-              char={char}
-              height={KEY_HEIGHT}
-              keylightColor="rgb"
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function ThirdRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="Caps"
-            variant="caps"
-            height={KEY_HEIGHT}
-            keylightColor="rgb"
-            className="rounded-[6px]"
-          />
-          {THIRD_ROW_KEYS.map((char) => (
-            <Keycap
-              key={char}
-              char={char}
-              height={KEY_HEIGHT}
-              keylightColor="rgb"
-              className="rounded-[6px]"
-            />
-          ))}
-          {SPECIAL_KEYS.THIRD_ROW_END.map((key) => (
-            <Keycap
-              key={key.char}
-              char={key.char}
-              secondaryChar={key.secondaryChar}
-              variant="double"
-              height={KEY_HEIGHT}
-              keylightColor="rgb"
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function FourthRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="Shift"
-            variant="shift"
-            height={KEY_HEIGHT}
-            keylightColor="rgb"
-            className="rounded-[6px]"
-          />
-          {FOURTH_ROW_KEYS.map((char) => (
-            <Keycap
-              key={char}
-              char={char}
-              height={KEY_HEIGHT}
-              keylightColor="rgb"
-              className="rounded-[6px]"
-            />
-          ))}
-          {SPECIAL_KEYS.FOURTH_ROW_END.map((key) => (
-            <Keycap
-              key={key.char}
-              char={key.char}
-              secondaryChar={key.secondaryChar}
-              variant="double"
-              height={KEY_HEIGHT}
-              keylightColor="rgb"
-              className="rounded-[6px]"
-            />
-          ))}
-        </KeyRow>
-      );
-    }
-
-    function BottomRow() {
-      return (
-        <KeyRow>
-          <Keycap
-            char="alt"
-            variant="command"
-            height={KEY_HEIGHT}
-            keylightColor="rgb"
-            className="rounded-[6px]"
-          />
-          <Keycap
-            char="⌘"
-            variant="command"
-            height={KEY_HEIGHT}
-            keylightColor="rgb"
-            className="rounded-[6px]"
-          />
-          <Keycap
-            char="Space"
-            variant="space"
-            height={KEY_HEIGHT}
-            keylightColor="rgb"
-            className="rounded-[6px]"
-          />
-          <Keycap
-            char="⎇"
-            variant="command"
-            height={KEY_HEIGHT}
-            keylightColor="rgb"
-            className="rounded-[6px]"
-          />
-        </KeyRow>
-      );
-    }
-
-    export default function RGBKeyboardDemo() {
-      return (
-        <div>
-          <Keyboard>
-            <TopRow />
-            <SecondRow />
-            <ThirdRow />
-            <FourthRow />
-            <BottomRow />
-          </Keyboard>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
+  name="animated-keyboard-rgb-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="Displays an animated keyboard with keycaps that can be customized with different colors and variants"
+  align="center"
+/>
 
 <ComponentPreview
-  name="numpad-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="Displays an animated numpad with keycaps that can be customized with different colors and variants."
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import {
-      KeyRow,
-      Keycap,
-      Keyboard,
-    } from "@/registry/components/animated-keyboard";
-
-    export default function NumpadDemo() {
-      return (
-        <div>
-          <Keyboard>
-            <KeyRow>
-              <Keycap char="1" />
-              <Keycap char="2" />
-              <Keycap char="3" />
-            </KeyRow>
-            <KeyRow>
-              <Keycap char="4" />
-              <Keycap char="5" />
-              <Keycap char="6" />
-            </KeyRow>
-            <KeyRow>
-              <Keycap char="7" />
-              <Keycap char="8" />
-              <Keycap char="9" />
-            </KeyRow>
-          </Keyboard>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import {
-      KeyRow,
-      Keycap,
-      Keyboard,
-    } from "@/registry/components/animated-keyboard";
-
-    export default function NumpadDemo() {
-      return (
-        <div>
-          <Keyboard>
-            <KeyRow>
-              <Keycap char="1" />
-              <Keycap char="2" />
-              <Keycap char="3" />
-            </KeyRow>
-            <KeyRow>
-              <Keycap char="4" />
-              <Keycap char="5" />
-              <Keycap char="6" />
-            </KeyRow>
-            <KeyRow>
-              <Keycap char="7" />
-              <Keycap char="8" />
-              <Keycap char="9" />
-            </KeyRow>
-          </Keyboard>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
-
-<ComponentPreview
-  name="keycaps-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="Displays an animated numpad with keycaps that can be customized with different colors and variants."
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import {
-      Keycap,
-      KeyRow,
-      Keyboard,
-    } from "@/registry/components/animated-keyboard";
-
-    export default function KeycapsDemo() {
-      return (
-        <div>
-          <Keyboard>
-            <KeyRow>
-              <Keycap variant="tab" char="Tab" />
-              <Keycap char="Q" />
-              <Keycap variant="double" char="1" secondaryChar="!" />
-            </KeyRow>
-            <KeyRow>
-              <Keycap char="A" />
-              <Keycap variant="double" char="2" secondaryChar="@" />
-              <Keycap variant="caps" char="Caps" />
-            </KeyRow>
-          </Keyboard>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import {
-      Keycap,
-      KeyRow,
-      Keyboard,
-    } from "@/registry/components/animated-keyboard";
-
-    export default function KeycapsDemo() {
-      return (
-        <div>
-          <Keyboard>
-            <KeyRow>
-              <Keycap variant="tab" char="Tab" />
-              <Keycap char="Q" />
-              <Keycap variant="double" char="1" secondaryChar="!" />
-            </KeyRow>
-            <KeyRow>
-              <Keycap char="A" />
-              <Keycap variant="double" char="2" secondaryChar="@" />
-              <Keycap variant="caps" char="Caps" />
-            </KeyRow>
-          </Keyboard>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
+  name="mini-keyboard-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="Displays an animated keyboard with keycaps that can be customized with different colors and variants"
+  align="center"
+/>
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import {
+  Keyboard,
   Keycap,
   KeyRow,
-  Keyboard,
-} from "@/registry/components/animated-keyboard";
+} from "@/components/ui/animated-keyboard";
 ```
 
-```tsx
-<Keyboard>
+```tsx showLineNumbers
+<Keyboard className="w-full max-w-lg">
   <KeyRow>
-    <Keycap variant="tab" char="Tab" />
-    <Keycap char="Q" />
-    <Keycap variant="double" char="1" secondaryChar="!" />
-  </KeyRow>
-  <KeyRow>
-    <Keycap char="A" />
-    <Keycap variant="double" char="2" secondaryChar="@" />
-    <Keycap variant="caps" char="Caps" />
+    <Keycap char="Q" height="42px" />
+    <Keycap char="W" height="42px" />
+    <Keycap char="E" height="42px" />
+    <Keycap char="R" height="42px" />
+    <Keycap char="T" height="42px" />
+    <Keycap char="Y" height="42px" />
+    <Keycap char="U" height="42px" />
+    <Keycap char="I" height="42px" />
+    <Keycap char="O" height="42px" />
+    <Keycap char="P" height="42px" />
   </KeyRow>
 </Keyboard>
 ```
 
-
 ## Props
 
-<Kbd>Keycap</Kbd> props.
+`Keyboard` props.
 
-| Prop           | Type                                                                 | Description                                                                 | Default   |
-| -------------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------- |
-| height         | <Kbd>string</Kbd>                                                    | Height of the keycap.                                                       | "56px"    |
-| keylightColor  | <Kbd>"default" \| "red" \| "blue" \| "green" \| "purple" \| "rgb"</Kbd> | Color of the keycap's light effect.                                         | "default" |
-| char           | <Kbd>string</Kbd>                                                    | Main character displayed on the keycap.                                     | -         |
-| secondaryChar  | <Kbd>string</Kbd>                                                    | Secondary character displayed on the keycap (only for variant="double").    | -         |
-| variant        | <Kbd>"default" \| "double" \| "tab" \| "caps" \| "shift" \| "command" \| "space"</Kbd> | Variant of the keycap.                                                      | "default" |
-| className      | <Kbd>string</Kbd>                                                    | Additional custom classes.                                                  | -         |
+<TypeTable
+  type={{
+    children: {
+      type: "React.ReactNode",
+      description: "The keyboard rows and keys to render."
+    },
+    className: {
+      type: "string",
+      description: "Additional custom classes."
+    }
+  }}
+/>
 
-<Kbd>Keyboard</Kbd> props.
+`KeyRow` props.
 
-| Prop      | Type                      | Description                                                 | Default   |
-| --------- | ------------------------- | ----------------------------------------------------------- | --------- |
-| children  | <Kbd>ReactNode</Kbd>      | Child components to be rendered inside the keyboard.         | -         |
-| className | <Kbd>string</Kbd>         | Additional custom classes.                                  | -         |
-| gap       | <Kbd>"sm" \| "md" \| "lg"</Kbd> | Spacing between key rows.                                   | "md"      |
+<TypeTable
+  type={{
+    children: {
+      type: "React.ReactNode",
+      description: "The keycaps to render in this row."
+    },
+    className: {
+      type: "string",
+      description: "Additional custom classes."
+    }
+  }}
+/>
 
-<Kbd>KeyRow</Kbd> props.
+`Keycap` props.
 
-| Prop      | Type                      | Description                                                 | Default   |
-| --------- | ------------------------- | ----------------------------------------------------------- | --------- |
-| children  | <Kbd>ReactNode</Kbd>      | Child components to be rendered inside the key row.         | -         |
-| className | <Kbd>string</Kbd>         | Additional custom classes.                                  | -         |
-| gap       | <Kbd>"sm" \| "md" \| "lg"</Kbd> | Spacing between keycaps.                                    | "md"      |
-
+<TypeTable
+  type={{
+    char: {
+      type: "string",
+      description: "The main character to display on the key."
+    },
+    secondaryChar: {
+      type: "string",
+      description: "Secondary character (usually top-left)."
+    },
+    height: {
+      type: "string",
+      description: "Height of the keycap in CSS units."
+    },
+    variant: {
+      type: '"default" | "double" | "tab" | "caps" | "shift" | "command" | "space"',
+      description: "The keycap variant affecting its width.",
+      default: '"default"'
+    },
+    keylightColor: {
+      type: '"default" | "red" | "blue" | "green" | "purple" | "rgb"',
+      description: "Color theme for the key lighting effect.",
+      default: '"default"'
+    },
+    className: {
+      type: "string",
+      description: "Additional custom classes."
+    }
+  }}
+/>

@@ -1,0 +1,146 @@
+---
+title: Swipe Button
+description: A sleek swipe-to-validate button with animated text, smooth transitions.
+component: true
+---
+
+<ComponentPreview
+  name="swipe-button-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="A sleek swipe-to-validate button with animated text, smooth transitions."
+  align="center"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/swipe-button.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge
+```
+
+```bash
+npx shadcn@latest add button
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="swipe-button" title="components/ui/swipe-button.tsx" />
+
+<Step>Tailwind v4: Update `@/global.css`</Step>
+
+```css showLineNumbers
+@theme inline {
+  --animate-swipe-button-text: swipe-button-text 1.5s
+    cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes swipe-button-text {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: var(--swipe-button-text-width) 0;
+  }
+}
+```
+
+<Step>Tailwind v3: Update `tailwind.config.js`</Step>
+
+```js showLineNumbers
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        "swipe-button-text": {
+          "0%": { backgroundPosition: "0 0" },
+          "100%": { backgroundPosition: "var(--swipe-button-text-width) 0" },
+        },
+      },
+      animation: {
+        "swipe-button-text":
+          "swipe-button-text 1.5s cubic-bezier(.4,0,.2,1) infinite",
+      },
+    },
+  },
+};
+```
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { SwipeButton } from "@/components/ui/swipe-button";
+```
+
+```tsx showLineNumbers
+<SwipeButton>Swipe to validate</SwipeButton>
+```
+
+## Props
+
+`SwipeButton` props.
+
+<TypeTable
+  type={{
+    text: {
+      type: "string",
+      description: "The text displayed in the button.",
+      default: '"Swipe to validate"'
+    },
+    onSwipeComplete: {
+      type: "() => void",
+      description: "Callback function triggered when swipe is completed."
+    },
+    gap: {
+      type: "number",
+      description: "Space around the swipe button in pixels.",
+      default: "3"
+    },
+    validationDuration: {
+      type: "number",
+      description: "Duration of the success state in milliseconds.",
+      default: "2000"
+    },
+    className: {
+      type: "string",
+      description: "Additional classes for custom styling."
+    }
+  }}
+/>

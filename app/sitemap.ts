@@ -1,47 +1,44 @@
-import { allDocs, allPosts, allChangelogs } from "@/.contentlayer/generated";
-import { absoluteUrl } from "@/lib/utils";
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next"
+
+import { source } from "@/lib/source"
+import { templatesSource } from "@/lib/templates-source"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "https://badtz-ui.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://badtz-ui.com"
 
+  // Main site pages
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: `${baseUrl}/`,
-      lastModified: new Date().toISOString(),
-      priority: 1.0,
+      url: baseUrl,
+      lastModified: new Date(),
       changeFrequency: "weekly",
+      priority: 1,
     },
     {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date().toISOString(),
-      priority: 0.6,
+      url: `${baseUrl}/templates`,
+      lastModified: new Date(),
       changeFrequency: "weekly",
+      priority: 0.9,
     },
-  ];
+  ]
 
-  const blogPages: MetadataRoute.Sitemap = allPosts.map((post) => ({
-    url: absoluteUrl(`/blog/${post.slugAsParams}`),
-    lastModified: new Date(post.date).toISOString(),
-    priority: 0.6,
-    changeFrequency: "weekly",
-  }));
+  // Documentation pages (dynamically generated)
+  const docsPages: MetadataRoute.Sitemap = source.getPages().map((page) => ({
+    url: `${baseUrl}${page.url}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: page.url === "/docs" ? 0.9 : 0.8,
+  }))
 
-  const docPages: MetadataRoute.Sitemap = allDocs.map((doc) => ({
-    url: absoluteUrl(`/docs/${doc.slugAsParams}`),
-    lastModified: new Date().toISOString(),
-    priority: 0.9,
-    changeFrequency: "weekly",
-  }));
-
-  const changelogPages: MetadataRoute.Sitemap = allChangelogs.map(
-    (changelog) => ({
-      url: absoluteUrl(`/changelog/${changelog.slugAsParams}`),
-      lastModified: new Date(changelog.date).toISOString(),
+  // Template pages (dynamically generated)
+  const templatePages: MetadataRoute.Sitemap = templatesSource
+    .getPages()
+    .map((page) => ({
+      url: `${baseUrl}${page.url}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
       priority: 0.7,
-      changeFrequency: "weekly",
-    })
-  );
+    }))
 
-  return [...staticPages, ...blogPages, ...docPages, ...changelogPages];
+  return [...staticPages, ...docsPages, ...templatePages]
 }

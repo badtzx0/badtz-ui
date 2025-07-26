@@ -1,302 +1,73 @@
 ---
 title: Border Beam
 description: Displays an animated border effect with a glowing beam around the content that adapts to the size of the container.
+component: true
 ---
 
 <ComponentPreview
   name="border-beam-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
   description="Displays an animated border effect with a glowing beam"
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import { BorderBeam } from "@/components/ui/border-beam";
-    import { useTheme } from "next-themes";
-    import { useState, useEffect } from "react";
-
-    export default function BorderBeamDemo() {
-      const { theme } = useTheme();
-      const [lightColor, setLightColor] = useState("#FAFAFA");
-
-      useEffect(() => {
-        setLightColor(theme === "dark" ? "#FAFAFA" : "#FF2056");
-      }, [theme]);
-
-      return (
-        <div className="relative rounded-xl shadow-sm">
-          <BorderBeam lightColor={lightColor} lightWidth={350} duration={8} />
-          <div className="h-full w-full py-4 px-6 max-w-72 space-y-2">
-            <h3 className="font-gilroy text-2xl">Border Beam</h3>
-            <p className="text-sm">
-              This card showcases a dynamic border beam effect, adding a subtle,
-              animated glow around the edges.
-            </p>
-          </div>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import { BorderBeam } from "@/components/ui/border-beam";
-    import { useTheme } from "next-themes";
-    import { useState, useEffect } from "react";
-
-    export default function BorderBeamDemo() {
-      const { theme } = useTheme();
-      const [lightColor, setLightColor] = useState("#FAFAFA");
-
-      useEffect(() => {
-        setLightColor(theme === "dark" ? "#FAFAFA" : "#FF2056");
-      }, [theme]);
-
-      return (
-        <div className="relative rounded-lg shadow-sm">
-          <BorderBeam lightColor={lightColor} lightWidth={350} duration={8} />
-          <div className="h-full w-full py-4 px-6 max-w-72 space-y-2">
-            <h3 className="font-gilroy text-2xl">Border Beam</h3>
-            <p className="text-sm">
-              This card showcases a dynamic border beam effect, adding a subtle,
-              animated glow around the edges.
-            </p>
-          </div>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
+  align="center"
+/>
 
 ## Installation
 
-<Tabs defaultValue="cli">
-  <TabsList>
-    <TabsTrigger value="cli">CLI</TabsTrigger>
-    <TabsTrigger value="manual">Manual</TabsTrigger>
-  </TabsList>
+<CodeTabs>
 
-  <TabsContent value="cli">
-    ```bash
-    npx shadcn@latest add https://badtz-ui.com/r/border-beam.json
-    ```
-  </TabsContent>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
 
-  <TabsContent value="manual">
-    <Steps>
-      <Step>Install the following dependencies:</Step>
+<TabsContent value="cli">
 
-      ```bash
-      npm install clsx tailwind-merge framer-motion
-      ```
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/border-beam.json
+```
 
-      <Step>Add the <Kbd>utils</Kbd> file to the <Kbd>@/lib</Kbd> folder</Step>
+</TabsContent>
 
-      <UtilsSource>
-        <Highlighter slot="javascript">
-          ```jsx
-          import { clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<TabsContent value="manual">
 
-          export function cn(...inputs) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          import { ClassValue, clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<Steps>
 
-          export function cn(...inputs: ClassValue[]) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-      </UtilsSource>
+<Step>Install the following dependencies:</Step>
 
-      <Step>Copy and paste the <Kbd>border-beam</Kbd> code into your project.</Step>
+```bash
+npm install clsx tailwind-merge motion
+```
 
-      <ComponentSource name="border-beam">
-        <Highlighter slot="javascript">
-          ```jsx
-          "use client";
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
 
-          import React, { useRef, useEffect } from "react";
-          import { motion } from "framer-motion";
-          import { cn } from "@/lib/utils";
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
 
-          export function BorderBeam({
-            lightWidth = 200,
-            duration = 10,
-            lightColor = "#FAFAFA",
-            borderWidth = 1,
-            className,
-            ...props
-          }) {
-            const pathRef = useRef(null);
+<Step>Copy and paste the following code into your project.</Step>
 
-            const updatePath = () => {
-              if (pathRef.current) {
-                const div = pathRef.current;
-                div.style.setProperty(
-                  "--path",
-                  `path("M 0 0 H ${div.offsetWidth} V ${div.offsetHeight} H 0 V 0")`
-                );
-              }
-            };
+<ComponentSource name="border-beam" title="components/ui/border-beam.tsx" />
 
-            useEffect(() => {
-              updatePath();
-              window.addEventListener("resize", updatePath);
+<Step>Update the import paths to match your project setup.</Step>
 
-              return () => {
-                window.removeEventListener("resize", updatePath);
-              };
-            }, []);
+</Steps>
 
-            return (
-              <div
-                style={{
-                  "--duration": duration,
-                  "--border-width": `${borderWidth}px`,
-                }}
-                ref={pathRef}
-                className={cn(
-                  `absolute rounded-[inherit] z-0 w-full h-full`,
-                  `after:content-[''] after:absolute after:inset-[var(--border-width)] after:rounded-[inherit]`,
-                  "![mask-clip:padding-box,border-box] border-[length:var(--border-width)]",
-                  "![mask-composite:intersect] [mask:linear-gradient(transparent,transparent),linear-gradient(red,red)]",
-                  `before:border-black/10 dark:before:border-white/10 before:absolute before:inset-0 before:rounded-[inherit] before:z-[-1] before:border-[length:var(--border-width)]`,
-                  className
-                )}
-                {...props}
-              >
-                <motion.div
-                  className="absolute aspect-square inset-0 bg-[radial-gradient(ellipse_at_center,var(--light-color),transparent,transparent)]"
-                  style={{
-                    "--light-color": lightColor,
-                    "--light-width": `${lightWidth}px`,
-                    width: "var(--light-width)",
-                    offsetPath: "var(--path)",
-                  }}
-                  animate={{
-                    offsetDistance: ["0%", "100%"],
-                  }}
-                  transition={{
-                    duration: duration,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                />
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          "use client";
+</TabsContent>
 
-          import React, { useRef, useEffect, CSSProperties } from "react";
-          import { motion } from "framer-motion";
-          import { cn } from "@/lib/utils";
+</CodeTabs>
 
-          interface BorderBeamProps {
-            lightWidth?: number;
-            duration?: number;
-            lightColor?: string;
-            borderWidth?: number;
-            className?: string;
-            [key: string]: unknown;
-          }
-
-          export function BorderBeam({
-            lightWidth = 200,
-            duration = 10,
-            lightColor = "#FAFAFA",
-            borderWidth = 1,
-            className,
-            ...props
-          }: BorderBeamProps) {
-            const pathRef = useRef<HTMLDivElement>(null);
-
-            const updatePath = () => {
-              if (pathRef.current) {
-                const div = pathRef.current;
-                div.style.setProperty(
-                  "--path",
-                  `path("M 0 0 H ${div.offsetWidth} V ${div.offsetHeight} H 0 V 0")`
-                );
-              }
-            };
-
-            useEffect(() => {
-              updatePath();
-              window.addEventListener("resize", updatePath);
-
-              return () => {
-                window.removeEventListener("resize", updatePath);
-              };
-            }, []);
-
-            return (
-              <div
-                style={
-                  {
-                    "--duration": duration,
-                    "--border-width": `${borderWidth}px`,
-                  } as CSSProperties
-                }
-                ref={pathRef}
-                className={cn(
-                  `absolute rounded-[inherit] z-0 w-full h-full`,
-                  `after:content-[''] after:absolute after:inset-[var(--border-width)] after:rounded-[inherit]`,
-                  "![mask-clip:padding-box,border-box] border-[length:var(--border-width)]",
-                  "![mask-composite:intersect] [mask:linear-gradient(transparent,transparent),linear-gradient(red,red)]",
-                  `before:border-black/10 dark:before:border-white/10 before:absolute before:inset-0 before:rounded-[inherit] before:z-[-1] before:border-[length:var(--border-width)]`,
-                  className
-                )}
-                {...props}
-              >
-                <motion.div
-                  className="absolute aspect-square inset-0 bg-[radial-gradient(ellipse_at_center,var(--light-color),transparent,transparent)]"
-                  style={
-                    {
-                      "--light-color": lightColor,
-                      "--light-width": `${lightWidth}px`,
-                      width: "var(--light-width)",
-                      offsetPath: "var(--path)",
-                    } as CSSProperties
-                  }
-                  animate={{
-                    offsetDistance: ["0%", "100%"],
-                  }}
-                  transition={{
-                    duration: duration,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                />
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-      </ComponentSource>
-
-      <Step>Update the import paths to match your project setup.</Step>
-    </Steps>
-  </TabsContent>
-</Tabs>
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { BorderBeam } from "@/components/ui/border-beam";
 ```
 
-```tsx
+```tsx showLineNumbers
 <div className="relative rounded-lg shadow-sm">
   <BorderBeam lightColor="#FAFAFA" lightWidth={350} duration={8} />
   <div className="h-full w-full py-4 px-6 max-w-72 space-y-2">
@@ -309,22 +80,43 @@ import { BorderBeam } from "@/components/ui/border-beam";
 </div>
 ```
 
-> **Note**  
-> The parent container must be set to `position: relative` for the BorderBeam effect to work properly.
-
 ## Props
 
-<Kbd>border-beam</Kbd> props.
+`border-beam` props.
 
-| Prop        | Type                      | Description                                                 | Default   |
-| ----------- | ------------------------- | ----------------------------------------------------------- | --------- |
-| lightWidth  | <Kbd>number</Kbd>         | Width of the light beam effect in pixels.                   | 200       |
-| duration    | <Kbd>number</Kbd>         | Duration of the animation in seconds.                       | 10        |
-| lightColor  | <Kbd>string</Kbd>         | Color of the light beam effect.                             | "#FAFAFA" |
-| borderWidth | <Kbd>number</Kbd>         | Width of the border in pixels.                              | 1         |
-| className   | <Kbd>string</Kbd>         | Additional custom classes.                                  | -         |
-| props       | <Kbd>Record&lt;string, any&gt;</Kbd> | Additional HTML attributes for the component's wrapper div. | -         |
+<TypeTable
+  type={{
+    lightWidth: {
+      type: "number",
+      description: "Width of the light beam effect in pixels.",
+      default: "200"
+    },
+    duration: {
+      type: "number",
+      description: "Duration of the animation in seconds.",
+      default: "10"
+    },
+    lightColor: {
+      type: "string",
+      description: "Color of the light beam effect.",
+      default: '"#FAFAFA"'
+    },
+    borderWidth: {
+      type: "number",
+      description: "Width of the border in pixels.",
+      default: "1"
+    },
+    className: {
+      type: "string",
+      description: "Additional custom classes."
+    },
+    props: {
+      type: "Record<string, any>",
+      description: "Additional HTML attributes for the component's wrapper div."
+    }
+  }}
+/>
 
 ## Credits
 
-<li className="text-sm text-muted-foreground mt-4">This component is inspired by<MdxLink href="https://resend.com/home"> Resend</MdxLink></li>
+This component is inspired by [Resend](https://resend.com/home)

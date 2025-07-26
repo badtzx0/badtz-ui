@@ -1,0 +1,135 @@
+---
+title: Animated Card 3
+description: An animated hover card that can showcase almost anything—it all comes down to the caption you choose.
+component: true
+---
+
+<ComponentPreview
+  name="animated-card-3-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="An animated hover card that can showcase almost anything—it all comes down to the caption you choose."
+  align="center"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/animated-card-3.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="animated-card-3" title="components/ui/animated-card.tsx" />
+
+<ComponentSource name="animated-card-3" className="mt-20" fileName="visual-3" title="components/ui/visual-3.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import {
+  AnimatedCard,
+  CardVisual,
+  CardBody,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/animated-card";
+import { Visual3 } from "@/components/ui/visual-3";
+```
+
+```tsx showLineNumbers
+<AnimatedCard>
+  <CardVisual>
+    <Visual3 mainColor="#ff6900" secondaryColor="#f54900" />
+  </CardVisual>
+  <CardBody>
+    <CardTitle>Just find the right caption</CardTitle>
+    <CardDescription>This card will tell everything you want</CardDescription>
+  </CardBody>
+</AnimatedCard>
+```
+
+## Props
+
+`animated-card` props.
+
+<TypeTable
+  type={{
+    className: {
+      type: "string",
+      description: "Additional custom classes."
+    },
+    props: {
+      type: "React.HTMLAttributes<HTMLDivElement>",
+      description: "Additional HTML attributes."
+    }
+  }}
+/>
+
+`visual-2` props.
+
+<TypeTable
+  type={{
+    mainColor: {
+      type: "string",
+      description: "Main color used for certain elements in the component.",
+      default: '"#8b5cf6"'
+    },
+    secondaryColor: {
+      type: "string",
+      description: "Secondary color used for other elements in the component.",
+      default: '"#fbbf24"'
+    },
+    gridColor: {
+      type: "string",
+      description: "Grid background color for the component.",
+      default: '"#80808015"'
+    }
+  }}
+/>
+
+## Note
+
+- Many more cards are coming in the future. If you need a card for a specific theme, feel free to send me a request. If it's something that could benefit many people, I'll build it.
+
+## Credits
+
+This component is inspired by [Wope](https://wope.com/)

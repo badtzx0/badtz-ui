@@ -1,0 +1,100 @@
+---
+title: Glowing Button
+description: A visually distinct button component featuring a configurable, animated glow effect to highlight calls to action or important interactions.
+component: true
+---
+
+<ComponentPreview
+  name="glowing-button-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="A visually distinct button component featuring a configurable, animated glow effect to highlight calls to action or important interactions."
+  align="center"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/glowing-button.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge
+```
+
+```bash
+npx shadcn@latest add button
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="glowing-button" title="components/ui/glowing-button.tsx" />
+
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { GlowingButton } from "@/components/ui/buttons/glowing-button";
+```
+
+```tsx showLineNumbers
+<GlowingButton>Hover me</GlowingButton>
+```
+
+## Props
+
+`glowing-button` props.
+
+<TypeTable
+  type={{
+    children: {
+      type: "React.ReactNode",
+      description: "The content to be displayed inside the button."
+    },
+    className: {
+      type: "string",
+      description: "Additional CSS classes to apply to the button for custom styling."
+    },
+    glowColor: {
+      type: "string",
+      description: "The hexadecimal color code for the button's glow effect.",
+      default: '"#a3e635"'
+    }
+  }}
+/>
+
+

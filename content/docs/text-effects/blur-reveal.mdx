@@ -1,0 +1,105 @@
+---
+title: Blur Reveal
+description: A text component that reveals its content with a smooth blur-to-focus animation, activated by default when the text enters the viewport.
+component: true
+---
+
+<ComponentPreview
+replayable
+  name="blur-reveal-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="A text component that reveals its content with a smooth blur-to-focus animation, activated by default when the text enters the viewport."
+  align="center"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/blur-reveal.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="blur-reveal" title="components/ui/blur-reveal.tsx" />
+
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { BlurReveal } from "@/components/ui/blur-reveal";
+```
+
+```tsx showLineNumbers
+<BlurReveal>This is a title</BlurReveal>
+```
+
+## Props
+
+`BlurReveal` props.
+
+<TypeTable
+  type={{
+    className: {
+      type: "string",
+      description: "Additional custom classes for styling."
+    },
+    children: {
+      type: "React.ReactNode",
+      description: "Child elements to be rendered inside the component."
+    },
+    delay: {
+      type: "number",
+      description: "Delay before the animation starts, in seconds.",
+      default: "0"
+    },
+    duration: {
+      type: "number",
+      description: "Duration of the animation effect, in seconds.",
+      default: "1"
+    }
+  }}
+/>
+
+## Credits
+
+This component is inspired by [Linear](https://linear.app/)
+

@@ -1,29 +1,30 @@
-"use client";
+"use client"
 
-import { useEffect, useId, useState } from "react";
-import { cn } from "@/lib/utils";
+import { useEffect, useId, useState } from "react"
 import {
-  Particles as TSParticles,
   initParticlesEngine,
-} from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
+  Particles as TSParticles,
+} from "@tsparticles/react"
+import { loadSlim } from "@tsparticles/slim"
 
-type ParticleVariant = "default" | "snow" | "stars";
+import { cn } from "@/lib/utils"
+
+type ParticleVariant = "default" | "snow" | "stars"
 
 interface ParticleStyle {
-  count?: number;
-  size?: number;
-  speed?: number;
-  opacity?: number;
-  color?: string;
+  count?: number
+  size?: number
+  speed?: number
+  opacity?: number
+  color?: string
 }
 
 interface ParticlesProps {
-  className?: string;
-  variant?: ParticleVariant;
-  style?: ParticleStyle;
-  interactive?: boolean;
-  customOptions?: Record<string, unknown>;
+  className?: string
+  variant?: ParticleVariant
+  style?: ParticleStyle
+  interactive?: boolean
+  customOptions?: Record<string, unknown>
 }
 
 const variantStyles: Record<
@@ -129,7 +130,7 @@ const variantStyles: Record<
       },
     },
   },
-};
+}
 
 export function Particles({
   className,
@@ -138,20 +139,20 @@ export function Particles({
   interactive = true,
   customOptions = {},
 }: ParticlesProps) {
-  const [isInitialized, setIsInitialized] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false)
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
+      await loadSlim(engine)
     }).then(() => {
-      setIsInitialized(true);
-    });
-  }, []);
+      setIsInitialized(true)
+    })
+  }, [])
 
-  const id = useId();
+  const id = useId()
 
-  const baseStyle = variantStyles[variant];
-  const finalStyle = { ...baseStyle, ...style };
+  const baseStyle = variantStyles[variant]
+  const finalStyle = { ...baseStyle, ...style }
 
   const defaultOptions = {
     detectRetina: true,
@@ -226,25 +227,36 @@ export function Particles({
         value: "transparent",
       },
     },
-  };
+  }
 
-  const deepMerge = (target: any, source: any) => {
-    const output = { ...target };
+  const deepMerge = (
+    target: Record<string, unknown>,
+    source: Record<string, unknown>
+  ) => {
+    const output = { ...target }
     if (source) {
       Object.keys(source).forEach((key) => {
-        if (source[key] instanceof Object && key in target) {
-          output[key] = deepMerge(target[key], source[key]);
+        if (
+          source[key] instanceof Object &&
+          key in target &&
+          target[key] instanceof Object &&
+          source[key] instanceof Object
+        ) {
+          output[key] = deepMerge(
+            target[key] as Record<string, unknown>,
+            source[key] as Record<string, unknown>
+          )
         } else {
-          output[key] = source[key];
+          output[key] = source[key]
         }
-      });
+      })
     }
-    return output;
-  };
+    return output
+  }
 
-  const variantOptions = baseStyle.options || {};
-  const mergedOptions = deepMerge(defaultOptions, variantOptions);
-  const finalOptions = deepMerge(mergedOptions, customOptions);
+  const variantOptions = baseStyle.options || {}
+  const mergedOptions = deepMerge(defaultOptions, variantOptions)
+  const finalOptions = deepMerge(mergedOptions, customOptions)
 
   return (
     isInitialized && (
@@ -254,5 +266,5 @@ export function Particles({
         className={cn("absolute inset-0", className)}
       />
     )
-  );
+  )
 }

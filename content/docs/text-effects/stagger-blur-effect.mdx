@@ -1,0 +1,105 @@
+---
+title: Stagger Blur Effect
+description: Inspired by Vercel's homepage, this text component creates a 3D rotation effect with blur on hover, revealing text with a staggered animation.
+component: true
+---
+
+<ComponentPreview
+  name="stagger-blur-effect-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="Inspired by Vercel's homepage, this text component creates a 3D rotation effect with blur on hover, revealing text with a staggered animation."
+  align="center"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/stagger-blur-effect.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="stagger-blur-effect" title="components/ui/stagger-blur-effect.tsx" />
+
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { StaggerBlurEffect } from "@/components/ui/stagger-blur-effect";
+```
+
+```tsx showLineNumbers
+<StaggerBlurEffect>I &lt;3 Vercel</StaggerBlurEffect>
+```
+
+## Props
+
+`StaggerBlurEffect` props.
+
+<TypeTable
+  type={{
+    className: {
+      type: "string",
+      description: "Additional CSS classes for custom styling."
+    },
+    children: {
+      type: "ReactNode",
+      description: "Text content to animate."
+    },
+    duration: {
+      type: "number",
+      description: "Duration of the animation in seconds.",
+      default: "0.3"
+    },
+    staggerDelay: {
+      type: "number",
+      description: "Delay between each letter animation in seconds.",
+      default: "0.05"
+    },
+    height: {
+      type: "number",
+      description: "Height of the text container in pixels.",
+      default: "56"
+    }
+  }}
+/>
+

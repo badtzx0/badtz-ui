@@ -1,840 +1,73 @@
 ---
 title: Cloud Orbit
 description: This component creates a dynamic and interactive experience, where each icon orbits in a fluid motion. Fully customizable, it's ideal for showcasing your tech stack or the tools your product uses.
+component: true
 ---
 
 <ComponentPreview
   name="cloud-orbit-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="An animated component where each icon orbits in a fluid motion"
-  replayable
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import { CloudOrbit, OrbitingImage } from "@/components/ui/cloud-orbit";
-
-    const orbitingImagesData = [
-      {
-        speed: 20,
-        radius: 119,
-        size: 53,
-        startAt: 0.15625,
-        images: [
-          {
-            name: "Deepseek Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/deepseek-logo.webp",
-          },
-          {
-            name: "Drizzle ORM Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/drizzle-orm-logo.webp",
-          },
-        ],
-      },
-      {
-        speed: 20,
-        radius: 118,
-        size: 85,
-        startAt: 0.25,
-        images: [
-          {
-            name: "Motion Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/motion-logo.webp",
-          },
-          {
-            name: "Deepseek Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/deepseek-logo.webp",
-          },
-        ],
-      },
-      {
-        speed: 20,
-        radius: 130,
-        size: 73,
-        startAt: 0.4375,
-        images: [
-          {
-            name: "Tailwind Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/tailwindcss-logo.webp",
-          },
-          {
-            name: "Motion Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/motion-logo.webp",
-          },
-        ],
-      },
-      {
-        speed: 20,
-        radius: 120,
-        size: 49,
-        startAt: 0.61,
-        images: [
-          {
-            name: "Edge Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/edge-logo.webp",
-          },
-          {
-            name: "Tailwind Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/tailwindcss-logo.webp",
-          },
-        ],
-      },
-      {
-        speed: 20,
-        radius: 136,
-        size: 40,
-        startAt: 0.65625,
-        images: [
-          {
-            name: "Linear Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/linear-logo.webp",
-          },
-          {
-            name: "Edge Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/edge-logo.webp",
-          },
-        ],
-      },
-      {
-        speed: 20,
-        radius: 111,
-        size: 87,
-        startAt: 0.75,
-        images: [
-          {
-            name: "React Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/react-logo.webp",
-          },
-          {
-            name: "Linear Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/linear-logo.webp",
-          },
-        ],
-      },
-      {
-        speed: 20,
-        radius: 124,
-        size: 73,
-        startAt: 0.9375,
-        images: [
-          {
-            name: "Drizzle ORM Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/drizzle-orm-logo.webp",
-          },
-          {
-            name: "React Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/react-logo.webp",
-          },
-        ],
-      },
-    ];
-
-    export default function CloudOrbitDemo() {
-      return (
-        <CloudOrbit
-          duration={3}
-          size={160}
-          images={[
-            {
-              name: "Charlie Avatar",
-              url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/avatar-1.webp",
-            },
-            {
-              name: "Tommy Avatar",
-              url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/avatar-2.webp",
-            },
-          ]}
-        >
-          {orbitingImagesData.map((orbit, index) => (
-            <OrbitingImage
-              key={index}
-              speed={orbit.speed}
-              radius={orbit.radius}
-              size={orbit.size}
-              startAt={orbit.startAt}
-              images={orbit.images}
-            />
-          ))}
-        </CloudOrbit>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import { CloudOrbit, OrbitingImage } from "@/components/ui/cloud-orbit";
-
-    const orbitingImagesData = [
-      {
-        speed: 20,
-        radius: 119,
-        size: 53,
-        startAt: 0.15625,
-        images: [
-          {
-            name: "Deepseek Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/deepseek-logo.webp",
-          },
-          {
-            name: "Drizzle ORM Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/drizzle-orm-logo.webp",
-          },
-        ],
-      },
-      {
-        speed: 20,
-        radius: 118,
-        size: 85,
-        startAt: 0.25,
-        images: [
-          {
-            name: "Motion Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/motion-logo.webp",
-          },
-          {
-            name: "Deepseek Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/deepseek-logo.webp",
-          },
-        ],
-      },
-      {
-        speed: 20,
-        radius: 130,
-        size: 73,
-        startAt: 0.4375,
-        images: [
-          {
-            name: "Tailwind Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/tailwindcss-logo.webp",
-          },
-          {
-            name: "Motion Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/motion-logo.webp",
-          },
-        ],
-      },
-      {
-        speed: 20,
-        radius: 120,
-        size: 49,
-        startAt: 0.61,
-        images: [
-          {
-            name: "Edge Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/edge-logo.webp",
-          },
-          {
-            name: "Tailwind Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/tailwindcss-logo.webp",
-          },
-        ],
-      },
-      {
-        speed: 20,
-        radius: 136,
-        size: 40,
-        startAt: 0.65625,
-        images: [
-          {
-            name: "Linear Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/linear-logo.webp",
-          },
-          {
-            name: "Edge Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/edge-logo.webp",
-          },
-        ],
-      },
-      {
-        speed: 20,
-        radius: 111,
-        size: 87,
-        startAt: 0.75,
-        images: [
-          {
-            name: "React Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/react-logo.webp",
-          },
-          {
-            name: "Linear Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/linear-logo.webp",
-          },
-        ],
-      },
-      {
-        speed: 20,
-        radius: 124,
-        size: 73,
-        startAt: 0.9375,
-        images: [
-          {
-            name: "Drizzle ORM Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/drizzle-orm-logo.webp",
-          },
-          {
-            name: "React Logo",
-            url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/react-logo.webp",
-          },
-        ],
-      },
-    ];
-
-    export default function CloudOrbitDemo() {
-      return (
-        <CloudOrbit
-          duration={3}
-          size={160}
-          images={[
-            {
-              name: "Charlie Avatar",
-              url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/avatar-1.webp",
-            },
-            {
-              name: "Tommy Avatar",
-              url: "https://cdn.badtz-ui.com/images/components/cloud-orbit/avatar-2.webp",
-            },
-          ]}
-        >
-          {orbitingImagesData.map((orbit, index) => (
-            <OrbitingImage
-              key={index}
-              speed={orbit.speed}
-              radius={orbit.radius}
-              size={orbit.size}
-              startAt={orbit.startAt}
-              images={orbit.images}
-            />
-          ))}
-        </CloudOrbit>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="A cloud orbit component"
+  align="center"
+/>
 
 ## Installation
 
-<Tabs defaultValue="cli">
-  <TabsList>
-    <TabsTrigger value="cli">CLI</TabsTrigger>
-    <TabsTrigger value="manual">Manual</TabsTrigger>
-  </TabsList>
+<CodeTabs>
 
-  <TabsContent value="cli">
-    ```bash
-    npx shadcn@latest add https://badtz-ui.com/r/cloud-orbit.json
-    ```
-  </TabsContent>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
 
-  <TabsContent value="manual">
-    <Steps>
-      <Step>Install the following dependencies:</Step>
+<TabsContent value="cli">
 
-      ```bash
-      npm install clsx tailwind-merge framer-motion
-      ```
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/cloud-orbit.json
+```
 
-      <Step>Add the <Kbd>utils</Kbd> file to the <Kbd>@/lib</Kbd> folder</Step>
+</TabsContent>
 
-      <UtilsSource>
-        <Highlighter slot="javascript">
-          ```jsx
-          import { clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<TabsContent value="manual">
 
-          export function cn(...inputs) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          import { ClassValue, clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<Steps>
 
-          export function cn(...inputs: ClassValue[]) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-      </UtilsSource>
+<Step>Install the following dependencies:</Step>
 
-      <Step>Copy and paste the <Kbd>cloud-orbit</Kbd> code into your project.</Step>
+```bash
+npm install clsx tailwind-merge motion
+```
 
-      <ComponentSource name="cloud-orbit">
-        <Highlighter slot="javascript">
-          ```jsx
-          "use client";
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
 
-          import * as React from "react";
-          import { motion, AnimatePresence } from "framer-motion";
-          import { cn } from "@/lib/utils";
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
 
-          export function CloudOrbit({
-            duration = 2,
-            children,
-            size = 160,
-            className,
-            images = [],
-            ...props
-          }) {
-            const [currentIndex, setCurrentIndex] = React.useState(0);
-            const lastTimestamp = React.useRef(0);
+<Step>Copy and paste the following code into your project.</Step>
 
-            React.useEffect(() => {
-              let animationFrameId;
+<ComponentSource name="cloud-orbit" title="components/ui/cloud-orbit.tsx" />
 
-              const updateFrame = (timestamp) => {
-                if (lastTimestamp.current === 0) {
-                  lastTimestamp.current = timestamp;
-                }
+<Step>Update the import paths to match your project setup.</Step>
 
-                const elapsedTime = (timestamp - lastTimestamp.current) / 1000;
-                const currentImageIndex = Math.floor(elapsedTime / duration) % images.length;
+</Steps>
 
-                setCurrentIndex(currentImageIndex);
+</TabsContent>
 
-                animationFrameId = requestAnimationFrame(updateFrame);
-              };
+</CodeTabs>
 
-              if (images.length > 0) {
-                animationFrameId = requestAnimationFrame(updateFrame);
-              }
-
-              return () => cancelAnimationFrame(animationFrameId);
-            }, [duration, images.length]);
-
-            return (
-              <div
-                style={{
-                  "--size": `${size}px`,
-                }}
-                className={cn(
-                  "relative h-full w-full select-none rounded-full flex items-center justify-center",
-                  className
-                )}
-                {...props}
-              >
-                <AnimatePresence>
-                  {images.length > 0 &&
-                    images.map(
-                      (image, index) =>
-                        index === currentIndex && (
-                          <motion.img
-                            key={image.url}
-                            src={image.url}
-                            alt={image.name}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: [0.8, 1] }}
-                            exit={{ opacity: 0, scale: [1, 0.8] }}
-                            transition={{
-                              type: "spring",
-                              stiffness: 100,
-                              damping: 7,
-                            }}
-                            className={cn(
-                              "absolute h-[--size] w-[--size] z-10 rounded-[inherit] bg-gradient-to-t from-neutral-100 dark:from-zinc-900 to-white dark:to-zinc-800 dark:shadow-[rgba(255,_255,_255,_0.3)_0px_1px_0px_inset] shadow-[rgba(0,_0,_0,_0.05)_0px_1px_0px_inset] border border-gray-100 dark:border-zinc-900",
-                              className
-                            )}
-                          />
-                        )
-                    )}
-                </AnimatePresence>
-                {children}
-              </div>
-            );
-          }
-
-          export function OrbitingImage({
-            speed = 20,
-            radius = 100,
-            startAt = 0,
-            size = 80,
-            className,
-            images = [],
-            duration = 2,
-            ...props
-          }) {
-            const [currentIndex, setCurrentIndex] = React.useState(0);
-            const lastTimestamp = React.useRef(0);
-
-            React.useEffect(() => {
-              let animationFrameId;
-
-              const updateFrame = (timestamp) => {
-                if (lastTimestamp.current === 0) {
-                  lastTimestamp.current = timestamp;
-                }
-
-                const elapsedTime = (timestamp - lastTimestamp.current) / 1000;
-                const currentImageIndex = Math.floor(elapsedTime / duration) % images.length;
-
-                setCurrentIndex(currentImageIndex);
-
-                animationFrameId = requestAnimationFrame(updateFrame);
-              };
-
-              if (images.length > 0) {
-                animationFrameId = requestAnimationFrame(updateFrame);
-              }
-
-              return () => cancelAnimationFrame(animationFrameId);
-            }, [duration, images.length]);
-
-            return (
-              <div
-                style={{
-                  "--speed": speed,
-                  "--radius": radius,
-                  "--size": `${size}px`,
-                  animationDelay: `-${startAt * speed}s`,
-                }}
-                className={cn(
-                  "absolute flex h-[--size] w-[--size] z-[5] transform-gpu animate-cloud-orbit items-center justify-center rounded-full p-[5%]",
-                  className
-                )}
-                {...props}
-              >
-                <AnimatePresence>
-                  {images.length > 0 &&
-                    images.map(
-                      (image, index) =>
-                        index === currentIndex && (
-                          <motion.div
-                            key={image.url}
-                            style={{
-                              width: `${size}px`,
-                              height: `${size}px`,
-                              position: "absolute",
-                              transformOrigin: `center ${radius}px`,
-                            }}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: [0.8, 1] }}
-                            exit={{ opacity: 0, scale: [1, 0.8] }}
-                            transition={{
-                              type: "spring",
-                              stiffness: 100,
-                              damping: 7,
-                            }}
-                            className={cn(
-                              "rounded-full bg-gradient-to-t from-neutral-100 dark:from-zinc-900 to-white dark:to-zinc-800 dark:shadow-[rgba(255,_255,_255,_0.3)_0px_1px_0px_inset] shadow-[rgba(0,_0,_0,_0.05)_0px_1px_0px_inset] border border-gray-100 dark:border-zinc-900 p-[15%]",
-                              className
-                            )}
-                          >
-                            <img
-                              src={image.url}
-                              alt={image.name}
-                              className="h-full w-full flex items-center justify-center rounded-full object-contain"
-                            />
-                          </motion.div>
-                        )
-                    )}
-                </AnimatePresence>
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          "use client";
-
-          import * as React from "react";
-          import { motion, AnimatePresence } from "framer-motion";
-          import { cn } from "@/lib/utils";
-
-          interface Image {
-            url: string;
-            name: string;
-          }
-
-          interface CloudOrbitProps {
-            duration?: number;
-            children?: React.ReactNode;
-            size?: number;
-            className?: string;
-            images?: Image[];
-            [key: string]:
-              | string
-              | number
-              | boolean
-              | React.ReactNode
-              | Image[]
-              | undefined;
-          }
-
-          export function CloudOrbit({
-            duration = 2,
-            children,
-            size = 160,
-            className,
-            images = [],
-            ...props
-          }: CloudOrbitProps) {
-            const [currentIndex, setCurrentIndex] = React.useState(0);
-            const lastTimestamp = React.useRef(0);
-
-            React.useEffect(() => {
-              let animationFrameId: number;
-
-              const updateFrame = (timestamp: number) => {
-                if (lastTimestamp.current === 0) {
-                  lastTimestamp.current = timestamp;
-                }
-
-                const elapsedTime = (timestamp - lastTimestamp.current) / 1000;
-                const currentImageIndex =
-                  Math.floor(elapsedTime / duration) % images.length;
-
-                setCurrentIndex(currentImageIndex);
-
-                animationFrameId = requestAnimationFrame(updateFrame);
-              };
-
-              if (images.length > 0) {
-                animationFrameId = requestAnimationFrame(updateFrame);
-              }
-
-              return () => cancelAnimationFrame(animationFrameId);
-            }, [duration, images.length]);
-
-            return (
-              <div
-                style={
-                  {
-                    "--size": `${size}px`,
-                  } as React.CSSProperties
-                }
-                className={cn(
-                  "relative h-full w-full select-none rounded-full flex items-center justify-center",
-                  className
-                )}
-                {...props}
-              >
-                <AnimatePresence>
-                  {images.length > 0 &&
-                    images.map(
-                      (image, index) =>
-                        index === currentIndex && (
-                          <motion.img
-                            key={image.url}
-                            src={image.url}
-                            alt={image.name}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: [0.8, 1] }}
-                            exit={{ opacity: 0, scale: [1, 0.8] }}
-                            transition={{
-                              type: "spring",
-                              stiffness: 100,
-                              damping: 7,
-                            }}
-                            className={cn(
-                              "absolute h-[--size] w-[--size] z-10 rounded-[inherit] bg-gradient-to-t from-neutral-100 dark:from-zinc-900 to-white dark:to-zinc-800 dark:shadow-[rgba(255,_255,_255,_0.3)_0px_1px_0px_inset] shadow-[rgba(0,_0,_0,_0.05)_0px_1px_0px_inset] border border-gray-100 dark:border-zinc-900",
-                              className
-                            )}
-                          />
-                        )
-                    )}
-                </AnimatePresence>
-                {children}
-              </div>
-            );
-          }
-
-          interface OrbitingImageProps {
-            speed?: number;
-            radius?: number;
-            startAt?: number;
-            size?: number;
-            className?: string;
-            images?: Image[];
-            duration?: number;
-            [key: string]:
-              | string
-              | number
-              | boolean
-              | React.ReactNode
-              | Image[]
-              | undefined;
-          }
-
-          export function OrbitingImage({
-            speed = 20,
-            radius = 100,
-            startAt = 0,
-            size = 80,
-            className,
-            images = [],
-            duration = 2,
-            ...props
-          }: OrbitingImageProps) {
-            const [currentIndex, setCurrentIndex] = React.useState(0);
-            const lastTimestamp = React.useRef(0);
-
-            React.useEffect(() => {
-              let animationFrameId: number;
-
-              const updateFrame = (timestamp: number) => {
-                if (lastTimestamp.current === 0) {
-                  lastTimestamp.current = timestamp;
-                }
-
-                const elapsedTime = (timestamp - lastTimestamp.current) / 1000;
-                const currentImageIndex =
-                  Math.floor(elapsedTime / duration) % images.length;
-
-                setCurrentIndex(currentImageIndex);
-
-                animationFrameId = requestAnimationFrame(updateFrame);
-              };
-
-              if (images.length > 0) {
-                animationFrameId = requestAnimationFrame(updateFrame);
-              }
-
-              return () => cancelAnimationFrame(animationFrameId);
-            }, [duration, images.length]);
-
-            return (
-              <div
-                style={
-                  {
-                    "--speed": speed,
-                    "--radius": radius,
-                    "--size": `${size}px`,
-                    animationDelay: `-${startAt * speed}s`,
-                  } as React.CSSProperties
-                }
-                className={cn(
-                  "absolute flex h-[--size] w-[--size] z-[5] transform-gpu animate-cloud-orbit items-center justify-center rounded-full p-[5%]",
-                  className
-                )}
-                {...props}
-              >
-                <AnimatePresence>
-                  {images.length > 0 &&
-                    images.map(
-                      (image, index) =>
-                        index === currentIndex && (
-                          <motion.div
-                            key={image.url}
-                            style={{
-                              width: `${size}px`,
-                              height: `${size}px`,
-                              position: "absolute",
-                              transformOrigin: `center ${radius}px`,
-                            }}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: [0.8, 1] }}
-                            exit={{ opacity: 0, scale: [1, 0.8] }}
-                            transition={{
-                              type: "spring",
-                              stiffness: 100,
-                              damping: 7,
-                            }}
-                            className={cn(
-                              "rounded-full bg-gradient-to-t from-neutral-100 dark:from-zinc-900 to-white dark:to-zinc-800 dark:shadow-[rgba(255,_255,_255,_0.3)_0px_1px_0px_inset] shadow-[rgba(0,_0,_0,_0.05)_0px_1px_0px_inset] border border-gray-100 dark:border-zinc-900 p-[15%]",
-                              className
-                            )}
-                          >
-                            <img
-                              src={image.url}
-                              alt={image.name}
-                              className="h-full w-full flex items-center justify-center rounded-full object-contain"
-                            />
-                          </motion.div>
-                        )
-                    )}
-                </AnimatePresence>
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-      </ComponentSource>
-
-      <Step>Update the import paths to match your project setup.</Step>
-
-      <Step>Tailwind v4: Update <Kbd>global.css</Kbd></Step>
-
-      Add the following animations to your <Kbd>global.css</Kbd> file inside the <Kbd>@theme</Kbd> inline block:
-
-      ```css
-      --animate-cloud-orbit: cloud-orbit calc(var(--speed) * 1s) linear infinite;
-
-      @keyframes cloud-orbit {
-        0% {
-          transform: rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg);
-        }
-        25% {
-          transform: rotate(90deg) translateY(calc(var(--radius) * 1px))
-            rotate(-90deg);
-        }
-        50% {
-          transform: rotate(180deg) translateY(calc(var(--radius) * 1px))
-            rotate(-180deg);
-        }
-        75% {
-          transform: rotate(270deg) translateY(calc(var(--radius) * 1px))
-            rotate(-270deg);
-        }
-        100% {
-          transform: rotate(360deg) translateY(calc(var(--radius) * 1px))
-            rotate(-360deg);
-        }
-      }
-      ```
-
-      <Step>Tailwind v3: Update <Kbd>tailwind.config.js</Kbd></Step>
-
-      Add the following animations to your <Kbd>tailwind.config.js</Kbd> file:
-
-      ```js {5-31}
-      /** @type {import('tailwindcss').Config} */
-      module.exports = {
-        theme: {
-          extend: {
-            keyframes: {
-              "cloud-orbit": {
-                "0%": {
-                  transform:
-                    "rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)",
-                },
-                "25%": {
-                  transform:
-                    "rotate(90deg) translateY(calc(var(--radius) * 1px)) rotate(-90deg)",
-                },
-                "50%": {
-                  transform:
-                    "rotate(180deg) translateY(calc(var(--radius) * 1px)) rotate(-180deg)",
-                },
-                "75%": {
-                  transform:
-                    "rotate(270deg) translateY(calc(var(--radius) * 1px)) rotate(-270deg)",
-                },
-                "100%": {
-                  transform:
-                    "rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)",
-                },
-              },
-            },
-            animation: {
-              "cloud-orbit": "cloud-orbit calc(var(--speed)*1s) linear infinite",
-            },
-          },
-        },
-      };
-      ```
-    </Steps>
-  </TabsContent>
-</Tabs>
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { CloudOrbit, OrbitingImage } from "@/registry/components/cloud-orbit";
 ```
 
-```tsx
+```tsx showLineNumbers
 const orbitingImagesData = [
   {
     speed: 20,
@@ -856,7 +89,7 @@ const orbitingImagesData = [
 ];
 ```
 
-```tsx
+```tsx showLineNumbers
 <CloudOrbit
   duration={3}
   size={160}
@@ -885,42 +118,91 @@ const orbitingImagesData = [
 </CloudOrbit>
 ```
 
-> Placing the icons at the correct angle can be a bit tricky. For easier setup, use the positions from the demo and adjust them visually.
-> If you need help, just reach out!
+<Callout>
+Placing the icons at the correct angle can be a bit tricky. For easier setup, use the positions from the demo and adjust them visually. If you need help, just reach out!
+</Callout>
 
 ## Props
 
-<Kbd>cloud-orbit</Kbd> props.
+`cloud-orbit` props.
 
-| Prop      | Type                      | Description                                                 | Default |
-| --------- | ------------------------- | ----------------------------------------------------------- | ------- |
-| duration  | <Kbd>number</Kbd>                    | Duration of the animation cycle in seconds.                 | 3       |
-| children  | <Kbd>React.ReactNode</Kbd>           | Child elements to be rendered inside the component.         | -       |
-| size      | <Kbd>number</Kbd>                    | Size of the main orbit container in pixels.                 | 160     |
-| className | <Kbd>string</Kbd>                    | Additional custom classes for styling.                      | -       |
-| images    | <Kbd>Array&lt;Object&gt;</Kbd>       | Array of image objects, each containing a `url` and `name`. | []      |
-| props     | <Kbd>Record&lt;string, any&gt;</Kbd> | Additional HTML attributes for the component's wrapper div. | -       |
+<TypeTable
+  type={{
+    duration: {
+      type: "number",
+      description: "Duration of the animation cycle in seconds.",
+      default: "3"
+    },
+    children: {
+      type: "React.ReactNode",
+      description: "Child elements to be rendered inside the component."
+    },
+    size: {
+      type: "number",
+      description: "Size of the main orbit container in pixels.",
+      default: "160"
+    },
+    className: {
+      type: "string",
+      description: "Additional custom classes for styling."
+    },
+    images: {
+      type: "Array<Object>",
+      description: "Array of image objects, each containing a `url` and `name`.",
+      default: "[]"
+    },
+    props: {
+      type: "Record<string, any>",
+      description: "Additional HTML attributes for the component's wrapper div."
+    }
+  }}
+/>
 
-<Kbd>orbiting-image</Kbd> props.
+`orbiting-image` props.
 
-| Prop      | Type                      | Description                                                 | Default |
-| --------- | ------------------------- | ----------------------------------------------------------- | ------- |
-| speed     | <Kbd>number</Kbd>                    | Speed of the orbiting motion (lower is slower).             | 20      |
-| radius    | <Kbd>number</Kbd>                    | Radius of the orbit path in pixels.                         | 100     |
-| startAt   | <Kbd>number</Kbd>                    | Delay before animation starts, in seconds.                  | 0       |
-| size      | <Kbd>number</Kbd>                    | Size of each orbiting image in pixels.                      | 80      |
-| className | <Kbd>string</Kbd>                    | Additional custom classes for styling.                      | -       |
-| images    | <Kbd>Array&lt;Object&gt;</Kbd>       | Array of image objects, each containing a `url` and `name`. | []      |
-| duration  | <Kbd>number</Kbd>                    | Duration of the animation cycle for each orbiting image.    | 3       |
-| props     | <Kbd>Record&lt;string, any&gt;</Kbd> | Additional HTML attributes for the component's wrapper div. | -       |
+<TypeTable
+  type={{
+    speed: {
+      type: "number",
+      description: "Speed of the orbiting motion (lower is slower).",
+      default: "20"
+    },
+    radius: {
+      type: "number",
+      description: "Radius of the orbit path in pixels.",
+      default: "100"
+    },
+    startAt: {
+      type: "number",
+      description: "Delay before animation starts, in seconds.",
+      default: "0"
+    },
+    size: {
+      type: "number",
+      description: "Size of each orbiting image in pixels.",
+      default: "80"
+    },
+    className: {
+      type: "string",
+      description: "Additional custom classes for styling."
+    },
+    images: {
+      type: "Array<Object>",
+      description: "Array of image objects, each containing a `url` and `name`.",
+      default: "[]"
+    },
+    duration: {
+      type: "number",
+      description: "Duration of the animation cycle for each orbiting image.",
+      default: "3"
+    },
+    props: {
+      type: "Record<string, any>",
+      description: "Additional HTML attributes for the component's wrapper div."
+    }
+  }}
+/>
 
 ## Disclaimer
 
 We are not affiliated with any of the brands whose logos are used in this component. These logos are displayed for demonstration purposes only.
-
-## Credits
-
-<li className="text-sm text-muted-foreground mt-4">This component is inspired by <MdxLink href="https://www.icloud.com/"> Icloud</MdxLink></li>
-<li className="text-sm text-muted-foreground mt-4">The avatar images are from <MdxLink href="https://dribbble.com/shots/14587125-Free-Memoji-Avatars"> Spline.One</MdxLink></li>
-<li className="text-sm text-muted-foreground mt-4">For SVGs, I recommend using <MdxLink href="https://svgl.app/"> SVGL</MdxLink></li>
-

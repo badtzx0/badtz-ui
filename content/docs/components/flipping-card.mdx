@@ -1,386 +1,101 @@
 ---
 title: Flipping Card
 description: A two-sided card component that flips on hover, revealing content on its back face. Ideal for interactive displays or showcasing additional information.
+component: true
 ---
 
 <ComponentPreview
   name="flipping-card-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
-  description="A component that displays a flipping card"
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import React from "react";
-    import { FlippingCard } from "@/components/ui/flipping-card";
-
-    const cardsData = [
-      {
-        id: "badtz-maru",
-        front: {
-          imageSrc:
-            "https://cdn.badtz-ui.com/images/components/flipping-card/badtz.webp",
-          imageAlt: "Badtz-Maru",
-          title: "Badtz-Maru",
-          description:
-            'Bad Badtz-Maru (バッドばつ丸, Baddo Batsu Maru), commonly named "Badtz-Maru" is a penguin with spiky hair.',
-        },
-        back: {
-          description:
-            'Bad Badtz-Maru (バッドばつ丸, Baddo Batsu Maru), commonly named "Badtz-Maru", is a penguin with spiky hair, and one of the many characters of Sanrio.',
-          buttonText: "Learn More",
-        },
-      },
-      {
-        id: "keroppi",
-        front: {
-          imageSrc:
-            "https://cdn.badtz-ui.com/images/components/flipping-card/keroppii.webp",
-          imageAlt: "Keroppi",
-          title: "Keroppi",
-          description:
-            "Keroppi (けろけろけろっぴ, Kerokerokeroppi) is a small friendly green frog with large eyes.",
-        },
-        back: {
-          description:
-            "Keroppi (けろけろけろっぴ, Kerokerokeroppi) is a character created by Sanrio, designed by Tomoe Iwata, and the main protagonist of the Keroppi universe.",
-          buttonText: "Learn More",
-        },
-      },
-    ];
-
-    export default function FlippingCardDemo() {
-      return (
-        <div className="flex gap-4">
-          {cardsData.map((card) => (
-            <FlippingCard
-              key={card.id}
-              width={300}
-              frontContent={<GenericCardFront data={card.front} />}
-              backContent={<GenericCardBack data={card.back} />}
-            />
-          ))}
-        </div>
-      );
-    }
-
-    function GenericCardFront({ data }) {
-      return (
-        <div className="flex flex-col h-full w-full p-4">
-          <img
-            src={data.imageSrc}
-            alt={data.imageAlt}
-            className="w-full h-auto object-cover flex-grow min-h-0 rounded-md"
-          />
-          <div className="p-2">
-            <h3 className="text-base font-semibold mt-2">{data.title}</h3>
-            <p className="text-[13.5px] mt-2 text-muted-foreground">
-              {data.description}
-            </p>
-          </div>
-        </div>
-      );
-    }
-
-    function GenericCardBack({ data }) {
-      return (
-        <div className="flex flex-col items-center justify-center h-full w-full p-6">
-          <p className="text-[13.5px] mt-2 text-muted-foreground text-center">
-            {data.description}
-          </p>
-          <button className="mt-6 bg-foreground text-background px-4 py-2 rounded-md text-[13.5px] w-min whitespace-nowrap h-8 flex items-center justify-center">
-            {data.buttonText}
-          </button>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import { FlippingCard } from "@/components/ui/flipping-card";
-
-    interface CardData {
-      id: string;
-      front: {
-        imageSrc: string;
-        imageAlt: string;
-        title: string;
-        description: string;
-      };
-      back: {
-        description: string;
-        buttonText: string;
-      };
-    }
-
-    const cardsData: CardData[] = [
-      {
-        id: "badtz-maru",
-        front: {
-          imageSrc:
-            "https://cdn.badtz-ui.com/images/components/flipping-card/badtz.webp",
-          imageAlt: "Badtz-Maru",
-          title: "Badtz-Maru",
-          description:
-            'Bad Badtz-Maru (バッドばつ丸, Baddo Batsu Maru), commonly named "Badtz-Maru" is a penguin with spiky hair.',
-        },
-        back: {
-          description:
-            'Bad Badtz-Maru (バッドばつ丸, Baddo Batsu Maru), commonly named "Badtz-Maru", is a penguin with spiky hair, and one of the many characters of Sanrio.',
-          buttonText: "Learn More",
-        },
-      },
-      {
-        id: "keroppi",
-        front: {
-          imageSrc:
-            "https://cdn.badtz-ui.com/images/components/flipping-card/keroppii.webp",
-          imageAlt: "Keroppi",
-          title: "Keroppi",
-          description:
-            "Keroppi (けろけろけろっぴ, Kerokerokeroppi) is a small friendly green frog with large eyes.",
-        },
-        back: {
-          description:
-            "Keroppi (けろけろけろっぴ, Kerokerokeroppi) is a character created by Sanrio, designed by Tomoe Iwata, and the main protagonist of the Keroppi universe.",
-          buttonText: "Learn More",
-        },
-      },
-    ];
-
-    export default function FlippingCardDemo() {
-      return (
-        <div className="flex gap-4">
-          {cardsData.map((card) => (
-            <FlippingCard
-              key={card.id}
-              width={300}
-              frontContent={<GenericCardFront data={card.front} />}
-              backContent={<GenericCardBack data={card.back} />}
-            />
-          ))}
-        </div>
-      );
-    }
-
-    interface GenericCardFrontProps {
-      data: CardData["front"];
-    }
-
-    function GenericCardFront({ data }: GenericCardFrontProps) {
-      return (
-        <div className="flex flex-col h-full w-full p-4">
-          <img
-            src={data.imageSrc}
-            alt={data.imageAlt}
-            className="w-full h-auto object-cover flex-grow min-h-0 rounded-md"
-          />
-          <div className="p-2">
-            <h3 className="text-base font-semibold mt-2">{data.title}</h3>
-            <p className="text-[13.5px] mt-2 text-muted-foreground">
-              {data.description}
-            </p>
-          </div>
-        </div>
-      );
-    }
-
-    interface GenericCardBackProps {
-      data: CardData["back"];
-    }
-
-    function GenericCardBack({ data }: GenericCardBackProps) {
-      return (
-        <div className="flex flex-col items-center justify-center h-full w-full p-6">
-          <p className="text-[13.5px] mt-2 text-muted-foreground text-center">
-            {data.description}
-          </p>
-          <button className="mt-6 bg-foreground text-background px-4 py-2 rounded-md text-[13.5px] w-min whitespace-nowrap h-8 flex items-center justify-center">
-            {data.buttonText}
-          </button>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="A flipping card with a front and back face"
+  align="center"
+/>
 
 ## Installation
 
-<Tabs defaultValue="cli">
-  <TabsList>
-    <TabsTrigger value="cli">CLI</TabsTrigger>
-    <TabsTrigger value="manual">Manual</TabsTrigger>
-  </TabsList>
+<CodeTabs>
 
-  <TabsContent value="cli">
-    ```bash
-    npx shadcn@latest add https://badtz-ui.com/r/flipping-card.json
-    ```
-  </TabsContent>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
 
-  <TabsContent value="manual">
-    <Steps>
-      <Step>Install the following dependencies:</Step>
+<TabsContent value="cli">
 
-      ```bash
-      npm install clsx tailwind-merge
-      ```
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/flipping-card.json
+```
 
-      <Step>Add the <Kbd>utils</Kbd> file to the <Kbd>@/lib</Kbd> folder</Step>
+</TabsContent>
 
-      <UtilsSource>
-        <Highlighter slot="javascript">
-          ```jsx
-          import { clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<TabsContent value="manual">
 
-          export function cn(...inputs) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          import { ClassValue, clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<Steps>
 
-          export function cn(...inputs: ClassValue[]) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-      </UtilsSource>
+<Step>Install the following dependencies:</Step>
 
-      <Step>Copy and paste the <Kbd>flipping-card</Kbd> code into your project.</Step>
+```bash
+npm install clsx tailwind-merge
+```
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
 
-      <ComponentSource name="flipping-card">
-        <Highlighter slot="javascript">
-          ```jsx
-          import React from "react";
-          import { cn } from "@/lib/utils";
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
 
-          export function FlippingCard({
-            className,
-            frontContent,
-            backContent,
-            height = 300,
-            width = 350,
-          }) {
-            return (
-              <div
-                className="group/flipping-card [perspective:1000px]"
-                style={{
-                  "--height": `${height}px`,
-                  "--width": `${width}px`,
-                }}
-              >
-                <div
-                  className={cn(
-                    "relative rounded-xl border border-neutral-200 bg-white shadow-lg transition-all duration-700 [transform-style:preserve-3d] group-hover/flipping-card:[transform:rotateY(180deg)] dark:border-neutral-800 dark:bg-neutral-950",
-                    "h-[var(--height)] w-[var(--width)]",
-                    className
-                  )}
-                >
-                  {/* Front Face */}
-                  <div className="absolute inset-0 h-full w-full rounded-[inherit] bg-white text-neutral-950 [transform-style:preserve-3d] [backface-visibility:hidden] [transform:rotateY(0deg)] dark:bg-zinc-950 dark:text-neutral-50">
-                    <div className="[transform:translateZ(70px)_scale(.93)] h-full w-full">
-                      {frontContent}
-                    </div>
-                  </div>
-                  {/* Back Face */}
-                  <div className="absolute inset-0 h-full w-full rounded-[inherit] bg-white text-neutral-950 [transform-style:preserve-3d] [backface-visibility:hidden] [transform:rotateY(180deg)] dark:bg-zinc-950 dark:text-neutral-50">
-                    <div className="[transform:translateZ(70px)_scale(.93)] h-full w-full">
-                      {backContent}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          import React from "react";
-          import { cn } from "@/lib/utils";
+<Step>Copy and paste the following code into your project.</Step>
 
-          interface FlippingCardProps {
-            className?: string;
-            height?: number;
-            width?: number;
-            frontContent?: React.ReactNode;
-            backContent?: React.ReactNode;
-          }
+<ComponentSource name="flipping-card" title="components/ui/flipping-card.tsx" />
 
-          export function FlippingCard({
-            className,
-            frontContent,
-            backContent,
-            height = 300,
-            width = 350,
-          }: FlippingCardProps) {
-            return (
-              <div
-                className="group/flipping-card [perspective:1000px]"
-                style={
-                  {
-                    "--height": `${height}px`,
-                    "--width": `${width}px`,
-                  } as React.CSSProperties
-                }
-              >
-                <div
-                  className={cn(
-                    "relative rounded-xl border border-neutral-200 bg-white shadow-lg transition-all duration-700 [transform-style:preserve-3d] group-hover/flipping-card:[transform:rotateY(180deg)] dark:border-neutral-800 dark:bg-neutral-950",
-                    "h-[var(--height)] w-[var(--width)]",
-                    className
-                  )}
-                >
-                  {/* Front Face */}
-                  <div className="absolute inset-0 h-full w-full rounded-[inherit] bg-white text-neutral-950 [transform-style:preserve-3d] [backface-visibility:hidden] [transform:rotateY(0deg)] dark:bg-zinc-950 dark:text-neutral-50">
-                    <div className="[transform:translateZ(70px)_scale(.93)] h-full w-full">
-                      {frontContent}
-                    </div>
-                  </div>
-                  {/* Back Face */}
-                  <div className="absolute inset-0 h-full w-full rounded-[inherit] bg-white text-neutral-950 [transform-style:preserve-3d] [backface-visibility:hidden] [transform:rotateY(180deg)] dark:bg-zinc-950 dark:text-neutral-50">
-                    <div className="[transform:translateZ(70px)_scale(.93)] h-full w-full">
-                      {backContent}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-      </ComponentSource>
+<Step>Update the import paths to match your project setup.</Step>
 
-      <Step>Update the import paths to match your project setup.</Step>
-    </Steps>
-  </TabsContent>
-</Tabs>
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { FlippingCard } from "@/components/ui/flipping-card";
 ```
 
-```tsx
+```tsx showLineNumbers
 <FlippingCard frontContent={<div>Front Content</div>} backContent={<div>Back Content</div>} />
 ```
 
 ## Props
 
-<Kbd>flipping-card</Kbd> props.
+`FlippingCard` props.
 
-| Prop         | Type                 | Description                                         | Default |
-| ------------ | -------------------- | --------------------------------------------------- | ------- |
-| className    | <Kbd>string</Kbd>           | Additional custom classes for the card container.   | -       |
-| height       | <Kbd>number</Kbd>           | The height of the card in pixels.                   | `300`   |
-| width        | <Kbd>number</Kbd>           | The width of the card in pixels.                    | `350`   |
-| frontContent | <Kbd>React.ReactNode</Kbd> | Content to display on the front face of the card. | -       |
-| backContent  | <Kbd>React.ReactNode</Kbd> | Content to display on the back face of the card.  | -       |
-
+<TypeTable
+  type={{
+    className: {
+      type: "string",
+      description: "Additional CSS classes for styling the flipping card."
+    },
+    height: {
+      type: "number",
+      description: "Height of the card in pixels.",
+      default: "300"
+    },
+    width: {
+      type: "number",
+      description: "Width of the card in pixels.",
+      default: "350"
+    },
+    frontContent: {
+      type: "React.ReactNode",
+      description: "Content to display on the front face of the card."
+    },
+    backContent: {
+      type: "React.ReactNode",
+      description: "Content to display on the back face of the card."
+    }
+  }}
+/>

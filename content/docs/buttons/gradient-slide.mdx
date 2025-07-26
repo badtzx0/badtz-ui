@@ -1,0 +1,100 @@
+---
+title: Gradient Slide Button
+description: A dynamic and stylish button that reveals a vibrant gradient as you hover over it.
+component: true
+---
+
+<ComponentPreview
+  name="gradient-slide-button-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="A dynamic and stylish button that reveals a vibrant gradient as you hover over it."
+  align="center"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/gradient-slide-button.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="gradient-slide-button" title="components/ui/gradient-slide-button.tsx" />
+
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { GradientSlideButton } from "@/components/ui/gradient-slide-button";
+```
+
+```tsx showLineNumbers
+<GradientSlideButton className="rounded-3xl">Hover me</GradientSlideButton>
+```
+
+## Props
+
+`GradientSlideButton` props.
+
+<TypeTable
+  type={{
+    children: {
+      type: "React.ReactNode",
+      description: "The content inside the button.",
+      required: true
+    },
+    className: {
+      type: "string",
+      description: "Additional custom classes for styling."
+    },
+    colorFrom: {
+      type: "string",
+      description: "The starting color of the gradient effect.",
+      default: '"#F54900"'
+    },
+    colorTo: {
+      type: "string",
+      description: "The ending color of the gradient effect.",
+      default: '"#FF8904"'
+    }
+  }}
+/>

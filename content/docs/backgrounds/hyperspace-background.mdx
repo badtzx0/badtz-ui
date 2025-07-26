@@ -1,0 +1,112 @@
+---
+title: Hyperspace Background
+description: A dynamic and customizable background component that simulates a star-filled hyperspace effect.
+component: true
+---
+
+<ComponentPreview
+  name="hyperspace-background-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="A dynamic and customizable background component that simulates a star-filled hyperspace effect."
+  align="center"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/hyperspace-background.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="hyperspace-background" title="components/ui/hyperspace-background.tsx" />
+
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { HyperspaceBackground } from "@/components/ui/hyperspace-background";
+```
+
+```tsx showLineNumbers
+<div className="w-full relative h-[350px]">
+  <HyperspaceBackground />
+</div>
+```
+
+## Props
+
+`HyperspaceBackground` props.
+
+<TypeTable
+  type={{
+    starTrailOpacity: {
+      type: "number",
+      description: "Controls the opacity of the star trails, affecting how visible the trails are.",
+      default: "0.5"
+    },
+    starSpeed: {
+      type: "number",
+      description: "Determines the speed at which the stars move across the canvas.",
+      default: "1.01"
+    },
+    starColor: {
+      type: "string",
+      description: "Sets the color of the stars, specified in hexadecimal format.",
+      default: '"#FFFFFF"'
+    },
+    starSize: {
+      type: "number",
+      description: "Defines the initial size of the stars.",
+      default: "0.5"
+    },
+    className: {
+      type: "string",
+      description: "Additional CSS classes to apply to the main container."
+    }
+  }}
+/>
+
+## Credits
+
+This component is heavily inspired by [@ybensira](https://codepen.io/ybensira)
+

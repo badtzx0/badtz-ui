@@ -1,661 +1,75 @@
 ---
 title: Cursor Cards
 description: Interactive cards with animated gradient borders that respond to cursor movement and proximity. Inspired by Cursor's website.
+component: true
 ---
 
 <ComponentPreview
   name="cursor-card-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%]"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
   description="Displays a card with a cursor effect that adapts to the size of the container."
->
-  <Highlighter slot="javascript">
-    ```jsx
-    "use client";
-
-    import {
-      CursorCard,
-      CursorCardsContainer,
-    } from "@/components/ui/cursor-cards";
-    import { useTheme } from "next-themes";
-    import { BellRing } from "lucide-react";
-    import { Switch } from "@/components/ui/switch";
-    import { useState } from "react";
-    import { useEffect } from "react";
-
-    const notifications = [
-      {
-        title: "Your call has been confirmed.",
-        description: "1 hour ago",
-      },
-      {
-        title: "You have a new message!",
-        description: "1 hour ago",
-      },
-      {
-        title: "Your subscription is expiring soon!",
-        description: "2 hours ago",
-      },
-    ];
-
-    export default function CursorCardDemo() {
-      const { theme } = useTheme();
-      const [mounted, setMounted] = useState(false);
-
-      useEffect(() => {
-        setMounted(true);
-      }, []);
-
-      if (!mounted) {
-        return null;
-      }
-
-      return (
-        <div>
-          <CursorCardsContainer className="gap-6 flex">
-            <CursorCard
-              borderColor={theme === "dark" ? "#262626" : "#e5e5e5"}
-              className="rounded-xl h-auto w-[300px] shadow-md p-6"
-            >
-              <div className="flex flex-col">
-                <h3 className="text-foreground">Notifications</h3>
-                <p className="text-muted-foreground text-sm mt-0.5">
-                  You have 3 unread messages.
-                </p>
-                <div className="flex items-center space-x-4 rounded-md border p-4 mt-10 bg-neutral-50 dark:bg-neutral-950">
-                  <BellRing />
-                  <div className="flex-1 space-y-1">
-                    <p className="text-sm font-medium leading-none">
-                      Push Notifications
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      Send notifications to device.
-                    </p>
-                  </div>
-                  <Switch />
-                </div>
-              </div>
-            </CursorCard>
-            <CursorCard
-              borderColor={theme === "dark" ? "#262626" : "#e5e5e5"}
-              className="rounded-xl h-auto w-[300px] shadow-md p-6"
-            >
-              <div className="h-full flex justify-between flex-col">
-                {notifications.map((notification, index) => (
-                  <div
-                    key={index}
-                    className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
-                  >
-                    <span className="flex h-2 w-2 translate-y-1 rounded-full bg-emerald-500" />
-                    <div className="space-y-1">
-                      <p className="text-sm font-medium leading-none">
-                        {notification.title}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {notification.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CursorCard>
-          </CursorCardsContainer>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    "use client";
-
-    import {
-      CursorCard,
-      CursorCardsContainer,
-    } from "@/components/ui/cursor-cards";
-    import { useTheme } from "next-themes";
-    import { BellRing } from "lucide-react";
-    import { Switch } from "@/components/ui/switch";
-    import { useState } from "react";
-    import { useEffect } from "react";
-
-    const notifications = [
-      {
-        title: "Your call has been confirmed.",
-        description: "1 hour ago",
-      },
-      {
-        title: "You have a new message!",
-        description: "1 hour ago",
-      },
-      {
-        title: "Your subscription is expiring soon!",
-        description: "2 hours ago",
-      },
-    ];
-
-    export default function CursorCardDemo() {
-      const { theme } = useTheme();
-      const [mounted, setMounted] = useState(false);
-
-      useEffect(() => {
-        setMounted(true);
-      }, []);
-
-      if (!mounted) {
-        return null;
-      }
-
-      return (
-        <div>
-          <CursorCardsContainer className="gap-6 flex">
-            <CursorCard
-              borderColor={theme === "dark" ? "#262626" : "#e5e5e5"}
-              className="rounded-xl h-auto w-[300px] shadow-md p-6"
-            >
-              <div className="flex flex-col">
-                <h3 className="text-foreground">Notifications</h3>
-                <p className="text-muted-foreground text-sm mt-0.5">
-                  You have 3 unread messages.
-                </p>
-                <div className="flex items-center space-x-4 rounded-md border p-4 mt-10 bg-neutral-50 dark:bg-neutral-950">
-                  <BellRing />
-                  <div className="flex-1 space-y-1">
-                    <p className="text-sm font-medium leading-none">
-                      Push Notifications
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      Send notifications to device.
-                    </p>
-                  </div>
-                  <Switch />
-                </div>
-              </div>
-            </CursorCard>
-            <CursorCard
-              borderColor={theme === "dark" ? "#262626" : "#e5e5e5"}
-              className="rounded-xl h-auto w-[300px] shadow-md p-6"
-            >
-              <div className="h-full flex justify-between flex-col">
-                {notifications.map((notification, index) => (
-                  <div
-                    key={index}
-                    className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
-                  >
-                    <span className="flex h-2 w-2 translate-y-1 rounded-full bg-emerald-500" />
-                    <div className="space-y-1">
-                      <p className="text-sm font-medium leading-none">
-                        {notification.title}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {notification.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CursorCard>
-          </CursorCardsContainer>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
+  align="center"
+/>
 
 ## Installation
 
-<Tabs defaultValue="cli">
-  <TabsList>
-    <TabsTrigger value="cli">CLI</TabsTrigger>
-    <TabsTrigger value="manual">Manual</TabsTrigger>
-  </TabsList>
+<CodeTabs>
 
-  <TabsContent value="cli">
-    ```bash
-    npx shadcn@latest add https://badtz-ui.com/r/cursor-cards.json
-    ```
-  </TabsContent>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
 
-  <TabsContent value="manual">
-    <Steps>
-      <Step>Install the following dependencies:</Step>
+<TabsContent value="cli">
 
-      ```bash
-      npm install clsx tailwind-merge motion
-      ```
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/cursor-cards.json
+```
 
-      <Step>Add the <Kbd>utils</Kbd> file to the <Kbd>@/lib</Kbd> folder</Step>
+</TabsContent>
 
-      <UtilsSource>
-        <Highlighter slot="javascript">
-          ```jsx
-          import { clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<TabsContent value="manual">
 
-          export function cn(...inputs) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          import { ClassValue, clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<Steps>
 
-          export function cn(...inputs: ClassValue[]) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-      </UtilsSource>
+<Step>Install the following dependencies:</Step>
 
-      <Step>Copy and paste the <Kbd>cursor-cards</Kbd> code into your project.</Step>
+```bash
+npm install clsx tailwind-merge motion
+```
 
-      <ComponentSource name="cursor-cards">
-        <Highlighter slot="javascript">
-          ```jsx
-          "use client";
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
 
-          import { motion, useMotionTemplate, useMotionValue } from "motion/react";
-          import React, { useCallback, useEffect, useRef } from "react";
-          import { cn } from "@/lib/utils";
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
 
-          function useMousePosition(proximityRange) {
-            const wrapperRef = useRef(null);
-            const [mouseState, setMouseState] = React.useState({
-              mousePositionX: 0,
-              mousePositionY: 0,
-              isWithinRange: false,
-            });
+<Step>Copy and paste the following code into your project.</Step>
 
-            const handlePointerMovement = useCallback(
-              (event) => {
-                if (!wrapperRef.current) return;
+<ComponentSource name="cursor-cards" title="components/ui/cursor-cards.tsx" />
 
-                const bounds = wrapperRef.current.getBoundingClientRect();
-                const { clientX, clientY } = event;
+<Step>Update the import paths to match your project setup.</Step>
 
-                const isInProximity =
-                  clientX >= bounds.left - proximityRange &&
-                  clientX <= bounds.right + proximityRange &&
-                  clientY >= bounds.top - proximityRange &&
-                  clientY <= bounds.bottom + proximityRange;
+</Steps>
 
-                setMouseState({
-                  mousePositionX: clientX,
-                  mousePositionY: clientY,
-                  isWithinRange: isInProximity,
-                });
-              },
-              [proximityRange]
-            );
+</TabsContent>
 
-            useEffect(() => {
-              document.addEventListener("pointermove", handlePointerMovement);
-              return () =>
-                document.removeEventListener("pointermove", handlePointerMovement);
-            }, [handlePointerMovement]);
-
-            return { wrapperRef, mouseState };
-          }
-
-          function useCardActivation(
-            elementRef,
-            globalMouseX,
-            globalMouseY,
-            isWithinRange,
-            illuminationRadius
-          ) {
-            const localMouseX = useMotionValue(-illuminationRadius);
-            const localMouseY = useMotionValue(-illuminationRadius);
-            const [isCardActive, setIsCardActive] = React.useState(false);
-
-            useEffect(() => {
-              if (!elementRef.current || !isWithinRange) {
-                setIsCardActive(false);
-                localMouseX.set(-illuminationRadius);
-                localMouseY.set(-illuminationRadius);
-                return;
-              }
-
-              const rect = elementRef.current.getBoundingClientRect();
-              const extendedProximity = 100;
-
-              const isNearCard =
-                globalMouseX >= rect.left - extendedProximity &&
-                globalMouseX <= rect.right + extendedProximity &&
-                globalMouseY >= rect.top - extendedProximity &&
-                globalMouseY <= rect.bottom + extendedProximity;
-
-              setIsCardActive(isNearCard);
-
-              if (isNearCard) {
-                localMouseX.set(globalMouseX - rect.left);
-                localMouseY.set(globalMouseY - rect.top);
-              } else {
-                localMouseX.set(-illuminationRadius);
-                localMouseY.set(-illuminationRadius);
-              }
-            }, [
-              globalMouseX,
-              globalMouseY,
-              isWithinRange,
-              illuminationRadius,
-              localMouseX,
-              localMouseY,
-            ]);
-
-            return { localMouseX, localMouseY, isCardActive };
-          }
-
-          export function CursorCardsContainer({
-            children,
-            className,
-            proximityRange = 400,
-          }) {
-            const { wrapperRef, mouseState } = useMousePosition(proximityRange);
-
-            const enhancedChildren = React.Children.map(children, (child) => {
-              if (React.isValidElement(child) && child.type === CursorCard) {
-                return React.cloneElement(child, {
-                  globalMouseX: mouseState.mousePositionX,
-                  globalMouseY: mouseState.mousePositionY,
-                  isWithinRange: mouseState.isWithinRange,
-                });
-              }
-              return child;
-            });
-
-            return (
-              <div ref={wrapperRef} className={cn("relative", className)}>
-                {enhancedChildren}
-              </div>
-            );
-          }
-
-          export function CursorCard({
-            children,
-            className,
-            illuminationRadius = 200,
-            illuminationColor = "#FFFFFF10",
-            illuminationOpacity = 0.8,
-            primaryHue = "#FC6756",
-            secondaryHue = "#F8CF3E",
-            borderColor = "#F3F4F6",
-            globalMouseX = 0,
-            globalMouseY = 0,
-            isWithinRange = false,
-          }) {
-            const elementRef = useRef(null);
-            const { localMouseX, localMouseY, isCardActive } = useCardActivation(
-              elementRef,
-              globalMouseX,
-              globalMouseY,
-              isWithinRange,
-              illuminationRadius
-            );
-
-            const gradientBackground = useMotionTemplate`
-              radial-gradient(${illuminationRadius}px circle at ${localMouseX}px ${localMouseY}px,
-              ${primaryHue}, 
-              ${secondaryHue},
-              ${borderColor} 100%
-              )
-            `;
-
-            const illuminationBackground = useMotionTemplate`
-              radial-gradient(${illuminationRadius}px circle at ${localMouseX}px ${localMouseY}px, 
-              ${illuminationColor}, transparent 100%)
-            `;
-
-            return (
-              <div
-                ref={elementRef}
-                className={cn("group relative rounded-[inherit]", className)}
-              >
-                <motion.div
-                  className="pointer-events-none absolute inset-0 rounded-[inherit]"
-                  style={{ background: gradientBackground }}
-                />
-                <div className="absolute inset-px rounded-[inherit] bg-white dark:bg-black" />
-                <motion.div
-                  className={cn(
-                    "pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300",
-                    isCardActive && "opacity-100"
-                  )}
-                  style={{
-                    background: illuminationBackground,
-                    opacity: isCardActive ? illuminationOpacity : 0,
-                  }}
-                />
-                <div className="relative">{children}</div>
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          "use client";
-
-          import { motion, useMotionTemplate, useMotionValue } from "motion/react";
-          import React, { useCallback, useEffect, useRef } from "react";
-          import { cn } from "@/lib/utils";
-
-          interface CursorCardsContainerProps {
-            children: React.ReactNode;
-            className?: string;
-            proximityRange?: number;
-          }
-
-          interface CursorCardProps {
-            children?: React.ReactNode;
-            className?: string;
-            illuminationRadius?: number;
-            illuminationColor?: string;
-            illuminationOpacity?: number;
-            primaryHue?: string;
-            secondaryHue?: string;
-            borderColor?: string;
-          }
-
-          interface InternalCursorCardProps extends CursorCardProps {
-            globalMouseX?: number;
-            globalMouseY?: number;
-            isWithinRange?: boolean;
-          }
-
-          function useMousePosition(proximityRange: number) {
-            const wrapperRef = useRef<HTMLDivElement>(null);
-            const [mouseState, setMouseState] = React.useState({
-              mousePositionX: 0,
-              mousePositionY: 0,
-              isWithinRange: false,
-            });
-
-            const handlePointerMovement = useCallback(
-              (event: PointerEvent) => {
-                if (!wrapperRef.current) return;
-
-                const bounds = wrapperRef.current.getBoundingClientRect();
-                const { clientX, clientY } = event;
-
-                const isInProximity =
-                  clientX >= bounds.left - proximityRange &&
-                  clientX <= bounds.right + proximityRange &&
-                  clientY >= bounds.top - proximityRange &&
-                  clientY <= bounds.bottom + proximityRange;
-
-                setMouseState({
-                  mousePositionX: clientX,
-                  mousePositionY: clientY,
-                  isWithinRange: isInProximity,
-                });
-              },
-              [proximityRange]
-            );
-
-            useEffect(() => {
-              document.addEventListener("pointermove", handlePointerMovement);
-              return () =>
-                document.removeEventListener("pointermove", handlePointerMovement);
-            }, [handlePointerMovement]);
-
-            return { wrapperRef, mouseState };
-          }
-
-          function useCardActivation(
-            elementRef: React.RefObject<HTMLDivElement>,
-            globalMouseX: number,
-            globalMouseY: number,
-            isWithinRange: boolean,
-            illuminationRadius: number
-          ) {
-            const localMouseX = useMotionValue(-illuminationRadius);
-            const localMouseY = useMotionValue(-illuminationRadius);
-            const [isCardActive, setIsCardActive] = React.useState(false);
-
-            useEffect(() => {
-              if (!elementRef.current || !isWithinRange) {
-                setIsCardActive(false);
-                localMouseX.set(-illuminationRadius);
-                localMouseY.set(-illuminationRadius);
-                return;
-              }
-
-              const rect = elementRef.current.getBoundingClientRect();
-              const extendedProximity = 100;
-
-              const isNearCard =
-                globalMouseX >= rect.left - extendedProximity &&
-                globalMouseX <= rect.right + extendedProximity &&
-                globalMouseY >= rect.top - extendedProximity &&
-                globalMouseY <= rect.bottom + extendedProximity;
-
-              setIsCardActive(isNearCard);
-
-              if (isNearCard) {
-                localMouseX.set(globalMouseX - rect.left);
-                localMouseY.set(globalMouseY - rect.top);
-              } else {
-                localMouseX.set(-illuminationRadius);
-                localMouseY.set(-illuminationRadius);
-              }
-            }, [
-              globalMouseX,
-              globalMouseY,
-              isWithinRange,
-              illuminationRadius,
-              localMouseX,
-              localMouseY,
-            ]);
-
-            return { localMouseX, localMouseY, isCardActive };
-          }
-
-          export function CursorCardsContainer({
-            children,
-            className,
-            proximityRange = 400,
-          }: CursorCardsContainerProps) {
-            const { wrapperRef, mouseState } = useMousePosition(proximityRange);
-
-            const enhancedChildren = React.Children.map(children, (child) => {
-              if (React.isValidElement(child) && child.type === CursorCard) {
-                return React.cloneElement(
-                  child as React.ReactElement<InternalCursorCardProps>,
-                  {
-                    globalMouseX: mouseState.mousePositionX,
-                    globalMouseY: mouseState.mousePositionY,
-                    isWithinRange: mouseState.isWithinRange,
-                  }
-                );
-              }
-              return child;
-            });
-
-            return (
-              <div ref={wrapperRef} className={cn("relative", className)}>
-                {enhancedChildren}
-              </div>
-            );
-          }
-
-          export function CursorCard({
-            children,
-            className,
-            illuminationRadius = 200,
-            illuminationColor = "#FFFFFF10",
-            illuminationOpacity = 0.8,
-            primaryHue = "#FC6756",
-            secondaryHue = "#F8CF3E",
-            borderColor = "#F3F4F6",
-            globalMouseX = 0,
-            globalMouseY = 0,
-            isWithinRange = false,
-          }: InternalCursorCardProps) {
-            const elementRef = useRef<HTMLDivElement>(null);
-            const { localMouseX, localMouseY, isCardActive } = useCardActivation(
-              elementRef,
-              globalMouseX,
-              globalMouseY,
-              isWithinRange,
-              illuminationRadius
-            );
-
-            const gradientBackground = useMotionTemplate`
-              radial-gradient(${illuminationRadius}px circle at ${localMouseX}px ${localMouseY}px,
-              ${primaryHue}, 
-              ${secondaryHue},
-              ${borderColor} 100%
-              )
-            `;
-
-            const illuminationBackground = useMotionTemplate`
-              radial-gradient(${illuminationRadius}px circle at ${localMouseX}px ${localMouseY}px, 
-              ${illuminationColor}, transparent 100%)
-            `;
-
-            return (
-              <div
-                ref={elementRef}
-                className={cn("group relative rounded-[inherit]", className)}
-              >
-                <motion.div
-                  className="pointer-events-none absolute inset-0 rounded-[inherit]"
-                  style={{ background: gradientBackground }}
-                />
-                <div className="absolute inset-px rounded-[inherit] bg-white dark:bg-black" />
-                <motion.div
-                  className={cn(
-                    "pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300",
-                    isCardActive && "opacity-100"
-                  )}
-                  style={{
-                    background: illuminationBackground,
-                    opacity: isCardActive ? illuminationOpacity : 0,
-                  }}
-                />
-                <div className="relative">{children}</div>
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-      </ComponentSource>
-
-      <Step>Update the import paths to match your project setup.</Step>
-    </Steps>
-  </TabsContent>
-</Tabs>
+</CodeTabs>
 
 ## Usage
 
-```tsx
-import { CursorCardsContainer, CursorCard } from "@/components/ui/cursor-cards";
+```tsx showLineNumbers
+import {
+  CursorCardsContainer,
+  CursorCard
+} from "@/components/ui/cursor-cards";
 ```
 
-```tsx
+```tsx showLineNumbers
 <CursorCardsContainer>
   <CursorCard>
     <div className="h-full w-full py-4 px-6 max-w-72 space-y-2">
@@ -670,29 +84,71 @@ import { CursorCardsContainer, CursorCard } from "@/components/ui/cursor-cards";
 
 ## Props
 
+`cursor-cards-container` props.
 
-<Kbd>cursor-cards-container</Kbd> props.
+<TypeTable
+  type={{
+    children: {
+      type: "React.ReactNode",
+      description: "The child components to render inside the container."
+    },
+    className: {
+      type: "string",
+      description: "Additional custom classes."
+    },
+    proximityRange: {
+      type: "number",
+      description: "Range in pixels for detecting mouse proximity.",
+      default: "400"
+    }
+  }}
+/>
 
-| Prop           | Type                      | Description                                                 | Default   |
-| -------------- | ------------------------- | ----------------------------------------------------------- | --------- |
-| children       | <Kbd>React.ReactNode</Kbd> | The child components to render inside the container.        | -         |
-| className      | <Kbd>string</Kbd>         | Additional custom classes.                                  | -         |
-| proximityRange | <Kbd>number</Kbd>         | Range in pixels for detecting mouse proximity.             | 400       |
+`cursor-card` props.
 
-
-<Kbd>cursor-card</Kbd> props.
-
-| Prop                | Type                      | Description                                                 | Default      |
-| ------------------- | ------------------------- | ----------------------------------------------------------- | ------------ |
-| children            | <Kbd>React.ReactNode</Kbd> | The content to render inside the card.                     | -            |
-| className           | <Kbd>string</Kbd>         | Additional custom classes.                                  | -            |
-| illuminationRadius  | <Kbd>number</Kbd>         | Radius of the illumination effect in pixels.               | 200          |
-| illuminationColor   | <Kbd>string</Kbd>         | Color of the illumination effect.                          | "#FFFFFF10"  |
-| illuminationOpacity | <Kbd>number</Kbd>         | Opacity of the illumination effect (0-1).                  | 0.8          |
-| primaryHue          | <Kbd>string</Kbd>         | Primary color for the gradient border.                     | "#EC4899"    |
-| secondaryHue        | <Kbd>string</Kbd>         | Secondary color for the gradient border.                   | "#6D77D5"    |
-| borderColor         | <Kbd>string</Kbd>         | Default border color when not hovering.                    | "#E5E5E5"    |
+<TypeTable
+  type={{
+    children: {
+      type: "React.ReactNode",
+      description: "The content to render inside the card."
+    },
+    className: {
+      type: "string",
+      description: "Additional custom classes."
+    },
+    illuminationRadius: {
+      type: "number",
+      description: "Radius of the illumination effect in pixels.",
+      default: "200"
+    },
+    illuminationColor: {
+      type: "string",
+      description: "Color of the illumination effect.",
+      default: '"#FFFFFF10"'
+    },
+    illuminationOpacity: {
+      type: "number",
+      description: "Opacity of the illumination effect (0-1).",
+      default: "0.8"
+    },
+    primaryHue: {
+      type: "string",
+      description: "Primary color for the gradient border.",
+      default: '"#93C5FD"'
+    },
+    secondaryHue: {
+      type: "string",
+      description: "Secondary color for the gradient border.",
+      default: '"#2563EB"'
+    },
+    borderColor: {
+      type: "string",
+      description: "Default border color when not hovering.",
+      default: '"#E5E5E5"'
+    }
+  }}
+/>
 
 ## Credits
 
-<li className="text-sm text-muted-foreground mt-4">This component is inspired by <MdxLink href="https://www.cursor.com/"> Cursor</MdxLink></li>
+This component is inspired by [Cursor](https://www.cursor.com/).

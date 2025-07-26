@@ -1,0 +1,120 @@
+---
+title: 3d Wrapper
+description: This component transforms any content into an immersive, interactive 3D experience. It tracks cursor movements to animate a smooth rotation, creating a captivating depth effect.
+component: true
+---
+
+<ComponentPreview
+  name="3d-wrapper-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="This component transforms any content into an immersive, interactive 3D experience. It tracks cursor movements to animate a smooth rotation, creating a captivating depth effect."
+  align="center"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/wrapper-3d.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge motion
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="3d-wrapper" title="components/ui/3d-wrapper.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { Wrapper3D } from "@/components/ui/wrapper-3d";
+```
+
+```tsx showLineNumbers
+<Wrapper3D>
+  {content}
+</Wrapper3D>
+```
+
+## Props
+
+`Wrapper3D` props.
+
+<TypeTable
+  type={{
+    children: {
+      type: "ReactNode",
+      description: "The elements to be wrapped with the 3D effect."
+    },
+    damping: {
+      type: "number",
+      description: "Controls the damping of the animation, affecting how quickly it settles.",
+      default: "20"
+    },
+    swiftness: {
+      type: "number", 
+      description: "Controls the speed of the animation.",
+      default: "80"
+    },
+    mass: {
+      type: "number",
+      description: "Affects the virtual mass of the animation, influencing its behavior.",
+      default: "1.5"
+    },
+    maxRotation: {
+      type: "number",
+      description: "The maximum rotation in degrees that the element can achieve.",
+      default: "100"
+    },
+    translateZ: {
+      type: "number",
+      description: "The depth of translation in pixels for the 3D effect.",
+      default: "75"
+    },
+    perspective: {
+      type: "boolean",
+      description: "Enables or disables the 3D perspective (1000px if enabled).",
+      default: "true"
+    },
+    className: {
+      type: "string",
+      description: "Additional CSS classes to apply to the main container."
+    }
+  }}
+/>

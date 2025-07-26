@@ -1,0 +1,175 @@
+---
+title: Animated List
+description: A sophisticated animation component that creates dynamic column-based transitions with scaling effects. Perfect for showcasing notifications, messages, or any sequential content with smooth formation, scrolling, and reset animations.
+component: true
+---
+
+<ComponentPreview
+  name="animated-list-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="A list of notifications with an animated list"
+  align="center"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/animated-list.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge motion
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="animated-list" title="components/ui/animated-list.tsx" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { AnimatedList } from "@/components/ui/animated-list";
+```
+
+```tsx showLineNumbers
+<AnimatedList>
+  {notifications.map((notification) => (
+    <Notification key={notification.id} notification={notification} />
+  ))}
+</AnimatedList>
+```
+
+## Props
+
+`animated-list` props.
+
+<TypeTable
+  type={{
+    children: {
+      type: "React.ReactNode",
+      description: "The content to be displayed in the animated list."
+    },
+    className: {
+      type: "string",
+      description: "Additional CSS classes for custom styling."
+    },
+    stackGap: {
+      type: "number",
+      description: "Vertical spacing between items in the initial stack formation.",
+      default: "20"
+    },
+    columnGap: {
+      type: "number",
+      description: "Vertical spacing between items in the column formation.",
+      default: "85"
+    },
+    scaleFactor: {
+      type: "number",
+      description: "Factor used to scale items in the initial stack formation.",
+      default: "0.05"
+    },
+    scrollDownDuration: {
+      type: "number",
+      description: "Duration of the scroll down animation in seconds.",
+      default: "5"
+    },
+    formationDuration: {
+      type: "number",
+      description: "Duration of the column formation animation in seconds.",
+      default: "1"
+    }
+  }}
+/>
+
+`animated-list-item` props.
+
+<TypeTable
+  type={{
+    children: {
+      type: "React.ReactNode",
+      description: "The content of the list item."
+    },
+    className: {
+      type: "string",
+      description: "Additional CSS classes for custom styling."
+    },
+    index: {
+      type: "number",
+      description: "The position of the item in the list."
+    },
+    listLength: {
+      type: "number",
+      description: "The total number of items in the list."
+    },
+    stackGap: {
+      type: "number",
+      description: "Vertical spacing between items in the initial stack formation.",
+      default: "10"
+    },
+    columnGap: {
+      type: "number",
+      description: "Vertical spacing between items in the column formation.",
+      default: "100"
+    },
+    scaleFactor: {
+      type: "number",
+      description: "Factor used to scale items in the initial stack formation.",
+      default: "0.1"
+    },
+    formationDuration: {
+      type: "number",
+      description: "Duration of the column formation animation in seconds.",
+      default: "1"
+    },
+    visibleItemsCount: {
+      type: "number",
+      description: "Number of items visible in the initial stack.",
+      default: "4"
+    },
+    resetSpringStiffness: {
+      type: "number",
+      description: "Spring animation stiffness for reset animation.",
+      default: "120"
+    },
+    resetSpringDamping: {
+      type: "number",
+      description: "Spring animation damping for reset animation.",
+      default: "20"
+    }
+  }}
+/>

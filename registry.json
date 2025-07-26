@@ -1,488 +1,32 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "Badtz UI",
-  "homepage": "https://badtz-ui.com",
+  "name": "shadcn/ui",
+  "homepage": "https://ui.shadcn.com",
   "items": [
     {
-      "name": "social-proof-avatars",
-      "type": "registry:ui",
-      "title": "Social Proof Avatars",
-      "description": "A component that displays user avatars with optional extra count and star ratings, ideal for showcasing social proof.",
-      "files": [
-        {
-          "path": "registry/components/social-proof-avatars.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "border-beam",
-      "type": "registry:ui",
-      "title": "Border Beam",
-      "description": "Displays an animated border effect with a glowing beam around the content that adapts to the size of the container.",
-      "files": [
-        {
-          "path": "registry/components/border-beam.tsx",
-          "type": "registry:ui"
-        }
-      ],
-      "dependencies": ["framer-motion"]
-    },
-    {
-      "name": "cloud-orbit",
-      "type": "registry:ui",
-      "title": "Cloud Orbit",
-      "description": "This component creates a dynamic and interactive experience, where each icon orbits in a fluid motion. Fully customizable, it's ideal for showcasing your tech stack or the tools your product uses.",
-      "dependencies": ["framer-motion"],
-      "cssVars": {
-        "theme": {
-          "animate-cloud-orbit": "cloud-orbit calc(var(--speed) * 1s) linear infinite"
-        }
-      },
-      "css": {
-        "@keyframes cloud-orbit": {
-          "0%": {
-            "transform": "rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)"
-          },
-          "25%": {
-            "transform": "rotate(90deg) translateY(calc(var(--radius) * 1px)) rotate(-90deg)"
-          },
-          "50%": {
-            "transform": "rotate(180deg) translateY(calc(var(--radius) * 1px)) rotate(-180deg)"
-          },
-          "75%": {
-            "transform": "rotate(270deg) translateY(calc(var(--radius) * 1px)) rotate(-270deg)"
-          },
-          "100%": {
-            "transform": "rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)"
-          }
-        }
-      },
-      "files": [
-        {
-          "path": "registry/components/cloud-orbit.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "dock",
-      "type": "registry:ui",
-      "title": "Dock",
-      "description": "An interactive icon dock that smoothly scales icons/images on hover, providing a responsive and engaging visual effect.",
-      "files": [
-        {
-          "path": "registry/components/dock.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "expandable-card",
-      "type": "registry:ui",
-      "title": "Expandable Card",
-      "description": "A versatile and engaging UI component that allows users to explore content in a more immersive way.",
-      "dependencies": ["framer-motion"],
-      "files": [
-        {
-          "path": "registry/components/expandable-card.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "image-split",
-      "type": "registry:ui",
-      "title": "Image Split",
-      "description": "This component provides a dynamic and visually captivating way to display images split into multiple sections.",
-      "files": [
-        {
-          "path": "registry/components/image-split.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "image-trail",
-      "type": "registry:ui",
-      "title": "Image Trail",
-      "description": "Image Trail adds a dynamic, interactive trail of images that follows the cursor, enhancing user engagement and visual appeal on your website.",
-      "dependencies": ["gsap"],
-      "files": [
-        {
-          "path": "registry/components/image-trail.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "infinite-ribbon",
-      "type": "registry:ui",
-      "title": "Infinite Ribbon",
-      "description": "A dynamic and customizable sliding ribbon component that enhances UI experiences with smooth scrolling animations.",
-      "cssVars": {
-        "theme": {
-          "animate-infinite-ribbon": "infinite-ribbon var(--ribbon-duration) linear infinite",
-          "animate-infinite-ribbon-reverse": "infinite-ribbon-reverse var(--ribbon-duration) linear infinite"
-        }
-      },
-      "css": {
-        "@keyframes infinite-ribbon": {
-          "0%": {
-            "transform": "translateX(0)"
-          },
-          "100%": {
-            "transform": "translateX(-100%)"
-          }
-        },
-        "@keyframes infinite-ribbon-reverse": {
-          "0%": {
-            "transform": "translateX(-100%)"
-          },
-          "100%": {
-            "transform": "translateX(0)"
-          }
-        }
-      },
-      "files": [
-        {
-          "path": "registry/components/infinite-ribbon.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "wrapper-3d",
-      "type": "registry:ui",
-      "title": "3d Wrapper",
-      "description": "This component transforms any content into an immersive, interactive 3D experience. It tracks cursor movements to animate a smooth rotation, creating a captivating depth effect.",
-      "dependencies": ["framer-motion"],
-      "files": [
-        {
-          "path": "registry/components/wrapper-3d.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "pulse-shader",
-      "type": "registry:ui",
-      "title": "Pulse Shader",
-      "description": "An interactive and customizable shader effect that creates a dynamic wave in response to hover interactions, perfect for adding engaging visual effects to backgrounds.",
+      "name": "index",
+      "type": "registry:style",
       "dependencies": [
-        "@react-three/fiber",
-        "@react-three/drei",
-        "gsap",
-        "three"
+        "class-variance-authority",
+        "lucide-react"
       ],
-      "files": [
-        {
-          "path": "registry/components/shaders/pulse-shader.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/shaders/pulse-shader-shader.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/shaders/pulse-shader-scene.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "pixel-distorsion",
-      "type": "registry:ui",
-      "title": "Pixel Distorsion Shader",
-      "description": "An interactive and customizable shader effect that distorts pixels dynamically based on mouse interactions, perfect for creating engaging and immersive visual effects on images.",
-      "dependencies": [
-        "@react-three/fiber",
-        "@react-three/drei",
-        "gsap",
-        "three"
+      "devDependencies": [
+        "tw-animate-css"
       ],
-      "files": [
-        {
-          "path": "registry/components/shaders/pixel-distorsion-scene.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/shaders/pixel-distorsion-shader.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/shaders/pixel-distorsion.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "mouse-wave",
-      "type": "registry:ui",
-      "title": "Mouse Wave Shader",
-      "description": "An interactive and customizable component that creates a dynamic wave effect responding to mouse movements, perfect for immersive backgrounds.",
-      "dependencies": [
-        "@react-three/fiber",
-        "@react-three/drei",
-        "gsap",
-        "three"
+      "registryDependencies": [
+        "utils"
       ],
-      "files": [
-        {
-          "path": "registry/components/shaders/mouse-wave-scene.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/shaders/mouse-wave-shader.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/shaders/mouse-wave.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "animated-card-1",
-      "type": "registry:ui",
-      "title": "Animated Card 1",
-      "description": "An animated hover card that can showcase almost anything—it all comes down to the caption you choose.",
-      "files": [
-        {
-          "path": "registry/components/animated-cards/animated-card.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/animated-cards/visual-1.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "animated-card-2",
-      "type": "registry:ui",
-      "title": "Animated Card 2",
-      "description": "An animated hover card that can showcase almost anything—it all comes down to the caption you choose.",
-      "files": [
-        {
-          "path": "registry/components/animated-cards/animated-card.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/animated-cards/visual-2.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "animated-card-3",
-      "type": "registry:ui",
-      "title": "Animated Card 3",
-      "description": "An animated hover card that can showcase almost anything—it all comes down to the caption you choose.",
-      "files": [
-        {
-          "path": "registry/components/animated-cards/animated-card.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/animated-cards/visual-3.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "stripe-animated-gradient",
-      "type": "registry:ui",
-      "title": "Stripe Animated Gradient",
-      "description": "Recreate the iconic animated gradient from Stripe with this seamless background animation component.",
-      "files": [
-        {
-          "path": "registry/components/backgrounds/stripe-animated-gradient.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/backgrounds/stripe-shader.js",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "hyperspace-background",
-      "type": "registry:ui",
-      "title": "Hyperspace Background",
-      "description": "A dynamic and customizable background component that simulates a star-filled hyperspace effect.",
-      "files": [
-        {
-          "path": "registry/components/backgrounds/hyperspace-background.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "blur-reveal",
-      "type": "registry:ui",
-      "title": "Blur Reveal",
-      "description": "A text component that reveals its content with a smooth blur-to-focus animation, activated by default when the text enters the viewport.",
-      "dependencies": ["framer-motion"],
-      "files": [
-        {
-          "path": "registry/components/text-animations/blur-reveal.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "particles",
-      "type": "registry:ui",
-      "title": "Particles",
-      "description": "A versatile and performant component for creating engaging, animated content displays with smooth infinite scrolling animations. Perfect for showcasing client logos, testimonials, feature highlights, and promotional content with customizable speed, direction, and responsive design.",
-      "dependencies": ["@tsparticles/slim", "@tsparticles/react"],
-      "files": [
-        {
-          "path": "registry/components/particles.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "fade-up-word",
-      "type": "registry:ui",
-      "title": "Fade Up Word",
-      "description": "A text component that reveals its content with a smooth fade-up animation, activated by default when the text enters the viewport.",
-      "dependencies": ["framer-motion"],
-      "files": [
-        {
-          "path": "registry/components/text-animations/fade-up-word.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "stagger-blur-effect",
-      "type": "registry:ui",
-      "title": "Stagger Blur Effect",
-      "description": "Inspired by Vercel's homepage, this text component creates a 3D rotation effect with blur on hover, revealing text with a staggered animation.",
-      "dependencies": ["framer-motion"],
-      "files": [
-        {
-          "path": "registry/components/text-animations/stagger-blur-effect.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "flipping-card",
-      "type": "registry:ui",
-      "title": "Flipping Card",
-      "description": "A flipping card component that can showcase anything.",
-      "files": [
-        {
-          "path": "registry/components/flipping-card.tsx",
-          "type": "registry:ui"
-        }
-      ]
+      "files": [],
+      "cssVars": {}
     },
     {
       "name": "cursor-cards",
       "type": "registry:ui",
-      "title": "Cursor Card",
-      "description": "A card component that can showcase anything.",
-      "dependencies": ["motion"],
+      "dependencies": [
+        "clsx tailwind-merge motion"
+      ],
       "files": [
         {
-          "path": "registry/components/cursor-cards.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "glowing-button",
-      "type": "registry:ui",
-      "title": "Glowing Button",
-      "description": "A glowing button component.",
-      "files": [
-        {
-          "path": "registry/components/buttons/glowing-button.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "gradient-slide-button",
-      "type": "registry:ui",
-      "title": "Gradient Slide Button",
-      "description": "A dynamic and stylish button that reveals a vibrant gradient as you hover over it.",
-      "files": [
-        {
-          "path": "registry/components/buttons/gradient-slide-button.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "star-button",
-      "type": "registry:ui",
-      "title": "Star Button",
-      "description": "The StarButton is a visually striking button that features a radial light animation with a starry background.",
-      "cssVars": {
-        "theme": {
-          "animate-star-btn": "star-btn calc(var(--duration)*1s) linear infinite"
-        }
-      },
-      "css": {
-        "@keyframes star-btn": {
-          "0%": { "offset-distance": "0%" },
-          "100%": { "offset-distance": "100%" }
-        }
-      },
-      "files": [
-        {
-          "path": "registry/components/buttons/star-button.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "swipe-button",
-      "type": "registry:ui",
-      "title": "Swipe Button",
-      "description": "A sleek swipe-to-validate button with animated text, smooth transitions.",
-      "tailwind": {
-        "config": {
-          "theme": {
-            "extend": {
-              "keyframes": {
-                "swipe-button-text": {
-                  "0%": { "background-position": "0 0" },
-                  "100%": {
-                    "background-position": "var(--swipe-button-text-width) 0"
-                  }
-                }
-              },
-              "animation": {
-                "swipe-button-text": "swipe-button-text 1.5s cubic-bezier(.4,0,.2,1) infinite"
-              }
-            }
-          }
-        }
-      },
-      "dependencies": ["lucide-react"],
-      "files": [
-        {
-          "path": "registry/components/buttons/swipe-button.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "confetti-button",
-      "type": "registry:ui",
-      "title": "Confetti button",
-      "description": "A fun and interactive button that triggers a confetti explosion effect on click.",
-      "dependencies": ["canvas-confetti", "@types/canvas-confetti"],
-      "files": [
-        {
-          "path": "registry/components/buttons/confetti-button.tsx",
+          "path": "registry/new-york-v4/ui/cursor-cards.tsx",
           "type": "registry:ui"
         }
       ]
@@ -490,12 +34,25 @@
     {
       "name": "animated-keyboard",
       "type": "registry:ui",
-      "title": "Animated Keyboard",
-      "description": "A fun and interactive animated keyboard with keycaps that can be customized with different colors and variants.",
-      "dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
+      "dependencies": [
+        "clsx tailwind-merge framer-motion class-variance-authority"
+      ],
       "files": [
         {
-          "path": "registry/components/animated-keyboard.tsx",
+          "path": "registry/new-york-v4/ui/animated-keyboard.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "flipping-card",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/flipping-card.tsx",
           "type": "registry:ui"
         }
       ]
@@ -503,88 +60,25 @@
     {
       "name": "animated-list",
       "type": "registry:ui",
-      "title": "Animated List",
-      "description": "A sophisticated animation component that creates dynamic column-based transitions with scaling effects. Perfect for showcasing notifications, messages, or any sequential content with smooth formation, scrolling, and reset animations.",
-      "dependencies": ["framer-motion"],
+      "dependencies": [
+        "clsx tailwind-merge motion"
+      ],
       "files": [
         {
-          "path": "registry/components/animated-list.tsx",
+          "path": "registry/new-york-v4/ui/animated-list.tsx",
           "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "shuffle-button",
+      "name": "particles",
       "type": "registry:ui",
-      "title": "Shuffle Button",
-      "description": "A dynamic button that shuffles the characters of its text when hovered over, creating an engaging animation.",
+      "dependencies": [
+        "clsx tailwind-merge @tsparticles/react @tsparticles/slim"
+      ],
       "files": [
         {
-          "path": "registry/components/buttons/shuffle-button.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "stagger-button",
-      "type": "registry:ui",
-      "title": "Stagger Button",
-      "description": "A dynamic button that animates on hover, where each letter of the text flips in 3D with a staggered effect.",
-      "dependencies": ["framer-motion"],
-      "files": [
-        {
-          "path": "registry/components/buttons/stagger-button.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "spaceship-scrollbar",
-      "type": "registry:ui",
-      "title": "Spaceship Scrollbar",
-      "description": "An animated scrollbar that dynamically tracks progress, offering a sleek and interactive user experience.",
-      "dependencies": ["framer-motion"],
-      "files": [
-        {
-          "path": "registry/components/spaceship-scrollbar.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "like-button",
-      "type": "registry:ui",
-      "title": "Like Button",
-      "description": "A dynamic button that animates on click, creating a burst of heart icons that randomly scatter before fading out.",
-      "dependencies": ["framer-motion"],
-      "files": [
-        {
-          "path": "registry/components/buttons/like-button.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "pixel-distorsion-demo",
-      "type": "registry:ui",
-      "title": "Pixel Distorsion Shader",
-      "description": "An interactive and customizable shader effect that distorts pixels dynamically based on mouse interactions, perfect for creating engaging and immersive visual effects on images.",
-      "dependencies": ["@react-three/fiber", "@react-three/drei", "gsap"],
-      "files": [
-        {
-          "path": "registry/demos/pixel-distorsion-demo.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/shaders/pixel-distorsion-scene.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/shaders/pixel-distorsion-shader.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/components/shaders/pixel-distorsion.tsx",
+          "path": "registry/new-york-v4/ui/particles.tsx",
           "type": "registry:ui"
         }
       ]
@@ -592,11 +86,12 @@
     {
       "name": "marquee",
       "type": "registry:ui",
-      "title": "Marquee",
-      "description": "A dynamic and customizable sliding marquee component that enhances UI experiences with smooth scrolling animations.",
+      "dependencies": [
+        "clsx tailwind-merge"
+      ],
       "files": [
         {
-          "path": "registry/components/marquee.tsx",
+          "path": "registry/new-york-v4/ui/marquee.tsx",
           "type": "registry:ui"
         }
       ],
@@ -624,6 +119,1011 @@
           }
         }
       }
+    },
+    {
+      "name": "social-proof-avatars",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/social-proof-avatars.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "border-beam",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge motion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/border-beam.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "cloud-orbit",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge motion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/cloud-orbit.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dock",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge motion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/dock.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "expandable-card",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge motion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/expandable-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "image-split",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/image-split.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "image-trail",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge gsap"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/image-trail.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "infinite-ribbon",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/infinite-ribbon.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-infinite-ribbon": "infinite-ribbon var(--ribbon-duration) linear infinite",
+          "animate-infinite-ribbon-reverse": "infinite-ribbon-reverse var(--ribbon-duration) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes infinite-ribbon": {
+          "0%": {
+            "transform": "translateX(0)"
+          },
+          "100%": {
+            "transform": "translateX(-100%)"
+          }
+        },
+        "@keyframes infinite-ribbon-reverse": {
+          "0%": {
+            "transform": "translateX(-100%)"
+          },
+          "100%": {
+            "transform": "translateX(0)"
+          }
+        }
+      }
+    },
+    {
+      "name": "3d-wrapper",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge motion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/3d-wrapper.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pixel-distorsion",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge @react-three/fiber @react-three/drei three"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/pixel-distorsion.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/ui/pixel-distorsion-scene.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/ui/pixel-distorsion-shader.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pulse-shader",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge @react-three/fiber @react-three/drei three"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/pulse-shader.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/ui/pulse-shader-scene.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/ui/pulse-shader-shader.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "mouse-wave",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge @react-three/fiber @react-three/drei three"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/mouse-wave.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/ui/mouse-wave-scene.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/ui/mouse-wave-shader.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "animated-card-1",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/animated-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/ui/visual-1.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "animated-card-2",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/animated-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/ui/visual-2.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "animated-card-3",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/animated-card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/ui/visual-3.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stripe-animated-gradient",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/stripe-animated-gradient.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/new-york-v4/ui/stripe-shader.js",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hyperspace-background",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/hyperspace-background.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "blur-reveal",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge motion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/blur-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "fade-up-word",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge motion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/fade-up-word.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stagger-blur-effect",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge motion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/stagger-blur-effect.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "glowing-button",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/glowing-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "swipe-button",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge",
+        "canvas-confetti",
+        "@types/canvas-confetti"
+      ],
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/swipe-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "gradient-slide-button",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/gradient-slide-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "star-button",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/star-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "animate-star-btn": "star-btn calc(var(--duration) * 1s) linear infinite"
+        }
+      },
+      "css": {
+        "@keyframes star-btn": {
+          "0%": {
+            "offset-distance": "0%"
+          },
+          "100%": {
+            "offset-distance": "100%"
+          }
+        }
+      }
+    },
+    {
+      "name": "confetti-button",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge canvas-confetti @types/canvas-confetti"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/confetti-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "shuffle-button",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/shuffle-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "stagger-button",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge motion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/stagger-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "like-button",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge motion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/like-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "dependencies": [
+        "clsx tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "mode-toggle",
+      "type": "registry:example",
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/mode-toggle.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "cursor-card-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "cursor-cards"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/cursor-card-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-keyboard-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "animated-keyboard"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/animated-keyboard-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-keyboard-rgb-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "animated-keyboard"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/animated-keyboard-rgb-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "mini-keyboard-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "animated-keyboard"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/mini-keyboard-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "flipping-card-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "flipping-card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/flipping-card-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-list-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "animated-list"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/animated-list-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "particles-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "particles"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/particles-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "particles-snow-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "particles"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/particles-snow-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "particles-stars-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "particles"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/particles-stars-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "marquee-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "marquee"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/marquee-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "social-proof-avatars-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "social-proof-avatars"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/social-proof-avatars-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "border-beam-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "border-beam"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/border-beam-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "cloud-orbit-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "cloud-orbit"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/cloud-orbit-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "dock-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "dock"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/dock-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "expandable-card-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "expandable-card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/expandable-card-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "image-split-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "image-split"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/image-split-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "image-trail-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "image-trail"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/image-trail-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "infinite-ribbon-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "infinite-ribbon"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/infinite-ribbon-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "infinite-ribbon-demo-2",
+      "type": "registry:example",
+      "registryDependencies": [
+        "infinite-ribbon"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/infinite-ribbon-demo-2.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "3d-wrapper-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "3d-wrapper"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/3d-wrapper-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "pixel-distorsion-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "pixel-distorsion"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/pixel-distorsion-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "pulse-shader-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "pulse-shader"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/pulse-shader-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "mouse-wave-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "mouse-wave"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/mouse-wave-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-card-1-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "animated-card-1"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/animated-card-1-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-card-2-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "animated-card-2"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/animated-card-2-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "animated-card-3-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "animated-card-3"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/animated-card-3-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "stripe-animated-gradient-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "stripe-animated-gradient"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/stripe-animated-gradient-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "hyperspace-background-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "hyperspace-background"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/hyperspace-background-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "blur-reveal-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "blur-reveal"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/blur-reveal-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "fade-up-word-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "fade-up-word"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/fade-up-word-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "stagger-blur-effect-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "stagger-blur-effect"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/stagger-blur-effect-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "glowing-button-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "glowing-button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/glowing-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "swipe-button-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "swipe-button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/swipe-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "gradient-slide-button-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "gradient-slide-button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/gradient-slide-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "star-button-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "star-button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/star-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "confetti-button-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "confetti-button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/confetti-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "shuffle-button-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "shuffle-button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/shuffle-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "stagger-button-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "stagger-button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/stagger-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "like-button-demo",
+      "type": "registry:example",
+      "registryDependencies": [
+        "like-button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/examples/like-button-demo.tsx",
+          "type": "registry:example"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york-v4/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "use-mobile",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "registry/new-york-v4/hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ]
     }
   ]
 }

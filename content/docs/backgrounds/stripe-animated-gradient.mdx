@@ -1,0 +1,120 @@
+---
+title: Stripe Animated Gradient
+description: Recreate the iconic animated gradient from Stripe with this seamless background animation component.
+component: true
+---
+
+<ComponentPreview
+  name="stripe-animated-gradient-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="Recreate the iconic animated gradient from Stripe with this seamless background animation component."
+  align="center"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/stripe-animated-gradient.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+
+<Step className="mb-6">Download the `stripe-shader.zip`.</Step>
+
+You can extract the `stripe-shader.js` file from the zip and place it inside your `components/ui` directory.
+
+<DownloadStripeShaderButton />
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="stripe-animated-gradient" title="components/ui/stripe-animated-gradient.tsx" />
+
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { AnimatedGradient } from "@/components/ui/stripe-animated-gradient";
+```
+
+```tsx showLineNumbers
+<AnimatedGradient
+  color1="#a960ee"
+  color2="#ff333d"
+  color3="#90e0ff"
+  color4="#ffcb57"
+/>
+```
+
+## Props
+
+`AnimatedGradient` props.
+
+<TypeTable
+  type={{
+    color1: {
+      type: "string",
+      description: "First color of the gradient.",
+      default: '"#a960ee"'
+    },
+    color2: {
+      type: "string",
+      description: "Second color of the gradient.",
+      default: '"#ff333d"'
+    },
+    color3: {
+      type: "string",
+      description: "Third color of the gradient.",
+      default: '"#90e0ff"'
+    },
+    color4: {
+      type: "string",
+      description: "Fourth color of the gradient.",
+      default: '"#ffcb57"'
+    }
+  }}
+/>
+
+## Credits
+
+- I didn't create the original effect; I simply adapted it to work with React. Full credit goes to:
+- [@kevinhufnagl](https://kevinhufnagl.com/)
+- [Stripe](https://stripe.com/jp)
+

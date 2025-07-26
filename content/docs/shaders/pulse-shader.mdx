@@ -1,0 +1,155 @@
+---
+title: Pulse Shader
+description: An interactive and customizable shader effect that creates a dynamic wave in response to hover interactions, perfect for adding engaging visual effects to backgrounds.
+component: true
+---
+
+<ComponentPreview
+  name="pulse-shader-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="An interactive and customizable shader effect that creates a dynamic wave in response to hover interactions, perfect for adding engaging visual effects to backgrounds."
+  align="center"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/pulse-shader.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge @react-three/fiber @react-three/drei three
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="pulse-shader" title="components/ui/pulse-shader.tsx" />
+
+<ComponentSource name="pulse-shader" className="mt-20" fileName="pulse-shader-shader" title="components/ui/pulse-shader-shader.tsx" />
+
+<ComponentSource name="pulse-shader" className="mt-20" fileName="pulse-shader-scene" title="components/ui/pulse-shader-scene.tsx" />
+
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import dynamic from "next/dynamic";
+const PulseShaderScene = dynamic(
+  () => import("@/components/ui/pulse-shader-scene"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-full w-full bg-zinc-100 dark:bg-neutral-950">
+        {/* Skeleton loader */}
+      </div>
+    ),
+  },
+);
+```
+
+```tsx showLineNumbers
+<div className="w-full max-w-[620px] h-auto">
+  <PulseShaderScene imageSrc="/images/shaders/aurora-borealis-image.webp" />
+</div>
+```
+
+<Callout>
+You can use a placeholder while loading, to avoid potential issues, consider using **dynamic imports**.
+</Callout>
+
+<Callout>
+By default, the shader is automatically disabled on mobile and replaced with a static image.
+</Callout>
+
+## Props
+
+`pulse-shader-scene` props.
+
+<TypeTable
+  type={{
+    imageSrc: {
+      type: "string",
+      description: "The source URL of the image used in the shader.",
+      required: true
+    },
+    alt: {
+      type: "string",
+      description: "Alternative text for the image (used when the fallback `<img>` is displayed on mobile).",
+      default: "undefined"
+    },
+    marginFactor: {
+      type: "number",
+      description: "Factor applied to the camera distance to ensure the shader is fully visible. Adjust this if parts of the shader are cut off.",
+      default: "1.05"
+    }
+  }}
+/>
+
+
+## Credits & Resources 
+
+Here are some of the key resources that helped me learn about shaders.
+If you're interested in exploring shaders further, these are great places to start!
+
+The GLSL shader used in this component was created by @stegu
+
+[@stegu](https://github.com/stegu/)
+>
+[Akella's repo](https://github.com/akella/)
+>
+[The Book Of Shaders](https://thebookofshaders.com/?lan=jp)
+>
+[ThreeJS Journey](https://threejs-journey.com/)
+
+## Version Requirements
+
+If you are using Next.js 14 or earlier, install these packages instead:
+`@react-three/fiber@8.18.0` `@react-three/drei@9.122.0 gsap`
+
+```bash
+npm install @react-three/fiber@8.18.0 @react-three/drei@9.122.0 gsap three
+```
+
+## Changelog
+
+### 2025-04-27
+
+- Fixed a critical `THREE.WebGLRenderer: Context Lost` error occurring on **Next.js 15** projects.
+- Improved WebGL context handling for better stability across modern browsers.
+- Adjusted recommended package versions to ensure compatibility with **Next.js 14**.
+- Updated installation instructions to clearly differentiate requirements between Next.js 14 and 15 environments.

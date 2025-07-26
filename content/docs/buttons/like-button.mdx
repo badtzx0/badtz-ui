@@ -1,0 +1,96 @@
+---
+title: Like Button
+description: A dynamic button that animates on click, creating a burst of heart icons that randomly scatter before fading out.
+component: true
+---
+
+<ComponentPreview
+  name="like-button-demo"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="A dynamic button that animates on click, creating a burst of heart icons that randomly scatter before fading out."
+  align="center"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/like-button.json
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install clsx tailwind-merge motion
+```
+
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
+
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="like-button" title="components/ui/like-button.tsx" />
+
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx showLineNumbers
+import { LikeButton } from "@/components/ui/buttons/like-button";
+```
+
+```tsx showLineNumbers
+<LikeButton>
+  Like
+</LikeButton>
+```
+
+## Props
+
+`LikeButton` props.
+
+<TypeTable
+  type={{
+    children: {
+      type: "ReactNode",
+      description: "The text or elements to display inside the button."
+    },
+    className: {
+      type: "string",
+      description: "Additional custom classes for styling."
+    },
+    iconCount: {
+      type: "number",
+      description: "The number of heart icons to animate when the button is clicked.",
+      default: "20"
+    }
+  }}
+/>

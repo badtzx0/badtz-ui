@@ -1,312 +1,137 @@
 ---
 title: Infinite Ribbon
 description: A dynamic and customizable sliding ribbon component that enhances UI experiences with smooth scrolling animations.
+component: true
 ---
 
 <ComponentPreview
   name="infinite-ribbon-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%] p-0 relative"
-  description="A dynamic and customizable sliding ribbon"
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import { InfiniteRibbon } from "@/components/ui/infinite-ribbon";
-
-    export default function InfiniteRibbonDemo() {
-      return (
-        <div className="flex items-center justify-center relative overflow-hidden h-[350px] w-full">
-          <InfiniteRibbon rotation={5} className="absolute">
-            Build fast, responsive, and beautiful interfaces with ready-to-use
-            components. Designed for developers who demand the best.
-          </InfiniteRibbon>
-          <InfiniteRibbon reverse={true} rotation={-5}>
-            Build fast, responsive, and beautiful interfaces with ready-to-use
-            components. Designed for developers who demand the best.
-          </InfiniteRibbon>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import { InfiniteRibbon } from "@/components/ui/infinite-ribbon";
-
-    export default function InfiniteRibbonDemo() {
-      return (
-        <div className="flex items-center justify-center relative overflow-hidden h-[350px] w-full">
-          <InfiniteRibbon rotation={5} className="absolute">
-            Build fast, responsive, and beautiful interfaces with ready-to-use
-            components. Designed for developers who demand the best.
-          </InfiniteRibbon>
-          <InfiniteRibbon reverse={true} rotation={-5}>
-            Build fast, responsive, and beautiful interfaces with ready-to-use
-            components. Designed for developers who demand the best.
-          </InfiniteRibbon>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
-
-<ComponentPreview
-  name="infinite-ribbon-demo-bis"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%] p-0 relative"
-  description="A dynamic and customizable sliding ribbon"
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import { InfiniteRibbon } from "@/components/ui/infinite-ribbon";
-
-    export default function InfiniteRibbonDemoBis() {
-      return (
-        <div className="flex items-center flex-col justify-center gap-10 overflow-hidden h-[350px] w-full">
-          <InfiniteRibbon>
-            Build fast, responsive, and beautiful interfaces with ready-to-use
-            components. Designed for developers who demand the best.
-          </InfiniteRibbon>
-          <InfiniteRibbon reverse={true}>
-            Build fast, responsive, and beautiful interfaces with ready-to-use
-            components. Designed for developers who demand the best.
-          </InfiniteRibbon>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import { InfiniteRibbon } from "@/components/ui/infinite-ribbon";
-
-    export default function InfiniteRibbonDemoBis() {
-      return (
-        <div className="flex items-center flex-col justify-center gap-10 overflow-hidden h-[350px] w-full">
-          <InfiniteRibbon>
-            Build fast, responsive, and beautiful interfaces with ready-to-use
-            components. Designed for developers who demand the best.
-          </InfiniteRibbon>
-          <InfiniteRibbon reverse={true}>
-            Build fast, responsive, and beautiful interfaces with ready-to-use
-            components. Designed for developers who demand the best.
-          </InfiniteRibbon>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="A dynamic and customizable sliding ribbon component that enhances UI experiences with smooth scrolling animations."
+  align="center"
+/>
 
 ## Installation
 
-<Tabs defaultValue="cli">
-  <TabsList>
-    <TabsTrigger value="cli">CLI</TabsTrigger>
-    <TabsTrigger value="manual">Manual</TabsTrigger>
-  </TabsList>
+<CodeTabs>
 
-  <TabsContent value="cli">
-    ```bash
-    npx shadcn@latest add https://badtz-ui.com/r/infinite-ribbon.json
-    ```
-  </TabsContent>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
 
-  <TabsContent value="manual">
-    <Steps>
-      <Step>Install the following dependencies:</Step>
+<TabsContent value="cli">
 
-      ```bash
-      npm install clsx tailwind-merge
-      ```
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/infinite-ribbon.json
+```
 
-      <Step>Add the <Kbd>utils</Kbd> file to the <Kbd>@/lib</Kbd> folder</Step>
+</TabsContent>
 
-      <UtilsSource>
-        <Highlighter slot="javascript">
-          ```jsx
-          import { clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<TabsContent value="manual">
 
-          export function cn(...inputs) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          import { ClassValue, clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<Steps>
 
-          export function cn(...inputs: ClassValue[]) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-      </UtilsSource>
+<Step>Install the following dependencies:</Step>
 
-      <Step>Copy and paste the <Kbd>infinite-ribbon</Kbd> code into your project.</Step>
+```bash
+npm install clsx tailwind-merge
+```
 
-      <ComponentSource name="infinite-ribbon">
-        <Highlighter slot="javascript">
-          ```jsx
-          import * as React from "react";
-          import { cn } from "@/lib/utils";
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
 
-          export function InfiniteRibbon({
-            repeat = 5,
-            duration = 10,
-            reverse = false,
-            rotation = 0,
-            children,
-            className,
-          }) {
-            const animationClass = reverse
-              ? "animate-infinite-ribbon-reverse"
-              : "animate-infinite-ribbon";
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
 
-            return (
-              <div
-                className={cn(
-                  "overflow-hidden max-w-full bg-zinc-100 dark:bg-zinc-800 text-black dark:text-white py-1 text-lg",
-                  className
-                )}
-                style={{ transform: `rotate(${rotation}deg)` }}
-              >
-                <div
-                  className={cn("whitespace-nowrap flex", animationClass)}
-                  style={{ "--ribbon-duration": `${duration}s` }}
-                >
-                  {Array.from({ length: repeat }, (_, index) => (
-                    <span key={index} className="inline-block mr-8 select-none">
-                      {children}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          import * as React from "react";
-          import { cn } from "@/lib/utils";
+<Step>Copy and paste the following code into your project.</Step>
 
-          interface InfiniteRibbonProps {
-            repeat?: number;
-            duration?: number;
-            reverse?: boolean;
-            rotation?: number;
-            children: React.ReactNode;
-            className?: string;
-          }
+<ComponentSource name="infinite-ribbon" title="components/ui/infinite-ribbon.tsx" />
 
-          export function InfiniteRibbon({
-            repeat = 5,
-            duration = 10,
-            reverse = false,
-            rotation = 0,
-            children,
-            className,
-          }: InfiniteRibbonProps) {
-            const animationClass = reverse
-              ? "animate-infinite-ribbon-reverse"
-              : "animate-infinite-ribbon";
+<Step>Tailwind v4: Update `@/global.css`</Step>
 
-            return (
-              <div
-                className={cn(
-                  "overflow-hidden max-w-full bg-zinc-100 dark:bg-zinc-800 text-black dark:text-white py-1 text-lg",
-                  className
-                )}
-                style={{ transform: `rotate(${rotation}deg)` }}
-              >
-                <div
-                  className={cn("whitespace-nowrap flex", animationClass)}
-                  style={{ "--ribbon-duration": `${duration}s` } as React.CSSProperties}
-                >
-                  {Array.from({ length: repeat }, (_, index) => (
-                    <span key={index} className="inline-block mr-8 select-none">
-                      {children}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-      </ComponentSource>
+```css showLineNumbers
+@theme inline {
+  --animate-infinite-ribbon: infinite-ribbon var(--ribbon-duration) linear
+    infinite;
+  --animate-infinite-ribbon-reverse: infinite-ribbon-reverse
+    var(--ribbon-duration) linear infinite;
+}
 
-      <Step>Update the import paths to match your project setup.</Step>
+@keyframes infinite-ribbon {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 
-      <Step>Tailwind v4: Update <Kbd>global.css</Kbd></Step>
+@keyframes infinite-ribbon-reverse {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+```
 
-      Add the following animations to your <Kbd>global.css</Kbd> file inside the <Kbd>@theme</Kbd> inline block:
+<Step>Tailwind v3: Update `tailwind.config.js`</Step>
 
-      ```css
-      --animate-infinite-ribbon: infinite-ribbon var(--ribbon-duration) linear
-        infinite;
-      --animate-infinite-ribbon-reverse: infinite-ribbon-reverse
-        var(--ribbon-duration) linear infinite;
-
-      @keyframes infinite-ribbon {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-100%);
-        }
-      }
-      
-      @keyframes infinite-ribbon-reverse {
-        0% {
-          transform: translateX(-100%);
-        }
-        100% {
-          transform: translateX(0);
-        }
-      }
-      ```
-
-      <Step>Tailwind v3: Update <Kbd>tailwind.config.js</Kbd></Step>
-
-      Add the following animations to your <Kbd>tailwind.config.js</Kbd> file:
-
-      ```js {5-18}
-      /** @type {import('tailwindcss').Config} */
-      module.exports = {
-        theme: {
-          extend: {
-            keyframes: {
-              "infinite-ribbon": {
-                "0%": { transform: "translateX(0)" },
-                "100%": { transform: "translateX(-100%)" },
-              },
-              "infinite-ribbon-reverse": {
-                "0%": { transform: "translateX(-100%)" },
-                "100%": { transform: "translateX(0)" },
-              },
-            },
-            animation: {
-              "infinite-ribbon": "infinite-ribbon var(--ribbon-duration) linear infinite",
-              "infinite-ribbon-reverse": "infinite-ribbon-reverse var(--ribbon-duration) linear infinite",
-            },
-          },
+```js showLineNumbers
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    extend: {
+      keyframes: {
+        "infinite-ribbon": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
         },
-      };
-      ```
-    </Steps>
-  </TabsContent>
-</Tabs>
+        "infinite-ribbon-reverse": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+      },
+      animation: {
+        "infinite-ribbon": "infinite-ribbon var(--ribbon-duration) linear infinite",
+        "infinite-ribbon-reverse": "infinite-ribbon-reverse var(--ribbon-duration) linear infinite",
+      },
+    },
+  },
+};
+```
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Examples
+
+<ComponentPreview
+  name="infinite-ribbon-demo-2"
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="A dynamic and customizable sliding ribbon component that enhances UI experiences with smooth scrolling animations."
+  align="center"
+/>
+
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { InfiniteRibbon } from "@/components/ui/infinite-ribbon";
 ```
 
-```tsx
+```tsx showLineNumbers
 <InfiniteRibbon>
   Build fast, responsive, and beautiful interfaces with ready-to-use components.
   Designed for developers who demand the best.
@@ -315,13 +140,37 @@ import { InfiniteRibbon } from "@/components/ui/infinite-ribbon";
 
 ## Props
 
-<Kbd>infinite-ribbon</Kbd> props.
+`infinite-ribbon` props.
 
-| Prop      | Type            | Description                                            | Default |
-| --------- | --------------- | ------------------------------------------------------ | ------- |
-| repeat    | <Kbd>number</Kbd>          | Number of times the content is repeated in the ribbon. | 5       |
-| duration  | <Kbd>number</Kbd>          | Duration of the animation in seconds.                  | 10      |
-| reverse   | <Kbd>boolean</Kbd>         | Whether the ribbon animation should play in reverse.   | false   |
-| rotation  | <Kbd>number</Kbd>          | Rotation angle of the ribbon in degrees.               | 0       |
-| children  | <Kbd>React.ReactNode</Kbd> | The content inside the ribbon.                         | -       |
-| className | <Kbd>string</Kbd>          | Additional custom classes for styling the ribbon.      | -       |
+<TypeTable
+  type={{
+    repeat: {
+      type: "number",
+      description: "Number of times the content is repeated in the ribbon.",
+      default: "5"
+    },
+    duration: {
+      type: "number",
+      description: "Duration of the animation in seconds.",
+      default: "10"
+    },
+    reverse: {
+      type: "boolean",
+      description: "Whether the ribbon animation should play in reverse.",
+      default: "false"
+    },
+    rotation: {
+      type: "number",
+      description: "Rotation angle of the ribbon in degrees.",
+      default: "0"
+    },
+    children: {
+      type: "React.ReactNode",
+      description: "The content inside the ribbon."
+    },
+    className: {
+      type: "string",
+      description: "Additional custom classes for styling the ribbon."
+    }
+  }}
+/>

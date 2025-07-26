@@ -1,433 +1,72 @@
 ---
 title: Image Trail
 description: Image Trail adds a dynamic, interactive trail of images that follows the cursor, enhancing user engagement and visual appeal on your website.
+component: true
 ---
 
 <ComponentPreview
   name="image-trail-demo"
-  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[70%] m-0 p-0 overflow-hidden"
-  description="Adds an interactive trail of images that follows the cursor."
->
-  <Highlighter slot="javascript">
-    ```jsx
-    import { ImageTrail } from "@/components/ui/image-trail";
-
-    const imageUrls = [
-      "/images/components/image-trail/image-trail-1.webp",
-      "/images/components/image-trail/image-trail-2.webp",
-      "/images/components/image-trail/image-trail-3.webp",
-      "/images/components/image-trail/image-trail-4.webp",
-      "/images/components/image-trail/image-trail-5.webp",
-    ];
-
-    export default function ImageTrailDemo() {
-      return (
-        <div className="w-full h-[390px] rounded-lg overflow-hidden relative">
-          <ImageTrail images={imageUrls} imageHeight={150} imageWidth={150} />
-          <h1 className="font-gilroy text-4xl absolute z-10 text-center inset-0 flex items-center justify-center pointer-events-none mix-blend-difference bg-gradient-to-br from-white to-zinc-400 bg-clip-text text-transparent py-2">
-            Hover Me
-          </h1>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-  <Highlighter slot="typescript">
-    ```tsx
-    import { ImageTrail } from "@/components/ui/image-trail";
-
-    const imageUrls = [
-      "/images/components/image-trail/image-trail-1.webp",
-      "/images/components/image-trail/image-trail-2.webp",
-      "/images/components/image-trail/image-trail-3.webp",
-      "/images/components/image-trail/image-trail-4.webp",
-      "/images/components/image-trail/image-trail-5.webp",
-    ];
-
-    export default function ImageTrailDemo() {
-      return (
-        <div className="w-full h-[390px] rounded-lg overflow-hidden relative">
-          <ImageTrail images={imageUrls} imageHeight={150} imageWidth={150} />
-          <h1 className="font-gilroy text-4xl absolute z-10 text-center inset-0 flex items-center justify-center pointer-events-none mix-blend-difference bg-gradient-to-br from-white to-zinc-400 bg-clip-text text-transparent py-2">
-            Hover Me
-          </h1>
-        </div>
-      );
-    }
-    ```
-  </Highlighter>
-</ComponentPreview>
+  className="[&_.preview>[data-orientation=vertical]]:sm:max-w-[80%] **:[.preview]:min-h-[400px]"
+  description="Image Trail adds a dynamic, interactive trail of images that follows the cursor, enhancing user engagement and visual appeal on your website."
+  align="center"
+/>
 
 ## Installation
 
-<Tabs defaultValue="cli">
-  <TabsList>
-    <TabsTrigger value="cli">CLI</TabsTrigger>
-    <TabsTrigger value="manual">Manual</TabsTrigger>
-  </TabsList>
+<CodeTabs>
 
-  <TabsContent value="cli">
-    ```bash
-    npx shadcn@latest add https://badtz-ui.com/r/image-trail.json
-    ```
-  </TabsContent>
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
 
-  <TabsContent value="manual">
-    <Steps>
-      <Step>Install the following dependencies:</Step>
+<TabsContent value="cli">
 
-      ```bash
-      npm install clsx tailwind-merge gsap
-      ```
+```bash
+npx shadcn@latest add https://badtz-ui.com/r/image-trail.json
+```
 
-      <Step>Add the <Kbd>utils</Kbd> file to the <Kbd>@/lib</Kbd> folder</Step>
+</TabsContent>
 
-      <UtilsSource>
-        <Highlighter slot="javascript">
-          ```jsx
-          import { clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<TabsContent value="manual">
 
-          export function cn(...inputs) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          import { ClassValue, clsx } from "clsx";
-          import { twMerge } from "tailwind-merge";
+<Steps>
 
-          export function cn(...inputs: ClassValue[]) {
-            return twMerge(clsx(inputs));
-          }
-          ```
-        </Highlighter>
-      </UtilsSource>
+<Step>Install the following dependencies:</Step>
 
-      <Step>Copy and paste the <Kbd>image-trail</Kbd> code into your project.</Step>
+```bash
+npm install clsx tailwind-merge gsap
+```
 
-      <ComponentSource name="image-trail">
-        <Highlighter slot="javascript">
-          ```jsx
-          "use client";
+<Step>Add the `utils` file to the `@/lib` folder</Step>
+  ```tsx showLineNumbers
+  import { ClassValue, clsx } from "clsx";
+  import { twMerge } from "tailwind-merge";
 
-          import React, { useEffect, useRef } from "react";
-          import { gsap, Expo, Power1, Quint } from "gsap";
+  export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+  }
+  ```
 
-          export function ImageTrail({
-            images = [],
-            imageWidth = 200,
-            imageHeight = 200,
-            threshold = 50,
-            duration = 1.6,
-          }) {
-            const contentRef = useRef(null);
-            const imagesRef = useRef([]);
-            const mousePos = useRef({ x: 0, y: 0 });
-            const cacheMousePos = useRef({ x: 0, y: 0 });
-            const lastMousePos = useRef({ x: 0, y: 0 });
-            const zIndexVal = useRef(1);
-            const imgPosition = useRef(0);
-            const parentSize = useRef({ width: 0, height: 0 });
+<Step>Copy and paste the following code into your project.</Step>
 
-            useEffect(() => {
-              if (contentRef.current) {
-                imagesRef.current = Array.from(contentRef.current.querySelectorAll("img"));
-              }
+<ComponentSource name="image-trail" title="components/ui/image-trail.tsx" />
 
-              const handleMouseMove = (e) => {
-                const rect = contentRef.current?.getBoundingClientRect();
-                if (rect) {
-                  mousePos.current = {
-                    x: e.clientX - rect.left,
-                    y: e.clientY - rect.top,
-                  };
-                }
-              };
+<Step>Update the import paths to match your project setup.</Step>
 
-              calcParentSize();
-              if (imagesRef.current.length === 0) {
-                return;
-              }
+</Steps>
 
-              window.addEventListener("mousemove", handleMouseMove);
-              window.addEventListener("resize", calcParentSize);
+</TabsContent>
 
-              requestAnimationFrame(renderImages);
-
-              return () => {
-                window.removeEventListener("mousemove", handleMouseMove);
-                window.removeEventListener("resize", calcParentSize);
-              };
-            }, []);
-
-            const calcParentSize = () => {
-              const rect = contentRef.current?.getBoundingClientRect();
-              if (rect) {
-                parentSize.current = { width: rect.width, height: rect.height };
-              }
-            };
-
-            const lerp = (a, b, n) => (1 - n) * a + n * b;
-
-            const getMouseDistance = () => {
-              const dx = mousePos.current.x - lastMousePos.current.x;
-              const dy = mousePos.current.y - lastMousePos.current.y;
-              return Math.hypot(dx, dy);
-            };
-
-            const renderImages = () => {
-              const distance = getMouseDistance();
-
-              cacheMousePos.current.x = lerp(cacheMousePos.current.x, mousePos.current.x, 0.1);
-              cacheMousePos.current.y = lerp(cacheMousePos.current.y, mousePos.current.y, 0.1);
-
-              if (distance > threshold) {
-                showNextImage();
-                zIndexVal.current += 1;
-                imgPosition.current = (imgPosition.current + 1) % imagesRef.current.length;
-                lastMousePos.current = { ...mousePos.current };
-              }
-
-              requestAnimationFrame(renderImages);
-            };
-
-            const showNextImage = () => {
-              const img = imagesRef.current[imgPosition.current];
-              if (!img) return;
-
-              const rect = img.getBoundingClientRect();
-              gsap.killTweensOf(img);
-
-              gsap
-                .timeline()
-                .set(img, {
-                  startAt: { opacity: 0 },
-                  opacity: 1,
-                  zIndex: zIndexVal.current,
-                  x: cacheMousePos.current.x - rect.width / 2,
-                  y: cacheMousePos.current.y - rect.height / 2,
-                })
-                .to(img, {
-                  duration: duration,
-                  ease: Expo.easeOut,
-                  x: mousePos.current.x - rect.width / 2,
-                  y: mousePos.current.y - rect.height / 2,
-                })
-                .to(
-                  img,
-                  {
-                    duration: 1,
-                    ease: Power1.easeOut,
-                    opacity: 0,
-                  },
-                  0.4
-                )
-                .to(
-                  img,
-                  {
-                    duration: 1,
-                    ease: Quint.easeInOut,
-                    y: `+=${parentSize.current.height + rect.height / 2}`,
-                  },
-                  0.4
-                );
-            };
-
-            return (
-              <div
-                style={{
-                  "--image-width": `${imageWidth}px`,
-                  "--image-height": `${imageHeight}px`,
-                }}
-                className="h-full w-full relative flex justify-center items-center isolate overflow-hidden z-0"
-                ref={contentRef}
-              >
-                {images.map((url, index) => (
-                  <img
-                    key={index}
-                    className="absolute opacity-0 will-change-transform left-0 top-0 h-[var(--image-height)] w-[var(--image-width)] object-cover pointer-events-none"
-                    src={url}
-                    alt={`Image ${index + 1}`}
-                  />
-                ))}
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-        <Highlighter slot="typescript">
-          ```tsx
-          "use client";
-
-          import React, { useEffect, useRef } from "react";
-          import { gsap, Expo, Power1, Quint } from "gsap";
-
-          interface ImageTrailProps {
-            images: string[];
-            imageWidth?: number;
-            imageHeight?: number;
-            threshold?: number;
-            duration?: number;
-          }
-
-          export function ImageTrail({
-            images = [],
-            imageWidth = 200,
-            imageHeight = 200,
-            threshold = 50,
-            duration = 1.6,
-          }: ImageTrailProps) {
-            const contentRef = useRef<HTMLDivElement | null>(null);
-            const imagesRef = useRef<HTMLImageElement[]>([]);
-            const mousePos = useRef({ x: 0, y: 0 });
-            const cacheMousePos = useRef({ x: 0, y: 0 });
-            const lastMousePos = useRef({ x: 0, y: 0 });
-            const zIndexVal = useRef(1);
-            const imgPosition = useRef(0);
-            const parentSize = useRef({ width: 0, height: 0 });
-
-            useEffect(() => {
-              if (contentRef.current) {
-                imagesRef.current = Array.from(contentRef.current.querySelectorAll("img"));
-              }
-
-              const handleMouseMove = (e: MouseEvent) => {
-                const rect = contentRef.current?.getBoundingClientRect();
-                if (rect) {
-                  mousePos.current = {
-                    x: e.clientX - rect.left,
-                    y: e.clientY - rect.top,
-                  };
-                }
-              };
-
-              calcParentSize();
-              if (imagesRef.current.length === 0) {
-                return;
-              }
-
-              window.addEventListener("mousemove", handleMouseMove);
-              window.addEventListener("resize", calcParentSize);
-
-              requestAnimationFrame(renderImages);
-
-              return () => {
-                window.removeEventListener("mousemove", handleMouseMove);
-                window.removeEventListener("resize", calcParentSize);
-              };
-            }, []);
-
-            const calcParentSize = () => {
-              const rect = contentRef.current?.getBoundingClientRect();
-              if (rect) {
-                parentSize.current = { width: rect.width, height: rect.height };
-              }
-            };
-
-            const lerp = (a: number, b: number, n: number) => (1 - n) * a + n * b;
-
-            const getMouseDistance = () => {
-              const dx = mousePos.current.x - lastMousePos.current.x;
-              const dy = mousePos.current.y - lastMousePos.current.y;
-              return Math.hypot(dx, dy);
-            };
-
-            const renderImages = () => {
-              const distance = getMouseDistance();
-
-              cacheMousePos.current.x = lerp(cacheMousePos.current.x, mousePos.current.x, 0.1);
-              cacheMousePos.current.y = lerp(cacheMousePos.current.y, mousePos.current.y, 0.1);
-
-              if (distance > threshold) {
-                showNextImage();
-                zIndexVal.current += 1;
-                imgPosition.current = (imgPosition.current + 1) % imagesRef.current.length;
-                lastMousePos.current = { ...mousePos.current };
-              }
-
-              requestAnimationFrame(renderImages);
-            };
-
-            const showNextImage = () => {
-              const img = imagesRef.current[imgPosition.current];
-              if (!img) return;
-
-              const rect = img.getBoundingClientRect();
-              gsap.killTweensOf(img);
-
-              gsap
-                .timeline()
-                .set(img, {
-                  startAt: { opacity: 0 },
-                  opacity: 1,
-                  zIndex: zIndexVal.current,
-                  x: cacheMousePos.current.x - rect.width / 2,
-                  y: cacheMousePos.current.y - rect.height / 2,
-                })
-                .to(img, {
-                  duration: duration,
-                  ease: Expo.easeOut,
-                  x: mousePos.current.x - rect.width / 2,
-                  y: mousePos.current.y - rect.height / 2,
-                })
-                .to(
-                  img,
-                  {
-                    duration: 1,
-                    ease: Power1.easeOut,
-                    opacity: 0,
-                  },
-                  0.4
-                )
-                .to(
-                  img,
-                  {
-                    duration: 1,
-                    ease: Quint.easeInOut,
-                    y: `+=${parentSize.current.height + rect.height / 2}`,
-                  },
-                  0.4
-                );
-            };
-
-            return (
-              <div
-                style={{
-                  "--image-width": `${imageWidth}px`,
-                  "--image-height": `${imageHeight}px`,
-                }}
-                className="h-full w-full relative flex justify-center items-center isolate overflow-hidden z-0"
-                ref={contentRef}
-              >
-                {images.map((url, index) => (
-                  <img
-                    key={index}
-                    className="absolute opacity-0 will-change-transform left-0 top-0 h-[var(--image-height)] w-[var(--image-width)] object-cover pointer-events-none"
-                    src={url}
-                    alt={`Image ${index + 1}`}
-                  />
-                ))}
-              </div>
-            );
-          }
-          ```
-        </Highlighter>
-      </ComponentSource>
-
-      <Step>Update the import paths to match your project setup.</Step>
-    </Steps>
-  </TabsContent>
-</Tabs>
+</CodeTabs>
 
 ## Usage
 
-```tsx
+```tsx showLineNumbers
 import { ImageTrail } from "@/components/ui/image-trail";
 ```
 
-```tsx
+```tsx showLineNumbers
 const imageUrls = [
   "/images/components/image-trail/image-trail-1.webp",
   "/images/components/image-trail/image-trail-2.webp",
@@ -437,18 +76,40 @@ const imageUrls = [
 ];
 ```
 
-```tsx
+```tsx showLineNumbers
 <ImageTrail images={imageUrls} imageHeight={150} imageWidth={150} />
 ```
 
 ## Props
 
-<Kbd>image-trail</Kbd> props.
+`image-trail` props.
 
-| Prop        | Type     | Description                                                          | Default |
-| ----------- | -------- | -------------------------------------------------------------------- | ------- |
-| images      | <Kbd>string[]</Kbd> | An array of image URLs to be used in the trail effect.               | `[]`    |
-| imageWidth  | <Kbd>number</Kbd>   | The width of each image in the trail (in pixels).                    | `200`   |
-| imageHeight | <Kbd>number</Kbd>   | The height of each image in the trail (in pixels).                   | `200`   |
-| threshold   | <Kbd>number</Kbd>   | The minimum distance the mouse must move to trigger an image change. | `50`    |
-| duration    | <Kbd>number</Kbd>   | The duration (in seconds) of the animation for each image.           | `1.6`   |
+<TypeTable
+  type={{
+    images: {
+      type: "string[]",
+      description: "An array of image URLs to be used in the trail effect.",
+      default: "[]"
+    },
+    imageWidth: {
+      type: "number",
+      description: "The width of each image in the trail (in pixels).",
+      default: "200"
+    },
+    imageHeight: {
+      type: "number",
+      description: "The height of each image in the trail (in pixels).",
+      default: "200"
+    },
+    threshold: {
+      type: "number",
+      description: "The minimum distance the mouse must move to trigger an image change.",
+      default: "50"
+    },
+    duration: {
+      type: "number",
+      description: "The duration (in seconds) of the animation for each image.",
+      default: "1.6"
+    }
+  }}
+/>

@@ -1,35 +1,21 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
-import pluginReact from "eslint-plugin-react";
-import pluginPrettier from "eslint-plugin-prettier";
-import eslintConfigPrettier from "eslint-config-prettier";
-import eslintConfigNext from "eslint-config-next";
+import { dirname } from "path"
+import { fileURLToPath } from "url"
+import { FlatCompat } from "@eslint/eslintrc"
 
-/** @type {import('eslint').Linter.Config[]} */
-export default [
-  {
-    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
-    languageOptions: {
-      globals: { ...globals.browser, ...globals.node },
-    },
-    settings: {
-      react: {
-        version: "detect",
-      },
-    },
-  },
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
-  eslintConfigNext(),
-  {
-    plugins: {
-      prettier: pluginPrettier,
-    },
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+})
+
+const eslintConfig = [
+  ...compat.config({
+    extends: ["next/core-web-vitals", "next/typescript"],
     rules: {
-      ...eslintConfigPrettier.rules,
-      "prettier/prettier": "error",
+      "@next/next/no-duplicate-head": "off",
     },
-  },
-];
+  }),
+]
+
+export default eslintConfig

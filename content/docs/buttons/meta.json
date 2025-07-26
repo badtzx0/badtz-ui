@@ -1,0 +1,13 @@
+{
+  "title": "Buttons",
+  "pages": [
+    "glowing-button",
+    "swipe-button",
+    "gradient-slide",
+    "star-button",
+    "confetti-button",
+    "shuffle-button",
+    "stagger-button",
+    "like-button"
+  ]
+}

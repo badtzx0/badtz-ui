@@ -1,0 +1,14 @@
+{
+  "root": true,
+  "pages": [
+    "(root)",
+    "changelog",
+    "dark-mode",
+    "components",
+    "shaders",
+    "animated-cards",
+    "backgrounds",
+    "text-effects",
+    "buttons"
+  ]
+}

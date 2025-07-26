@@ -1,76 +1,58 @@
-"use client";
+"use client"
 
-import React, { useRef, useEffect, CSSProperties } from "react";
-import { cn } from "@/lib/utils";
+import React, { CSSProperties, memo } from "react"
+
+import { cn } from "@/lib/utils"
 
 interface BorderBeamProps {
-  lightWidth?: number;
-  duration?: number;
-  lightColor?: string;
-  borderWidth?: number;
-  className?: string;
-  [key: string]: any;
+  lightWidth?: number
+  duration?: number
+  lightColor?: string
+  borderWidth?: number
+  className?: string
+  [key: string]: unknown
 }
 
-export function BorderBeam({
-  lightWidth = 200,
-  duration = 10,
+function BorderBeamComponent({
+  lightWidth,
+  duration = 2,
   lightColor = "#FAFAFA",
   borderWidth = 1,
   className,
   ...props
 }: BorderBeamProps) {
-  const pathRef = useRef<HTMLDivElement>(null);
-
-  const updatePath = () => {
-    if (pathRef.current) {
-      const div = pathRef.current;
-      div.style.setProperty(
-        "--path",
-        `path("M 0 0 H ${div.offsetWidth} V ${div.offsetHeight} H 0 V 0")`
-      );
-    }
-  };
-
-  useEffect(() => {
-    updatePath();
-    window.addEventListener("resize", updatePath);
-
-    return () => {
-      window.removeEventListener("resize", updatePath);
-    };
-  }, []);
-
   return (
     <div
-      style={
-        {
-          "--duration": duration,
-          "--light-width": `${lightWidth}px`,
-          "--border-width": `${borderWidth}px`,
-          "--light-color": lightColor,
-        } as CSSProperties
-      }
-      ref={pathRef}
       className={cn(
-        `absolute rounded-[inherit] z-0 w-full h-full`,
-        `after:content-[''] after:absolute after:inset-[var(--border-width)] after:rounded-[inherit]`,
-        "![mask-clip:padding-box,border-box] border-[length:var(--border-width)]",
-        "![mask-composite:intersect] [mask:linear-gradient(transparent,transparent),linear-gradient(red,red)]",
-
-        `before:border-black/10 dark:before:border-sidebar-border before:absolute before:inset-0 before:rounded-[inherit] before:z-[-1] before:border-[length:var(--border-width)]`,
+        `absolute inset-0 z-0 h-full w-full rounded-[inherit]`,
         className
       )}
+      style={{
+        border: `${borderWidth}px solid rgba(255, 255, 255, 0.1)`,
+      }}
       {...props}
     >
       <div
-        className="absolute w-full inset-0 animate-border-beam bg-[radial-gradient(ellipse_at_center,var(--light-color),transparent,transparent)]"
+        className="absolute inset-0 rounded-[inherit]"
         style={{
-          offsetPath: "var(--path)",
-          offsetDistance: "0%",
-          width: "var(--light-width)",
+          mask: "linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0)",
+          maskComposite: "exclude",
+          padding: `${borderWidth}px`,
         }}
-      />
+      >
+        <div
+          className="absolute top-1/2 left-1/2 aspect-square w-full"
+          style={
+            {
+              background: `conic-gradient(from 0deg at 50% 50%, transparent 270deg, ${lightColor} 1turn, transparent 361deg)`,
+              animation: `border-beam-rotate ${duration}s linear infinite`,
+              willChange: "transform",
+            } as CSSProperties
+          }
+        />
+      </div>
     </div>
-  );
+  )
 }
+
+export const BorderBeam = memo(BorderBeamComponent)
