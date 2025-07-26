@@ -12,11 +12,10 @@
     "typecheck": "tsc --noEmit",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
-    "registry:build": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && prettier --log-level silent --write \"registry/**/*.{ts,tsx,json,mdx}\" --cache",
-    "registry:build-official": "shadcn build",
+    "registry:build": "shadcn build",
     "build-registry": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts && npx prettier --log-level silent --write \"registry/**/*.{ts,tsx,json,mdx}\" --cache",
     "registry:capture": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/capture-registry.mts",
-    "postinstall": "prisma generate && fumadocs-mdx"
+    "postinstall": "prisma generate && fumadocs-mdx && pnpm registry:build-official"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
