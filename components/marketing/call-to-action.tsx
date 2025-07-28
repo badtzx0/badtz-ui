@@ -100,7 +100,7 @@ export function CallToAction() {
         </div>
 
         <div className="relative z-5 mx-auto flex w-full max-w-5xl flex-col items-center justify-start text-center">
-          <h2 className="leading-tighter font-gilroy text-gradient-safari max-w-3xl bg-gradient-to-b from-white/80 via-white to-white/60 text-5xl font-semibold tracking-tight text-pretty lg:leading-[1.1] lg:font-semibold xl:text-6xl/[4rem] xl:tracking-tighter">
+          <h2 className="leading-tighter font-gilroy max-w-3xl bg-gradient-to-b from-white/80 via-white to-white/60 bg-clip-text text-5xl font-semibold tracking-tight text-pretty text-transparent lg:leading-[1.1] lg:font-semibold xl:text-6xl/[4rem] xl:tracking-tighter">
             Build faster. <br /> Build beautiful.
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl text-base text-balance sm:text-lg">

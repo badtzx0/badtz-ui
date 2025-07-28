@@ -25,7 +25,7 @@ export const ShinyText = ({
         repeatDelay: delay,
         ease: "linear",
       }}
-      className="text-gradient-safari relative inline-block bg-no-repeat"
+      className="relative inline-block bg-clip-text bg-no-repeat text-transparent"
       style={{
         backgroundSize: "250% 100%",
         backgroundImage: `

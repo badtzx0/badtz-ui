@@ -20,7 +20,7 @@ const badgeVariants = cva(
         announcement:
           "bg-muted/50 border border-dashed font-normal rounded-full h-min h-6 px-3 text-muted-foreground hover:text-foreground",
         accent:
-          "h-6 gap-1.5 py-0 pr-2.5 pl-1.5 [&>svg]:size-4 text-primary border-dashed rounded-full [background-color:color-mix(in_oklch,var(--primary)_20%,transparent)] [border-color:color-mix(in_oklch,var(--primary)_40%,transparent)]",
+          "h-6 gap-1.5 py-0 pr-2.5 pl-1.5 [&>svg]:size-4 bg-primary/20 text-primary border-dashed border-primary/40 rounded-full",
         gradient:
           "bg-linear-to-b dark:from-[#2487EB] dark:to-[#1D69DE] from-[#FBBF24] to-[#F59E0B] border border-[#FBBF24] dark:border-[#1D69DE] dark:hover:from-[#2487EB]/90 dark:hover:to-[#1D69DE]/90 hover:from-[#FBBF24]/90 hover:to-[#F59E0B]/90 font-normal rounded-full",
       },

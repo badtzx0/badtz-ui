@@ -28,9 +28,7 @@ function PageHeaderHeading({
   return (
     <h1
       className={cn(
-        "leading-tighter font-gilroy text-foreground mt-2 inline-block max-w-2xl text-5xl font-semibold tracking-tight text-balance lg:leading-[1.1] lg:font-semibold xl:text-7xl/[4.75rem] xl:tracking-tighter",
-        // Gradient text effect for dark mode with Safari compatibility
-        "dark:text-gradient-safari dark:bg-gradient-to-b dark:from-white/80 dark:via-white dark:to-white/60",
+        "leading-tighter font-gilroy text-foreground mt-2 inline-block max-w-2xl text-5xl font-semibold tracking-tight text-balance lg:leading-[1.1] lg:font-semibold xl:text-7xl/[4.75rem] xl:tracking-tighter dark:bg-gradient-to-b dark:from-white/80 dark:via-white dark:to-white/60 dark:bg-clip-text dark:text-transparent",
         className
       )}
       {...props}

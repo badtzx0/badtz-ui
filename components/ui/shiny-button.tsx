@@ -77,7 +77,7 @@ export function ShinyButton({ children, className }: ShinyButtonProps) {
           }}
         />
       </div>
-      <div className="from-foreground via-foreground to-primary/50 text-gradient-safari relative z-10 flex h-8 items-center bg-gradient-to-b text-sm font-normal">
+      <div className="from-foreground via-foreground to-primary/50 relative z-10 flex h-8 items-center bg-gradient-to-b bg-clip-text text-sm font-normal text-transparent">
         {children}
       </div>
     </div>

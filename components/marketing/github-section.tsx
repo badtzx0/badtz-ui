@@ -5,7 +5,7 @@ export function GithubSection() {
   return (
     <section className="from-background to-secondary/60 bg-gradient-to-t from-10% to-90%">
       <div className="container mx-auto flex w-full max-w-6xl flex-col items-center justify-start !px-4 py-8 text-center md:pt-32 md:pb-16">
-        <h2 className="leading-tighter font-gilroy text-gradient-safari max-w-3xl bg-gradient-to-b from-white/80 via-white to-white/60 pb-2 text-5xl font-semibold tracking-tight text-pretty lg:leading-[1.1] lg:font-semibold xl:text-6xl/[4rem] xl:tracking-tighter">
+        <h2 className="leading-tighter font-gilroy max-w-3xl bg-gradient-to-b from-white/80 via-white to-white/60 bg-clip-text pb-2 text-5xl font-semibold tracking-tight text-pretty text-transparent lg:leading-[1.1] lg:font-semibold xl:text-6xl/[4rem] xl:tracking-tighter">
           Open Source, Built Together
         </h2>
         <div className="relative">
