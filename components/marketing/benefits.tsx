@@ -85,7 +85,7 @@ export function Benefits() {
       <div className="container mx-auto flex w-full max-w-5xl flex-col items-center justify-start !px-4 py-16 text-center md:items-start md:py-32 md:text-left">
         <div className="flex flex-col md:flex-row md:gap-8">
           <div className="flex w-full md:w-1/2 md:items-end">
-            <h2 className="leading-tighter font-gilroy max-w-2xl bg-gradient-to-b from-white/80 via-white to-white/60 bg-clip-text text-5xl font-semibold tracking-tight text-pretty text-transparent lg:leading-[1.1] lg:font-semibold xl:text-6xl/[4rem] xl:tracking-tighter">
+            <h2 className="leading-tighter font-gilroy text-gradient-safari max-w-2xl bg-gradient-to-b from-white/80 via-white to-white/60 text-5xl font-semibold tracking-tight text-pretty lg:leading-[1.1] lg:font-semibold xl:text-6xl/[4rem] xl:tracking-tighter">
               Highlight your website in a second
             </h2>
           </div>

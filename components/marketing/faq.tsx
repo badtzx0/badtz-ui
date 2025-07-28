@@ -53,7 +53,7 @@ export function FAQ() {
   return (
     <section className="from-background via-secondary/60 to-background bg-gradient-to-b from-20% py-16 md:py-32">
       <div className="container mx-auto flex w-full max-w-6xl flex-col items-center justify-start !px-4 text-center">
-        <h2 className="leading-tighter font-gilroy max-w-2xl bg-gradient-to-b from-white/80 via-white to-white/60 bg-clip-text pb-2 text-5xl font-semibold tracking-tight text-pretty text-transparent lg:leading-[1.1] lg:font-semibold xl:text-6xl/[4rem] xl:tracking-tighter">
+        <h2 className="leading-tighter font-gilroy text-gradient-safari max-w-2xl bg-gradient-to-b from-white/80 via-white to-white/60 pb-2 text-5xl font-semibold tracking-tight text-pretty lg:leading-[1.1] lg:font-semibold xl:text-6xl/[4rem] xl:tracking-tighter">
           Frequently Asked Questions
         </h2>
         <p className="text-muted-foreground mt-4 max-w-2xl text-base text-balance sm:text-lg">

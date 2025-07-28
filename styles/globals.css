@@ -350,6 +350,14 @@
   }
 }
 
+@utility text-gradient-safari {
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
 @layer components {
   /* Force responsive behavior for code blocks */
   [data-slot="docs"] pre {
