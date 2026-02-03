@@ -14,7 +14,7 @@ export function CpuVisual() {
           <BorderBeam lightColor="#7876c5" duration={3} />
 
           <Image
-            src="https://cdn.badtz-ui.com//images/home-bento/badtz-cpu.webp"
+            src="https://cdn.badtz-ui.com/images/home-bento/badtz-cpu.webp"
             alt="CPU"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
