@@ -46,6 +46,7 @@ export function DocsCta({ className }: React.ComponentProps<"div">) {
       <a
         href="https://reechlist.com"
         target="_blank"
+        rel="noopener noreferrer"
         className="absolute inset-0"
         onClick={handleComponentsClick}
       >

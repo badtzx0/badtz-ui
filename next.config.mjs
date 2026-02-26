@@ -27,6 +27,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "pro.badtz-ui.com",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.reechlist.com",
+      },
     ],
   },
   redirects() {
