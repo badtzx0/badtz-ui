@@ -3,7 +3,11 @@
   "name": "pixel-distorsion",
   "type": "registry:ui",
   "dependencies": [
-    "clsx tailwind-merge @react-three/fiber @react-three/drei three"
+    "clsx",
+    "tailwind-merge",
+    "@react-three/fiber",
+    "@react-three/drei",
+    "three"
   ],
   "files": [
     {

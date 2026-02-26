@@ -3,7 +3,8 @@
   "name": "animated-list",
   "type": "registry:ui",
   "dependencies": [
-    "clsx tailwind-merge",
+    "clsx",
+    "tailwind-merge",
     "motion"
   ],
   "files": [

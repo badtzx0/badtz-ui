@@ -10,8 +10,13 @@
 !.yarn/releases
 !.yarn/versions
 
+.claude
+
 # testing
 /coverage
+
+#prisma
+.generated
 
 # next.js
 /.next/

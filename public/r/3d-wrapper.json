@@ -3,7 +3,8 @@
   "name": "3d-wrapper",
   "type": "registry:ui",
   "dependencies": [
-    "clsx tailwind-merge",
+    "clsx",
+    "tailwind-merge",
     "motion"
   ],
   "files": [

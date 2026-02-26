@@ -3,7 +3,10 @@
   "name": "particles",
   "type": "registry:ui",
   "dependencies": [
-    "clsx tailwind-merge @tsparticles/react @tsparticles/slim"
+    "clsx",
+    "tailwind-merge",
+    "@tsparticles/react",
+    "@tsparticles/slim"
   ],
   "files": [
     {

@@ -383,7 +383,7 @@
     {
       "name": "blur-reveal",
       "type": "registry:ui",
-      "dependencies": ["clsx tailwind-merge", "motion"],
+      "dependencies": ["clsx", "tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/blur-reveal.tsx",
@@ -394,7 +394,7 @@
     {
       "name": "fade-up-word",
       "type": "registry:ui",
-      "dependencies": ["clsx tailwind-merge", "motion"],
+      "dependencies": ["clsx","tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/fade-up-word.tsx",
@@ -405,7 +405,7 @@
     {
       "name": "stagger-blur-effect",
       "type": "registry:ui",
-      "dependencies": ["clsx tailwind-merge", "motion"],
+      "dependencies": ["clsx", "tailwind-merge", "motion"],
       "files": [
         {
           "path": "registry/new-york-v4/ui/stagger-blur-effect.tsx",

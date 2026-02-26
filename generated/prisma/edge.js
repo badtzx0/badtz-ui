@@ -183,7 +183,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\cam27\\OneDrive\\Bureau\\new-bui-classic\\generated\\prisma",
+      "value": "C:\\Users\\ReikaBB\\Desktop\\new-bui-classic\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -197,7 +197,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\cam27\\OneDrive\\Bureau\\new-bui-classic\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\ReikaBB\\Desktop\\new-bui-classic\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
