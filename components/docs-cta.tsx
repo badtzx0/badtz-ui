@@ -1,7 +1,5 @@
 "use client"
 
-import { ExternalLink } from "lucide-react"
-
 import { useDataFast } from "@/lib/datafast-client"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -32,7 +30,7 @@ export function DocsCta({ className }: React.ComponentProps<"div">) {
         Find <span className="font-instrument-serif italic text-xl leading-none">customers</span> before you even <span className="font-instrument-serif italic text-xl leading-none">launch</span>.
       </div>
       <div className="text-foreground/80">
-        Reechlist finds people actively asking for what you're building.
+        Reechlist finds people actively asking for what you&apos;re building.
       </div>
 
       <Button
