@@ -57,7 +57,7 @@ export function StatusButton({
               setTimeout(() => {
                 setButtonState("idle")
               }, 3500)
-            } catch (error) {
+            } catch {
               setButtonState("idle")
             }
           } else {
