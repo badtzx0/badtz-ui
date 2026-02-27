@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { XIcon } from "lucide-react"
 
 import { useDataFast } from "@/lib/datafast-client"
@@ -17,30 +18,30 @@ export function MarketingBanner() {
   }
 
   const handleBannerClick = () => {
-    track("clicked_pro_from_banner")
+    track("clicked_reechlist")
   }
 
   return (
     <Link
-      href="https://pro.badtz-ui.com"
+      href="https://reechlist.com"
       target="_blank"
       onClick={handleBannerClick}
     >
       <div className="text-foreground accent-shadow border-primary/20 cursor-pointer border-b py-1.5">
         <div className="relative mx-auto flex max-w-7xl items-center gap-x-2 px-4">
           <div className="flex gap-3 md:items-center">
-            <div
-              className="border-primary/40 accent-shadow flex size-7 shrink-0 items-center justify-center rounded-full border pt-px pl-0.5 text-[13px] max-md:mt-0.5"
-              aria-hidden="true"
-            >
-              🎉
-            </div>
+            <Image
+              src="https://cdn.reechlist.com/logo.svg"
+              alt="Reechlist Logo"
+              width={22}
+              height={22}
+              className="ml-1.5 shrink-0 max-md:mt-0.5"
+            />
             <div className="flex-col gap-3">
               <div className="mt-1.5 flex flex-col items-start gap-1 md:mt-0 md:flex-row md:items-center">
-                <p className="text-sm font-medium">Get BadtzUI Pro!</p>
-                <p className="text-foreground/80 mb-1 text-sm sm:mb-0">
-                  Access prebuilt templates & blocks for ReactJS. Build faster
-                  while converting more users to customers.
+                <p className="text-sm font-medium">Find customers before you even launch.</p>
+                <p className="font-instrument-serif italic text-foreground/80 mb-1 text-sm sm:mb-0">
+                  Reechlist finds people actively asking for what you&apos;re building.
                 </p>
               </div>
             </div>

@@ -9,7 +9,7 @@ export function DocsCta({ className }: React.ComponentProps<"div">) {
   const { track } = useDataFast()
 
   const handleComponentsClick = () => {
-    track("clicked_pro_from_docs")
+    track("clicked_reechlist")
   }
 
   return (
